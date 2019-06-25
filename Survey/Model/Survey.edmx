@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="QuestionSet" EntityType="Model.Question" />
+          <EntitySet Name="AnswerSet" EntityType="Model.Answer" />
+          <AssociationSet Name="QuestionAnswer" Association="Model.QuestionAnswer">
+            <End Role="Question" EntitySet="QuestionSet" />
+            <End Role="Answer" EntitySet="AnswerSet" />
+          </AssociationSet>
+          <EntitySet Name="TrueAnswerSet" EntityType="Model.TrueAnswer" />
+          <AssociationSet Name="QuestionTrueAnswer" Association="Model.QuestionTrueAnswer">
+            <End Role="Question" EntitySet="QuestionSet" />
+            <End Role="TrueAnswer" EntitySet="TrueAnswerSet" />
+          </AssociationSet>
+          <EntitySet Name="SurveySet" EntityType="Model.Survey" />
+          <EntitySet Name="CategorySurveySet" EntityType="Model.CategorySurvey" />
+          <AssociationSet Name="CategorySurveySurvey" Association="Model.CategorySurveySurvey">
+            <End Role="CategorySurvey" EntitySet="CategorySurveySet" />
+            <End Role="Survey" EntitySet="SurveySet" />
+          </AssociationSet>
+          <AssociationSet Name="SurveyQuestion" Association="Model.SurveyQuestion">
+            <End Role="Survey" EntitySet="SurveySet" />
+            <End Role="Question" EntitySet="QuestionSet" />
+          </AssociationSet>
+          <EntitySet Name="UserSet" EntityType="Model.User" />
+          <EntitySet Name="UserSurveySet" EntityType="Model.UserSurvey" />
+          <AssociationSet Name="UserUserSurvey" Association="Model.UserUserSurvey">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="UserSurvey" EntitySet="UserSurveySet" />
+          </AssociationSet>
+          <AssociationSet Name="SurveyUserSurvey" Association="Model.SurveyUserSurvey">
+            <End Role="Survey" EntitySet="SurveySet" />
+            <End Role="UserSurvey" EntitySet="UserSurveySet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" Nullable="false" />
+          <Property Name="link_to_foto" Type="String" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="Model.QuestionAnswer" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="TrueAnswer" Relationship="Model.QuestionTrueAnswer" FromRole="Question" ToRole="TrueAnswer" />
+          <Property Name="surveyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Survey" Relationship="Model.SurveyQuestion" FromRole="Question" ToRole="Survey" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" Nullable="false" />
+          <Property Name="link_to_foto" Type="String" Nullable="false" />
+          <Property Name="questionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Model.QuestionAnswer" FromRole="Answer" ToRole="Question" />
+        </EntityType>
+        <Association Name="QuestionAnswer">
+          <End Type="Model.Question" Role="Question" Multiplicity="1" />
+          <End Type="Model.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TrueAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="indexAnswer" Type="String" Nullable="false" />
+          <Property Name="questionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Model.QuestionTrueAnswer" FromRole="TrueAnswer" ToRole="Question" />
+        </EntityType>
+        <Association Name="QuestionTrueAnswer">
+          <End Type="Model.Question" Role="Question" Multiplicity="1" />
+          <End Type="Model.TrueAnswer" Role="TrueAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrueAnswer">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="time" Type="DateTime" Nullable="false" />
+          <Property Name="CategorySurveyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategorySurvey" Relationship="Model.CategorySurveySurvey" FromRole="Survey" ToRole="CategorySurvey" />
+          <NavigationProperty Name="Question" Relationship="Model.SurveyQuestion" FromRole="Survey" ToRole="Question" />
+          <NavigationProperty Name="UserSurvey" Relationship="Model.SurveyUserSurvey" FromRole="Survey" ToRole="UserSurvey" />
+        </EntityType>
+        <EntityType Name="CategorySurvey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Survey" Relationship="Model.CategorySurveySurvey" FromRole="CategorySurvey" ToRole="Survey" />
+        </EntityType>
+        <Association Name="CategorySurveySurvey">
+          <End Type="Model.CategorySurvey" Role="CategorySurvey" Multiplicity="1" />
+          <End Type="Model.Survey" Role="Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategorySurvey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="CategorySurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SurveyQuestion">
+          <End Type="Model.Survey" Role="Survey" Multiplicity="1" />
+          <End Type="Model.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="surveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="surname" Type="String" Nullable="false" />
+          <Property Name="role" Type="Model.TypeRole" Nullable="false" />
+          <NavigationProperty Name="UserSurvey" Relationship="Model.UserUserSurvey" FromRole="User" ToRole="UserSurvey" />
+        </EntityType>
+        <EnumType Name="TypeRole">
+          <Member Name="admin" />
+          <Member Name="employee" />
+        </EnumType>
+        <EntityType Name="UserSurvey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="surveyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model.UserUserSurvey" FromRole="UserSurvey" ToRole="User" />
+          <NavigationProperty Name="Survey" Relationship="Model.SurveyUserSurvey" FromRole="UserSurvey" ToRole="Survey" />
+          <Property Name="IsPass" Type="Boolean" Nullable="false" />
+          <Property Name="result" Type="Double" Nullable="false" />
+        </EntityType>
+        <Association Name="UserUserSurvey">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.UserSurvey" Role="UserSurvey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSurvey">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SurveyUserSurvey">
+          <End Type="Model.Survey" Role="Survey" Multiplicity="1" />
+          <End Type="Model.UserSurvey" Role="UserSurvey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSurvey">
+              <PropertyRef Name="surveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
