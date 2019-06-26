@@ -7,8 +7,180 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
+    <Page.Resources>
+        <Style x:Key="LabelTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="InputTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ActionButton" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="3"/>            
+        </Style>
+    </Page.Resources>
+    
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="Exit" 
+                Grid.Row="0"
+                Width="Auto"
+                HorizontalAlignment="Left"
+                HorizontalContentAlignment="Center"
+                Margin="3"
+                Click="Exit_Click">Выход</Button>
         
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Manager Users -->
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           FontSize="16">Сотрудники</TextBlock>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" 
+                               Grid.Column="1"
+                               Style="{StaticResource LabelTextBlock}">Логин</TextBlock>
+                    <TextBox x:Name="Login"
+                             Grid.Row="0"
+                             Grid.Column="2"
+                             Style="{StaticResource InputTextBox}"/>
+
+                    <TextBlock Grid.Row="1" 
+                               Grid.Column="1"
+                               Style="{StaticResource LabelTextBlock}">Фамилия</TextBlock>
+                    <TextBox x:Name="Surname"
+                             Grid.Row="1"
+                             Grid.Column="2"
+                             Style="{StaticResource InputTextBox}"/>
+
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="1"
+                               Style="{StaticResource LabelTextBlock}">Имя</TextBlock>
+                    <TextBox x:Name="Name"
+                             Grid.Row="2"
+                             Grid.Column="2"
+                             Style="{StaticResource InputTextBox}"/>                    
+
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="1"
+                               Style="{StaticResource LabelTextBlock}">Роль</TextBlock>
+                    <ComboBox x:Name="Roles"
+                              Grid.Row="3"
+                              Grid.Column="2"
+                              Margin="3"/>
+
+                    <Button x:Name="ClearUser"
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="3"
+                            Click="ClearUser_Click">Очистить поля</Button>
+                    
+                    <Button x:Name="SaveUser"
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="3"
+                            Click="SaveUser_Click">Сохранить</Button>
+
+                    <Image x:Name="Foto"
+                           Grid.Row="0"
+                           Grid.RowSpan="6"
+                           Grid.Column="0"
+                           Margin="3"
+                           Source="pack://application:,,,/Pictures/Hamster.jpg"/>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="AddUser" Grid.Column="0" Style="{StaticResource ActionButton}" Click="AddUser_Click">Добавить</Button>
+                    <Button x:Name="EditUser" Grid.Column="1" Style="{StaticResource ActionButton}" Click="EditUser_Click">Изменить</Button>
+                    <Button x:Name="RemoveUser" Grid.Column="2" Style="{StaticResource ActionButton}" Click="RemoveUser_Click">Удалить</Button>
+                </Grid>
+
+                <DataGrid x:Name="MenusDataGrid" Grid.Row="3"
+                          SelectionUnit="FullRow"
+                          SelectionMode="Single"
+                          Background="{x:Null}" 
+                          AutoGenerateColumns="False" 
+                          HorizontalGridLinesBrush="DarkGray" 
+                          RowBackground="LightGray" 
+                          AlternatingRowBackground="White" 
+                          IsReadOnly="True"
+                          Margin="3">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding Path=Login}" Width="*"/>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}"  Width="*"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            
+            <!-- Splitter -->
+
+            <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+
+            <!-- Manager Survey -->
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           FontSize="16">Опросы</TextBlock>
+                
+                
+            </Grid>
+
+        </Grid>
     </Grid>
 </Page>
