@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survey.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,8 +31,10 @@ namespace Survey.View
             switch(Login.Text)
             {
                 case "admin":
+                    Navigated.GoToAdminPage();
                     break;
                 case "user":
+                    Navigated.GoToUserPage();
                     break;
                 default:
                     MessageBox.Show("Не правильный логин/пароль");
