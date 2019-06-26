@@ -24,5 +24,19 @@ namespace Survey.View
         {
             InitializeComponent();
         }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            switch(Login.Text)
+            {
+                case "admin":
+                    break;
+                case "user":
+                    break;
+                default:
+                    MessageBox.Show("Не правильный логин/пароль");
+                    break;
+            }
+        }
     }
 }
