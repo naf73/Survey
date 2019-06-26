@@ -1,4 +1,6 @@
 ﻿using Survey.View;
+using Survey.View.Admin;
+using Survey.View.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,26 @@ namespace Survey.Logic
         public static void GoToAuthPage()
         {
             _frame.Navigate(new AuthPage());
+        }
+
+        public static void GoToAdminPage()
+        {
+            _frame.Navigate(new AdminPage());
+        }
+
+        public static void GoToSurveyPage()
+        {
+            _frame.Navigate(new SurveyPage());
+        }
+
+        public static void GoToQuestionPage()
+        {
+            _frame.Navigate(new QuestionPage());
+        }
+
+        public static void GoToUserPage()
+        {
+            _frame.Navigate(new UserPage());
         }
     }
 }
