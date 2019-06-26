@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survey.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Survey.View.Admin
         public SurveysPage()
         {
             InitializeComponent();
+        }
+
+        private void ComeBack_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToAdminPage();
         }
     }
 }

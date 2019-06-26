@@ -26,8 +26,7 @@ namespace Survey.View.Admin
 
         public AdminPage()
         {
-            InitializeComponent();
-            Roles.ItemsSource = Enum.GetValues(typeof(TypeRole)).Cast<TypeRole>();
+            InitializeComponent();            
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -35,9 +34,19 @@ namespace Survey.View.Admin
             Navigated.GoToAuthPage();
         }
 
+        private void Users_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToUsersPage();
+        }
+
+        private void Surveys_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToSurveysPage();
+        }
+
         private void ClearUser_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void SaveUser_Click(object sender, RoutedEventArgs e)
@@ -59,5 +68,7 @@ namespace Survey.View.Admin
         {
 
         }
+
+        
     }
 }

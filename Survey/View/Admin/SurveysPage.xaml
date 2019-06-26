@@ -9,6 +9,26 @@
       Title="SurveysPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="ComeBack" 
+                    Grid.Column="0" 
+                    Margin="3" 
+                    HorizontalAlignment="Left"
+                    Click="ComeBack_Click">Назад</Button>
+
+            <TextBlock Grid.Column="1" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">Опросы</TextBlock>
+        </Grid>
     </Grid>
 </Page>
