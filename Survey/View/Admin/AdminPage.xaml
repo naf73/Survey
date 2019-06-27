@@ -20,42 +20,86 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Page.Resources>
-    
+
 
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="Exit" 
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="Exit_Click">Выход</Button>
-
-            <Button x:Name="Users" 
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="Users_Click">Сотрудники</Button>
-
-            <Button x:Name="Surveys" 
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="Surveys_Click">Опросы</Button>
-        </StackPanel>
-
         <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
+            Grid.Row="1"
+            Grid.Column="2" >
+                <Button x:Name="Users" 
+                   
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Margin="3"
+                Click="Users_Click">Сотрудники
+                </Button>
+                <Button  x:Name="Surveys"    
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Margin="3"
+                Click="Surveys_Click" Content="Опросы"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Row="2" Grid.Column=" 0" 
+                      HorizontalAlignment="Center" 
+                      Height="350" 
+                      Margin="3" 
+                      VerticalAlignment="Top" 
+                      Width="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}"  Width="*"/>
+                    <DataGridTextColumn Header="Рейтинг" Binding="{Binding Path=RatingEmployee}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid Grid.Row="2" Grid.Column="1" 
+                      HorizontalAlignment="Center" 
+                      Height="350" 
+                      Margin="3" 
+                      VerticalAlignment="Top" 
+                      Width="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тест" Binding="{Binding Path=Survey}" Width="*"/>
+                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey}" Width="*"/>
+                </DataGrid.Columns>
+                
+            </DataGrid> 
+
+        </Grid>
+
+        <Button x:Name="Exit" 
+                Grid.Row="1"
+                Grid.Column="0"    
+                HorizontalAlignment="Left"
+                HorizontalContentAlignment="Center"
+                Margin="3"
+                Click="Exit_Click">Выход
+        </Button>
+        
+
+
+        <Grid Grid.Row="1" Grid.Column="1">
 
             <TextBlock HorizontalAlignment="Center">Статистика</TextBlock>
-
-
+            
 
         </Grid>
     </Grid>
