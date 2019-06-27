@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\AnswerController.cs" />
     <Compile Include="Logic\Navigated.cs" />
     <Compile Include="Logic\CategoryController.cs" />
     <Compile Include="Model\Category.cs">
