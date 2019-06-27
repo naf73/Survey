@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/26/2019 08:52:20
+-- Date Created: 06/27/2019 13:40:24
 -- Generated from EDMX file: C:\Users\Alex\source\repos\Survey\Survey\Model\Survey.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [uzpa];
+USE [survey];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,20 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_QuestionAnswer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_QuestionAnswer];
+IF OBJECT_ID(N'[dbo].[FK_Question_Answer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_Question_Answer];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CategorySurveySurvey]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_CategorySurveySurvey];
+IF OBJECT_ID(N'[dbo].[FK_SurveyCategory_Survey]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_SurveyCategory_Survey];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SurveyQuestion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_SurveyQuestion];
+IF OBJECT_ID(N'[dbo].[FK_Survey_Question]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_Survey_Question];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserUserSurvey]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserSurveys] DROP CONSTRAINT [FK_UserUserSurvey];
+IF OBJECT_ID(N'[dbo].[FK_User_UserSurvey]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserSurveys] DROP CONSTRAINT [FK_User_UserSurvey];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SurveyUserSurvey]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserSurveys] DROP CONSTRAINT [FK_SurveyUserSurvey];
+IF OBJECT_ID(N'[dbo].[FK_Survey_UserSurvey]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserSurveys] DROP CONSTRAINT [FK_Survey_UserSurvey];
 GO
 
 -- --------------------------------------------------
@@ -64,7 +64,7 @@ GO
 CREATE TABLE [dbo].[Questions] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Text] nvarchar(max)  NOT NULL,
-    [Foto] nvarchar(max)  NOT NULL,
+    [Foto] varbinary(max)  NOT NULL,
     [SurveyId] int  NOT NULL
 );
 GO
@@ -73,7 +73,7 @@ GO
 CREATE TABLE [dbo].[Answers] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Text] nvarchar(max)  NOT NULL,
-    [Foto] nvarchar(max)  NOT NULL,
+    [Foto] varbinary(max)  NOT NULL,
     [QuestionId] int  NOT NULL,
     [IsTrue] bit  NOT NULL
 );
@@ -102,7 +102,7 @@ CREATE TABLE [dbo].[Users] (
     [Password] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Surname] nvarchar(max)  NOT NULL,
-    [Role] int  NOT NULL
+    [IsAdmin] bit  NOT NULL
 );
 GO
 

@@ -25,7 +25,7 @@ namespace Survey.Model
         public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public TypeRole Role { get; set; }
+        public bool IsAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSurvey> UserSurvey { get; set; }

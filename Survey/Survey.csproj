@@ -72,6 +72,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Logic\Navigated.cs" />
+    <Compile Include="Model\Survey1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
@@ -154,15 +159,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Survey.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Survey1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Survey.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\SurveyCategory.cs">
-      <DependentUpon>Survey.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\TypeRole.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs">

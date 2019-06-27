@@ -22,7 +22,7 @@ namespace Survey.Model
     
         public int Id { get; set; }
         public string Text { get; set; }
-        public string Foto { get; set; }
+        public byte[] Foto { get; set; }
         public int SurveyId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

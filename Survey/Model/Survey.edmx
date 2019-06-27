@@ -39,7 +39,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Foto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
     <Property Name="SurveyId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answers">
@@ -48,7 +48,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Foto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
     <Property Name="QuestionId" Type="int" Nullable="false" />
     <Property Name="IsTrue" Type="bit" Nullable="false" />
   </EntityType>
@@ -77,7 +77,7 @@
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="UserSurveys">
     <Key>
@@ -187,7 +187,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="Foto" Type="String" Nullable="false" />
+          <Property Name="Foto" Type="Binary" Nullable="false" />
           <NavigationProperty Name="Answer" Relationship="Model.FK_Question_Answer" FromRole="Question" ToRole="Answer" />
           <Property Name="SurveyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Survey" Relationship="Model.FK_Survey_Question" FromRole="Question" ToRole="Survey" />
@@ -198,7 +198,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="Foto" Type="String" Nullable="false" />
+          <Property Name="Foto" Type="Binary" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Question_Answer" FromRole="Answer" ToRole="Question" />
           <Property Name="IsTrue" Type="Boolean" Nullable="false" />
@@ -268,13 +268,9 @@
           <Property Name="Password" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Surname" Type="String" Nullable="false" />
-          <Property Name="Role" Type="Model.TypeRole" Nullable="false" />
           <NavigationProperty Name="UserSurvey" Relationship="Model.FK_User_UserSurvey" FromRole="User" ToRole="UserSurvey" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EnumType Name="TypeRole">
-          <Member Name="admin" />
-          <Member Name="employee" />
-        </EnumType>
         <EntityType Name="UserSurvey">
           <Key>
             <PropertyRef Name="Id" />
@@ -364,7 +360,7 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

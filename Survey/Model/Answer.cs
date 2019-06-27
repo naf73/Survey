@@ -16,7 +16,7 @@ namespace Survey.Model
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        public string Foto { get; set; }
+        public byte[] Foto { get; set; }
         public int QuestionId { get; set; }
         public bool IsTrue { get; set; }
     
