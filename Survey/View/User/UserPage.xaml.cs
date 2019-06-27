@@ -1,5 +1,4 @@
-﻿using Survey.Logic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Survey
+namespace Survey.View.User
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserPage : Page
     {
-        public MainWindow()
+        public UserPage()
         {
             InitializeComponent();
-            Navigated.Init(MainFrame);
-            Navigated.GoToAuthPage();
         }
     }
 }

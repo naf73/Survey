@@ -14,18 +14,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Survey
+namespace Survey.View.Admin
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SurveysPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SurveysPage : Page
     {
-        public MainWindow()
+        public SurveysPage()
         {
             InitializeComponent();
-            Navigated.Init(MainFrame);
-            Navigated.GoToAuthPage();
+        }
+
+        private void ComeBack_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToAdminPage();
+        }
+
+        private void Survey_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToSurveyPage();
         }
     }
 }
