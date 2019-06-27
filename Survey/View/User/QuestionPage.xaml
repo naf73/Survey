@@ -9,6 +9,33 @@
       Title="QuestionPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="2"
+                Grid.Row="2"
+                Content="Button" 
+                HorizontalAlignment="Right" 
+                Margin="3" 
+                VerticalAlignment="Top" 
+                Width="75"/>
+        <TextBlock Grid.Row="0"
+                   HorizontalAlignment="Center" 
+                   Margin="3" 
+                   TextWrapping="Wrap" 
+                   Text="TextBlock" 
+                   VerticalAlignment="Top" 
+                   
+                   Height="199" 
+                   Width="705"
+                   Grid.ColumnSpan="3"/>
+
     </Grid>
 </Page>
