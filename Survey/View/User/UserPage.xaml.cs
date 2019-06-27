@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survey.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,29 @@ namespace Survey.View.User
     public partial class UserPage : Page
     {
         private Model.User _user;
+        private List<Model.Survey> _surveys;
 
         public UserPage(Model.User user)
         {
             InitializeComponent();
             _user = user;
+            UserName.Text = string.Format("{0} {1}", _user.Surname, _user.Name);
         }
+
+        private void ComeBack_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToAuthPage();
+        }
+
+        private void GoToTest_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToQuestionPage();
+        }
+
+        #region Methods
+
+        
+
+        #endregion
     }
 }

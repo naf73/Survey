@@ -125,8 +125,8 @@ namespace Survey.Logic
                     {
                         Login = "user",
                         Password = "user",
-                        Name = string.Empty,
-                        Surname = string.Empty,
+                        Name = "Иван",
+                        Surname = "Иванов",
                         IsAdmin = false
                     });
                 }
