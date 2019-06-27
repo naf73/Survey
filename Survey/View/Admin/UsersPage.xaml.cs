@@ -25,7 +25,6 @@ namespace Survey.View.Admin
         public UsersPage()
         {
             InitializeComponent();
-            Roles.ItemsSource = Enum.GetValues(typeof(TypeRole)).Cast<TypeRole>();
         }
 
         private void SaveUser_Click(object sender, RoutedEventArgs e)

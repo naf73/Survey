@@ -12,16 +12,18 @@ namespace Survey.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SurveyCategory
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SurveyCategory()
+        public Category()
         {
+            this.IsDeleted = false;
             this.Survey = new HashSet<Survey>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Survey> Survey { get; set; }
