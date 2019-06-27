@@ -29,6 +29,11 @@ namespace Survey.Logic
             _frame.Navigate(new AdminPage());
         }
 
+        public static void GoToSurveysPage()
+        {
+            _frame.Navigate(new SurveysPage());
+        }
+
         public static void GoToSurveyPage()
         {
             _frame.Navigate(new SurveyPage());
@@ -37,6 +42,11 @@ namespace Survey.Logic
         public static void GoToQuestionPage()
         {
             _frame.Navigate(new QuestionPage());
+        }
+
+        public static void GoToUsersPage()
+        {
+            _frame.Navigate(new UsersPage());
         }
 
         public static void GoToUserPage()

@@ -17,18 +17,23 @@ using System.Windows.Shapes;
 namespace Survey.View.Admin
 {
     /// <summary>
-    /// Interaction logic for SurveyPage.xaml
+    /// Interaction logic for SurveysPage.xaml
     /// </summary>
-    public partial class SurveyPage : Page
+    public partial class SurveysPage : Page
     {
-        public SurveyPage()
+        public SurveysPage()
         {
             InitializeComponent();
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
         {
-            Navigated.GoToSurveysPage();
+            Navigated.GoToAdminPage();
+        }
+
+        private void Survey_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToSurveyPage();
         }
     }
 }

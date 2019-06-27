@@ -1,4 +1,5 @@
 ﻿using Survey.Logic;
+using Survey.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,43 +14,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Survey.Model;
 
 namespace Survey.View.Admin
 {
     /// <summary>
-    /// Interaction logic for AdminPage.xaml
+    /// Interaction logic for UsersPage.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class UsersPage : Page
     {
-        List<Model.User> users = new List<Model.User>();
-
-        public AdminPage()
+        public UsersPage()
         {
-            InitializeComponent();            
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Navigated.GoToAuthPage();
-        }
-
-        private void Users_Click(object sender, RoutedEventArgs e)
-        {
-            Navigated.GoToUsersPage();
-        }
-
-        private void Surveys_Click(object sender, RoutedEventArgs e)
-        {
-            Navigated.GoToSurveysPage();
-        }
-
-        private void ClearUser_Click(object sender, RoutedEventArgs e)
-        {
-            
+            InitializeComponent();
+            Roles.ItemsSource = Enum.GetValues(typeof(TypeRole)).Cast<TypeRole>();
         }
 
         private void SaveUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearUser_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -69,6 +53,9 @@ namespace Survey.View.Admin
 
         }
 
-        
+        private void ComeBack_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToAdminPage();
+        }
     }
 }
