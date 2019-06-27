@@ -74,6 +74,7 @@
     <Compile Include="Logic\AnswerController.cs" />
     <Compile Include="Logic\Navigated.cs" />
     <Compile Include="Logic\CategoryController.cs" />
+    <Compile Include="Logic\QuestionController.cs" />
     <Compile Include="Model\Category.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
