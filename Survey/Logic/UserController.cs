@@ -98,7 +98,19 @@ namespace Survey.Logic
                         Login = "admin",
                         Password = "admin",
                         Name = string.Empty,
-                        Surname = string.Empty
+                        Surname = string.Empty,
+                        IsAdmin = true
+                    });
+
+                    // add test user
+
+                    Add(new User()
+                    {
+                        Login = "user",
+                        Password = "user",
+                        Name = string.Empty,
+                        Surname = string.Empty,
+                        IsAdmin = false
                     });
                 }
             }
@@ -114,7 +126,7 @@ namespace Survey.Logic
             {
                 using (var db = new SurveyContext())
                 {
-                    var user = db.Users.FirstOrDefault(u => u.IsAdmin);
+                    var user = db.Users.FirstOrDefault(u => u.IsAdmin == true);
                     if (user is null)
                     {
                         return false;
