@@ -26,23 +26,28 @@ namespace Survey.Logic
             }
         }
 
-        //public List<Model.Survey> GetByUserId(int userId)
-        //{
-        //    try
-        //    {
-        //        using (var db = new SurveyContext())
-        //        {
-        //            List<UserSurvey> userSurveys = db.UserSurveys.Include(s => s.Survey)
-        //                                                         .Where(u => u.UserId == userId &&
-        //                                                                     u.IsPass == false).ToList();
-                    
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+        public List<Model.Survey> GetByUserId(int userId)
+        {
+            try
+            {
+                using (var db = new SurveyContext())
+                {
+                    List<UserSurvey> userSurveys = db.UserSurveys.Include(s => s.Survey)
+                                                                 .Where(u => u.UserId == userId &&
+                                                                             u.IsPass == false).ToList();
+                    List<Model.Survey> surveys = new List<Model.Survey>();
+                    userSurveys.ForEach(d =>
+                    {
+                        surveys.Add(d.Survey);
+                    });
+                    return surveys;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public void Add(Model.Survey survey)
         {
