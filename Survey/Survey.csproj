@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Logic\Navigated.cs" />
+    <Compile Include="Logic\SurveyCategoryController.cs" />
     <Compile Include="Model\Survey1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
