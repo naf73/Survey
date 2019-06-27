@@ -30,5 +30,10 @@ namespace Survey.View.Admin
         {
             Navigated.GoToAdminPage();
         }
+
+        private void Survey_Click(object sender, RoutedEventArgs e)
+        {
+            Navigated.GoToSurveyPage();
+        }
     }
 }

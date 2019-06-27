@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -28,7 +28,48 @@
 
             <TextBlock Grid.Column="1" 
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center">Опросы</TextBlock>
+                       VerticalAlignment="Center">Список опросов</TextBlock>
         </Grid>
+
+        <Grid   Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Survey"
+                    Margin="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="Survey_Click">Добавить</Button>
+                    <Button x:Name="ModifiedSurvey"
+                        HorizontalAlignment="Center"
+                    VerticalAlignment="Center">Изменить</Button>
+                    <Button x:Name="RemoveSurvey"
+                        Margin="3"
+                        HorizontalAlignment="Center"
+                    VerticalAlignment="Center">Удалить</Button>
+                </StackPanel>
+
+                <DataGrid x:Name="MenusDataGrid" 
+                  Grid.Row="3"
+                  SelectionUnit="FullRow"
+                  SelectionMode="Single"
+                  Background="{x:Null}" 
+                  AutoGenerateColumns="False" 
+                  HorizontalGridLinesBrush="DarkGray" 
+                  RowBackground="LightGray" 
+                  AlternatingRowBackground="White" 
+                  IsReadOnly="True"
+                  Margin="3">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер" Binding="{Binding Path=Login}" Width="*"/>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Path=Surname}"  Width="*"/>
+                        <DataGridTextColumn Header="Время" Binding="{Binding Path=Name}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+
+        </Grid>
+
     </Grid>
 </Page>

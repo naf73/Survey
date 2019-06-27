@@ -107,6 +107,7 @@
                            Grid.RowSpan="6"
                            Grid.Column="0"
                            Margin="3"
+                   Height="200"
                            Source="pack://application:,,,/Pictures/Hamster.jpg"/>
 
         </Grid>
