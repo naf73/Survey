@@ -10,7 +10,7 @@ namespace Survey.Logic
 {
     public class AnswerController
     {
-        public List<Answer> GetAnswersToQuestion(int questionId)
+        public List<Answer> Get(int questionId)
         {
             try
             {
