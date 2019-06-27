@@ -85,13 +85,30 @@ namespace Survey.Logic
             {
                 throw;
             }
-        }        
+        }  
+        
+        public User GetUserByPass(string login, string password)
+        {
+            try
+            {
+                using (var db = new SurveyContext())
+                {
+                    return db.Users.FirstOrDefault(u => u.IsDeleted == false &&
+                                                        u.Login == login &&
+                                                        u.Password == password);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public void AddAdmin()
         {
             try
             {
-                if(ExistAdmin())
+                if(!ExistAdmin())
                 {
                     Add(new User()
                     {

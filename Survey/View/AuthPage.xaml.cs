@@ -21,24 +21,32 @@ namespace Survey.View
     /// </summary>
     public partial class AuthPage : Page
     {
+        private UserController userController = new UserController();
+
         public AuthPage()
         {
             InitializeComponent();
+            userController.AddAdmin();
+            Login.Focus();
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            switch(Login.Text)
+            var user = userController.GetUserByPass(Login.Text, Password.Password);
+            if (!(user is null))
             {
-                case "admin":
+                if (user.IsAdmin)
+                {
                     Navigated.GoToAdminPage();
-                    break;
-                case "user":
-                    Navigated.GoToUserPage();
-                    break;
-                default:
-                    MessageBox.Show("Не правильный логин/пароль");
-                    break;
+                }
+                else
+                {
+                    Navigated.GoToUserPage(user);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не правильный логин / пароль");
             }
         }
     }

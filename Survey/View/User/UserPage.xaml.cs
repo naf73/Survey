@@ -20,9 +20,12 @@ namespace Survey.View.User
     /// </summary>
     public partial class UserPage : Page
     {
-        public UserPage()
+        private Model.User _user;
+
+        public UserPage(Model.User user)
         {
             InitializeComponent();
+            _user = user;
         }
     }
 }
