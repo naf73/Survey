@@ -14,11 +14,18 @@ namespace Survey.Model
     
     public partial class Answer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Answer()
+        {
+            this.IsDeleted = false;
+        }
+    
         public int Id { get; set; }
         public string Text { get; set; }
-        public string Foto { get; set; }
+        public byte[] Foto { get; set; }
         public int QuestionId { get; set; }
         public bool IsTrue { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Question Question { get; set; }
     }

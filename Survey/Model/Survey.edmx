@@ -9,15 +9,15 @@
     <EntitySet Name="Questions" EntityType="Model.Store.Questions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answers" EntityType="Model.Store.Answers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Surveys" EntityType="Model.Store.Surveys" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SurveyCategories" EntityType="Model.Store.SurveyCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="Model.Store.Categories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserSurveys" EntityType="Model.Store.UserSurveys" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Question_Answer" Association="Model.Store.FK_Question_Answer">
       <End Role="Question" EntitySet="Questions" />
       <End Role="Answer" EntitySet="Answers" />
     </AssociationSet>
-    <AssociationSet Name="FK_SurveyCategory_Survey" Association="Model.Store.FK_SurveyCategory_Survey">
-      <End Role="CategorySurvey" EntitySet="SurveyCategories" />
+    <AssociationSet Name="FK_Category_Survey" Association="Model.Store.FK_Category_Survey">
+      <End Role="CategorySurvey" EntitySet="Categories" />
       <End Role="Survey" EntitySet="Surveys" />
     </AssociationSet>
     <AssociationSet Name="FK_Survey_Question" Association="Model.Store.FK_Survey_Question">
@@ -39,8 +39,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Foto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
     <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="Answers">
     <Key>
@@ -48,9 +49,10 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Foto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
     <Property Name="QuestionId" Type="int" Nullable="false" />
     <Property Name="IsTrue" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="Surveys">
     <Key>
@@ -59,14 +61,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Time" Type="datetime" Nullable="false" />
-    <Property Name="SurveyCategoryId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
-  <EntityType Name="SurveyCategories">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -77,7 +81,8 @@
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="UserSurveys">
     <Key>
@@ -101,15 +106,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SurveyCategory_Survey">
-    <End Role="CategorySurvey" Type="Model.Store.SurveyCategories" Multiplicity="1" />
+  <Association Name="FK_Category_Survey">
+    <End Role="CategorySurvey" Type="Model.Store.Categories" Multiplicity="1" />
     <End Role="Survey" Type="Model.Store.Surveys" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CategorySurvey">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Survey">
-        <PropertyRef Name="SurveyCategoryId" />
+        <PropertyRef Name="CategoryId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -161,9 +166,9 @@
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
           <EntitySet Name="Surveys" EntityType="Model.Survey" />
-          <EntitySet Name="SurveyCategories" EntityType="Model.SurveyCategory" />
-          <AssociationSet Name="FK_SurveyCategory_Survey" Association="Model.FK_SurveyCategory_Survey">
-            <End Role="CategorySurvey" EntitySet="SurveyCategories" />
+          <EntitySet Name="Categories" EntityType="Model.Category" />
+          <AssociationSet Name="FK_Category_Survey" Association="Model.FK_Category_Survey">
+            <End Role="CategorySurvey" EntitySet="Categories" />
             <End Role="Survey" EntitySet="Surveys" />
           </AssociationSet>
           <AssociationSet Name="FK_Survey_Question" Association="Model.FK_Survey_Question">
@@ -187,10 +192,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="Foto" Type="String" Nullable="false" />
+          <Property Name="Foto" Type="Binary" Nullable="false" />
           <NavigationProperty Name="Answer" Relationship="Model.FK_Question_Answer" FromRole="Question" ToRole="Answer" />
           <Property Name="SurveyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Survey" Relationship="Model.FK_Survey_Question" FromRole="Question" ToRole="Survey" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
         </EntityType>
         <EntityType Name="Answer">
           <Key>
@@ -198,10 +204,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="Foto" Type="String" Nullable="false" />
+          <Property Name="Foto" Type="Binary" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Question_Answer" FromRole="Answer" ToRole="Question" />
           <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
         </EntityType>
         <Association Name="FK_Question_Answer">
           <End Type="Model.Question" Role="Question" Multiplicity="1" />
@@ -222,28 +229,30 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" />
-          <Property Name="SurveyCategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CategorySurvey" Relationship="Model.FK_SurveyCategory_Survey" FromRole="Survey" ToRole="CategorySurvey" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategorySurvey" Relationship="Model.FK_Category_Survey" FromRole="Survey" ToRole="CategorySurvey" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Survey_Question" FromRole="Survey" ToRole="Question" />
           <NavigationProperty Name="UserSurvey" Relationship="Model.FK_Survey_UserSurvey" FromRole="Survey" ToRole="UserSurvey" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
         </EntityType>
-        <EntityType Name="SurveyCategory">
+        <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Survey" Relationship="Model.FK_SurveyCategory_Survey" FromRole="CategorySurvey" ToRole="Survey" />
+          <NavigationProperty Name="Survey" Relationship="Model.FK_Category_Survey" FromRole="CategorySurvey" ToRole="Survey" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
         </EntityType>
-        <Association Name="FK_SurveyCategory_Survey">
-          <End Type="Model.SurveyCategory" Role="CategorySurvey" Multiplicity="1" />
+        <Association Name="FK_Category_Survey">
+          <End Type="Model.Category" Role="CategorySurvey" Multiplicity="1" />
           <End Type="Model.Survey" Role="Survey" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategorySurvey">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Survey">
-              <PropertyRef Name="SurveyCategoryId" />
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -268,13 +277,10 @@
           <Property Name="Password" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Surname" Type="String" Nullable="false" />
-          <Property Name="Role" Type="Model.TypeRole" Nullable="false" />
           <NavigationProperty Name="UserSurvey" Relationship="Model.FK_User_UserSurvey" FromRole="User" ToRole="UserSurvey" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
         </EntityType>
-        <EnumType Name="TypeRole">
-          <Member Name="admin" />
-          <Member Name="employee" />
-        </EnumType>
         <EntityType Name="UserSurvey">
           <Key>
             <PropertyRef Name="Id" />
@@ -324,6 +330,7 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="Foto" ColumnName="Foto" />
           <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -335,6 +342,7 @@
           <ScalarProperty Name="Foto" ColumnName="Foto" />
           <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
           <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -344,15 +352,17 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="SurveyCategoryId" ColumnName="SurveyCategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SurveyCategories">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.SurveyCategory)">
-        <MappingFragment StoreEntitySet="SurveyCategories">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Categories">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -364,7 +374,8 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
