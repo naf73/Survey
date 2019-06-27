@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/27/2019 14:10:40
+-- Date Created: 06/27/2019 14:56:17
 -- Generated from EDMX file: C:\Users\Alex\source\repos\Survey\Survey\Model\Survey.edmx
 -- --------------------------------------------------
 
@@ -20,8 +20,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Question_Answer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_Question_Answer];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SurveyCategory_Survey]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_SurveyCategory_Survey];
+IF OBJECT_ID(N'[dbo].[FK_Category_Survey]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_Category_Survey];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Survey_Question]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_Survey_Question];
@@ -46,8 +46,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Surveys]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Surveys];
 GO
-IF OBJECT_ID(N'[dbo].[SurveyCategories]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SurveyCategories];
+IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categories];
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
@@ -86,7 +86,7 @@ CREATE TABLE [dbo].[Surveys] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Time] datetime  NOT NULL,
-    [SurveyCategoryId] int  NOT NULL,
+    [CategoryId] int  NOT NULL,
     [IsDeleted] bit  NOT NULL
 );
 GO
@@ -180,10 +180,10 @@ ON [dbo].[Answers]
     ([QuestionId]);
 GO
 
--- Creating foreign key on [SurveyCategoryId] in table 'Surveys'
+-- Creating foreign key on [CategoryId] in table 'Surveys'
 ALTER TABLE [dbo].[Surveys]
 ADD CONSTRAINT [FK_Category_Survey]
-    FOREIGN KEY ([SurveyCategoryId])
+    FOREIGN KEY ([CategoryId])
     REFERENCES [dbo].[Categories]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -192,7 +192,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_Category_Survey'
 CREATE INDEX [IX_FK_Category_Survey]
 ON [dbo].[Surveys]
-    ([SurveyCategoryId]);
+    ([CategoryId]);
 GO
 
 -- Creating foreign key on [SurveyId] in table 'Questions'

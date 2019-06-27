@@ -61,7 +61,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Time" Type="datetime" Nullable="false" />
-    <Property Name="SurveyCategoryId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="Categories">
@@ -114,7 +114,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Survey">
-        <PropertyRef Name="SurveyCategoryId" />
+        <PropertyRef Name="CategoryId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -229,7 +229,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" />
-          <Property Name="SurveyCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CategorySurvey" Relationship="Model.FK_Category_Survey" FromRole="Survey" ToRole="CategorySurvey" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Survey_Question" FromRole="Survey" ToRole="Question" />
           <NavigationProperty Name="UserSurvey" Relationship="Model.FK_Survey_UserSurvey" FromRole="Survey" ToRole="UserSurvey" />
@@ -252,7 +252,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Survey">
-              <PropertyRef Name="SurveyCategoryId" />
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -352,7 +352,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="SurveyCategoryId" ColumnName="SurveyCategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>

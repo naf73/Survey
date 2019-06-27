@@ -25,7 +25,7 @@ namespace Survey.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTime Time { get; set; }
-        public int SurveyCategoryId { get; set; }
+        public int CategoryId { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Category CategorySurvey { get; set; }
