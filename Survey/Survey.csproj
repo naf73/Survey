@@ -72,7 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Logic\Navigated.cs" />
-    <Compile Include="Logic\SurveyCategoryController.cs" />
+    <Compile Include="Logic\CategoryController.cs" />
     <Compile Include="Model\Category.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>

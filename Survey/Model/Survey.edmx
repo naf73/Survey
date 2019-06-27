@@ -9,15 +9,15 @@
     <EntitySet Name="Questions" EntityType="Model.Store.Questions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answers" EntityType="Model.Store.Answers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Surveys" EntityType="Model.Store.Surveys" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SurveyCategories" EntityType="Model.Store.SurveyCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="Model.Store.Categories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserSurveys" EntityType="Model.Store.UserSurveys" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Question_Answer" Association="Model.Store.FK_Question_Answer">
       <End Role="Question" EntitySet="Questions" />
       <End Role="Answer" EntitySet="Answers" />
     </AssociationSet>
-    <AssociationSet Name="FK_SurveyCategory_Survey" Association="Model.Store.FK_SurveyCategory_Survey">
-      <End Role="CategorySurvey" EntitySet="SurveyCategories" />
+    <AssociationSet Name="FK_Category_Survey" Association="Model.Store.FK_Category_Survey">
+      <End Role="CategorySurvey" EntitySet="Categories" />
       <End Role="Survey" EntitySet="Surveys" />
     </AssociationSet>
     <AssociationSet Name="FK_Survey_Question" Association="Model.Store.FK_Survey_Question">
@@ -64,7 +64,7 @@
     <Property Name="SurveyCategoryId" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
-  <EntityType Name="SurveyCategories">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -106,8 +106,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SurveyCategory_Survey">
-    <End Role="CategorySurvey" Type="Model.Store.SurveyCategories" Multiplicity="1" />
+  <Association Name="FK_Category_Survey">
+    <End Role="CategorySurvey" Type="Model.Store.Categories" Multiplicity="1" />
     <End Role="Survey" Type="Model.Store.Surveys" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CategorySurvey">
@@ -166,9 +166,9 @@
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
           <EntitySet Name="Surveys" EntityType="Model.Survey" />
-          <EntitySet Name="SurveyCategories" EntityType="Model.Category" />
-          <AssociationSet Name="FK_SurveyCategory_Survey" Association="Model.FK_SurveyCategory_Survey">
-            <End Role="CategorySurvey" EntitySet="SurveyCategories" />
+          <EntitySet Name="Categories" EntityType="Model.Category" />
+          <AssociationSet Name="FK_Category_Survey" Association="Model.FK_Category_Survey">
+            <End Role="CategorySurvey" EntitySet="Categories" />
             <End Role="Survey" EntitySet="Surveys" />
           </AssociationSet>
           <AssociationSet Name="FK_Survey_Question" Association="Model.FK_Survey_Question">
@@ -230,7 +230,7 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" />
           <Property Name="SurveyCategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CategorySurvey" Relationship="Model.FK_SurveyCategory_Survey" FromRole="Survey" ToRole="CategorySurvey" />
+          <NavigationProperty Name="CategorySurvey" Relationship="Model.FK_Category_Survey" FromRole="Survey" ToRole="CategorySurvey" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Survey_Question" FromRole="Survey" ToRole="Question" />
           <NavigationProperty Name="UserSurvey" Relationship="Model.FK_Survey_UserSurvey" FromRole="Survey" ToRole="UserSurvey" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
@@ -241,10 +241,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Survey" Relationship="Model.FK_SurveyCategory_Survey" FromRole="CategorySurvey" ToRole="Survey" />
+          <NavigationProperty Name="Survey" Relationship="Model.FK_Category_Survey" FromRole="CategorySurvey" ToRole="Survey" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
         </EntityType>
-        <Association Name="FK_SurveyCategory_Survey">
+        <Association Name="FK_Category_Survey">
           <End Type="Model.Category" Role="CategorySurvey" Multiplicity="1" />
           <End Type="Model.Survey" Role="Survey" Multiplicity="*" />
           <ReferentialConstraint>
@@ -357,9 +357,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SurveyCategories">
+    <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
-        <MappingFragment StoreEntitySet="SurveyCategories">
+        <MappingFragment StoreEntitySet="Categories">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />

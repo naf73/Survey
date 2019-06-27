@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/27/2019 14:01:28
+-- Date Created: 06/27/2019 14:10:40
 -- Generated from EDMX file: C:\Users\Alex\source\repos\Survey\Survey\Model\Survey.edmx
 -- --------------------------------------------------
 
@@ -91,8 +91,8 @@ CREATE TABLE [dbo].[Surveys] (
 );
 GO
 
--- Creating table 'SurveyCategories'
-CREATE TABLE [dbo].[SurveyCategories] (
+-- Creating table 'Categories'
+CREATE TABLE [dbo].[Categories] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [IsDeleted] bit  NOT NULL
@@ -143,9 +143,9 @@ ADD CONSTRAINT [PK_Surveys]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SurveyCategories'
-ALTER TABLE [dbo].[SurveyCategories]
-ADD CONSTRAINT [PK_SurveyCategories]
+-- Creating primary key on [Id] in table 'Categories'
+ALTER TABLE [dbo].[Categories]
+ADD CONSTRAINT [PK_Categories]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -182,15 +182,15 @@ GO
 
 -- Creating foreign key on [SurveyCategoryId] in table 'Surveys'
 ALTER TABLE [dbo].[Surveys]
-ADD CONSTRAINT [FK_SurveyCategory_Survey]
+ADD CONSTRAINT [FK_Category_Survey]
     FOREIGN KEY ([SurveyCategoryId])
-    REFERENCES [dbo].[SurveyCategories]
+    REFERENCES [dbo].[Categories]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SurveyCategory_Survey'
-CREATE INDEX [IX_FK_SurveyCategory_Survey]
+-- Creating non-clustered index for FOREIGN KEY 'FK_Category_Survey'
+CREATE INDEX [IX_FK_Category_Survey]
 ON [dbo].[Surveys]
     ([SurveyCategoryId]);
 GO
