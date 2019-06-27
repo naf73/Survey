@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="Model.Answer" Width="1.5" PointX="7.625" PointY="4.5" />
         <AssociationConnector Association="Model.FK_Question_Answer" />
         <EntityTypeShape EntityType="Model.Survey" Width="1.75" PointX="3.375" PointY="4.375" />
-        <EntityTypeShape EntityType="Model.SurveyCategory" Width="1.5" PointX="1.375" PointY="4.875" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="1.375" PointY="4.875" />
         <AssociationConnector Association="Model.FK_SurveyCategory_Survey" />
         <AssociationConnector Association="Model.FK_Survey_Question" />
         <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="1.5" PointY="1.5" />

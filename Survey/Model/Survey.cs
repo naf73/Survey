@@ -17,6 +17,7 @@ namespace Survey.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Survey()
         {
+            this.IsDeleted = false;
             this.Question = new HashSet<Question>();
             this.UserSurvey = new HashSet<UserSurvey>();
         }
@@ -25,8 +26,9 @@ namespace Survey.Model
         public string Name { get; set; }
         public System.DateTime Time { get; set; }
         public int SurveyCategoryId { get; set; }
+        public bool IsDeleted { get; set; }
     
-        public virtual SurveyCategory CategorySurvey { get; set; }
+        public virtual Category CategorySurvey { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Question { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

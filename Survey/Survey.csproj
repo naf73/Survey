@@ -73,6 +73,9 @@
     </ApplicationDefinition>
     <Compile Include="Logic\Navigated.cs" />
     <Compile Include="Logic\SurveyCategoryController.cs" />
+    <Compile Include="Model\Category.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Survey1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,9 +162,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Survey.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SurveyCategory.cs">
-      <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>Survey.tt</DependentUpon>

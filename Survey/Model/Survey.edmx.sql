@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/27/2019 13:40:24
+-- Date Created: 06/27/2019 14:01:28
 -- Generated from EDMX file: C:\Users\Alex\source\repos\Survey\Survey\Model\Survey.edmx
 -- --------------------------------------------------
 
@@ -65,7 +65,8 @@ CREATE TABLE [dbo].[Questions] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Text] nvarchar(max)  NOT NULL,
     [Foto] varbinary(max)  NOT NULL,
-    [SurveyId] int  NOT NULL
+    [SurveyId] int  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 
@@ -75,7 +76,8 @@ CREATE TABLE [dbo].[Answers] (
     [Text] nvarchar(max)  NOT NULL,
     [Foto] varbinary(max)  NOT NULL,
     [QuestionId] int  NOT NULL,
-    [IsTrue] bit  NOT NULL
+    [IsTrue] bit  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 
@@ -84,14 +86,16 @@ CREATE TABLE [dbo].[Surveys] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Time] datetime  NOT NULL,
-    [SurveyCategoryId] int  NOT NULL
+    [SurveyCategoryId] int  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 
 -- Creating table 'SurveyCategories'
 CREATE TABLE [dbo].[SurveyCategories] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL
+    [Name] nvarchar(max)  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 
@@ -102,7 +106,8 @@ CREATE TABLE [dbo].[Users] (
     [Password] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Surname] nvarchar(max)  NOT NULL,
-    [IsAdmin] bit  NOT NULL
+    [IsAdmin] bit  NOT NULL,
+    [IsDeleted] bit  NOT NULL
 );
 GO
 
