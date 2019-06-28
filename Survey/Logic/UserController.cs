@@ -10,6 +10,18 @@ namespace Survey.Logic
 {
     public class UserController
     {
+        private Helper.App _app = null;
+
+        public UserController()
+        {
+            _app = new Helper.App();
+        }
+
+        public UserController(Helper.App app)
+        {
+            _app = app;
+        }
+
         /// <summary>
         /// Выводит всех пользователей, кроме администратора и удаленных
         /// </summary>
@@ -18,7 +30,7 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     return db.Users.Where(u => u.IsDeleted == false &&
                                                u.IsAdmin == false).ToList();
@@ -34,7 +46,7 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -52,7 +64,7 @@ namespace Survey.Logic
             if (user.Id == 0) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     db.Entry(user).State = EntityState.Modified;
                     db.SaveChanges();
@@ -69,7 +81,7 @@ namespace Survey.Logic
             if (id == 0) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     var user = db.Users.FirstOrDefault(u => u.Id == id &&
                                                             u.IsDeleted == false);
@@ -91,7 +103,7 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     return db.Users.FirstOrDefault(u => u.IsDeleted == false &&
                                                         u.Login == login &&
@@ -141,7 +153,7 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     var user = db.Users.FirstOrDefault(u => u.IsAdmin == true);
                     if (user is null)

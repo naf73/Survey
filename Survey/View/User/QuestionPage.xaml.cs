@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +21,15 @@ namespace Survey.View.User
     /// </summary>
     public partial class QuestionPage : Page
     {
-        public QuestionPage()
+        private Model.Survey _survey = null;
+        private Timer timer = null;
+
+        public QuestionPage(Model.Survey survey)
         {
             InitializeComponent();
+            // ===
+            _survey = survey;
+
         }
     }
 }

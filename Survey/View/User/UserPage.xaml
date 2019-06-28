@@ -56,9 +56,9 @@
                   IsReadOnly="True"
                   Margin="3">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Категория" Binding="{Binding Path=Category}" Width="*"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Path=Category}" Width="Auto"/>
                     <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}"  Width="*"/>
-                    <DataGridTextColumn Header="Время" Binding="{Binding Path=Time}" Width="*"/>
+                    <DataGridTextColumn Header="Время" Binding="{Binding Path=Time}" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
 

@@ -24,14 +24,14 @@ namespace Survey.Model
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public System.DateTime Time { get; set; }
+        public int Time { get; set; }
         public int CategoryId { get; set; }
         public bool IsDeleted { get; set; }
     
-        public virtual Category CategorySurvey { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Question { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSurvey> UserSurvey { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

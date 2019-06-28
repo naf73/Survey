@@ -40,9 +40,9 @@ namespace Survey.Logic
             _frame.Navigate(new SurveyPage());
         }
 
-        public static void GoToQuestionPage()
+        public static void GoToQuestionPage(Model.Survey survey)
         {
-            _frame.Navigate(new QuestionPage());
+            _frame.Navigate(new QuestionPage(survey));
         }
 
         public static void GoToUsersPage()
