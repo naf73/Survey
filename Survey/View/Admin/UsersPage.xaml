@@ -102,13 +102,7 @@
                             Margin="3"
                             Click="ClearUser_Click">Очистить поля</Button>
 
-            <Image x:Name="Foto"
-                           Grid.Row="0"
-                           Grid.RowSpan="6"
-                           Grid.Column="0"
-                           Margin="3"
-                   Height="200"
-                           Source="pack://application:,,,/Pictures/Hamster.jpg"/>
+           
 
         </Grid>
 

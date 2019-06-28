@@ -24,5 +24,30 @@ namespace Survey.View.Admin
         {
             InitializeComponent();
         }
+
+        private void NewCatalog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangeCatalog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DelCatalog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LookTests_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

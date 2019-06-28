@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
         </Grid>
         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="Users" 
+            <Button x:Name="LookTests" 
                    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
@@ -46,21 +46,21 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="NewCatelog_Click">Новая категория
+                Click="NewCatalog_Click">Новая категория
             </Button>
             <Button x:Name="ChangeCatalog" 
                    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="NewCatelog_Click">Изменить категорию
+                Click="ChangeCatalog_Click">Изменить категорию
             </Button>
             <Button x:Name="DelCatalog" 
                    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="NewCatelog_Click">Удалить категорию
+                Click="DelCatalog_Click">Удалить категорию
             </Button>
         </StackPanel>
         <DataGrid Grid.Row="3" 

@@ -30,5 +30,20 @@ namespace Survey.View.Admin
         {
             Navigated.GoToSurveysPage();
         }
+
+        private void Change_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -49,7 +49,7 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="Surveys_Click" Content="Опросы"/>
+                Click="Surveys_Click"  Content="Опросы"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
@@ -75,9 +75,10 @@
                       Height="350" 
                       Margin="3" 
                       VerticalAlignment="Top" 
-                      Width="300">
+                      Width="300" SelectionChanged="DataGrid_SelectionChanged_1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тест" Binding="{Binding Path=Survey}" Width="*"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Path=Catalog}" Width="100"/>
                     <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey}" Width="*"/>
                 </DataGrid.Columns>
                 
