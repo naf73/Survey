@@ -9,33 +9,50 @@
       Title="QuestionPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
         <Button Grid.Column="2"
-                Grid.Row="2"
-                Content="Button" 
+                Grid.Row="3"
+                Content="Далее" 
                 HorizontalAlignment="Right" 
                 Margin="3" 
                 VerticalAlignment="Top" 
                 Width="75"/>
-        <TextBlock Grid.Row="0"
+        <TextBlock Grid.Row="0" Grid.Column="1"
                    HorizontalAlignment="Center" 
                    Margin="3" 
                    TextWrapping="Wrap" 
-                   Text="TextBlock" 
+                   Text="Вопрос" 
                    VerticalAlignment="Top" 
                    
-                   Height="199" 
-                   Width="705"
-                   Grid.ColumnSpan="3"/>
+                   Width="100"
+                   />
+        <TextBlock Grid.Row="0" Grid.Column="2" Margin="3" Text="Время" HorizontalAlignment="Right">
+            
+        </TextBlock>
+        <TextBlock Grid.Row="1" 
+                   Grid.Column="0" 
+                   Margin="3" 
+                   TextWrapping="Wrap" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" 
+                   Height="150"
+                   Width="650"
+                   Text="Торсио́нные поля́ —первоначально введённый математиком Эли Картаном в 1922 году для обозначения гипотетического физического поля, порождаемого кручением пространства.
+                       Название происходит от фр. torsion — кручение, от лат. torsio с тем же значением. Как общая теория относительности (ОТО) обобщила пространство Минковского, введя переменное метрическое поле, так и псевдориманово пространство-время ОТО можно обобщить, введя переменное кручение связности. "
+        />
 
     </Grid>
 </Page>

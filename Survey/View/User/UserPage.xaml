@@ -25,9 +25,6 @@
                        TextWrapping="Wrap" 
                        HorizontalAlignment="Center"
                        Text="Иванов Иван Иваныч"/>
-
-
-
             <Label Grid.Row="1" 
                    Grid.Column="0" 
                    Content="Список опросов" 
@@ -38,7 +35,8 @@
             <ListBox Grid.Row="2" 
                      Grid.Column="0" 
                      HorizontalAlignment="Center" 
-                     Height="301" Margin="3"                      />
+                     Width="550"
+                     Height="350" Margin="3"/>
             
         </Grid>
     </Grid>
