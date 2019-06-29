@@ -131,7 +131,7 @@ namespace Survey.Helper
                     LangPages.CategoriesPage.KcDelCat = "Delete category";
                     LangPages.CategoriesPage.KcExit = "Exit";
                     LangPages.CategoriesPage.KcLookSurveys = "Look Surveys";
-                    LangPages.CategoriesPage.KcNewCat = "New category"
+                    LangPages.CategoriesPage.KcNewCat = "New category";
                     #endregion
 
                     #region SurveyPage
