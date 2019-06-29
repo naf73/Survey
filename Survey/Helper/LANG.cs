@@ -25,15 +25,45 @@ namespace Survey.Helper
             switch (lang)
             {
                 case Lang.RUS:
-                    l1 = "дом";
-                    l2 = "имя";
+                    #region AdminPage
+
+                    LangPages.AdminPage.DgCategory = "Категория";
+                    LangPages.AdminPage.DgName = "Имя";
+                    LangPages.AdminPage.DgRating = "Рейтинг";
+                    LangPages.AdminPage.DgStatiatic = "Статистика";
+                    LangPages.AdminPage.DgSurvey = "Опрос";
+                    LangPages.AdminPage.DgTotal = "Итого в %";
+                    LangPages.AdminPage.DgSurName = "Фамилия";
+                    LangPages.AdminPage.KcExit = "Выход";
+                    LangPages.AdminPage.KcSurveys = "Опросы";
+                    LangPages.AdminPage.KcWorkers = "Сотрудники";
+
+                    #endregion
+                    #region CategoriesPage
+                    LangPages.CategoriesPage.DgCatSurveys = "Категории опросов";
+                    LangPages.CategoriesPage.KcChangeCat = "Изменить категорию";
+                    #endregion
                     break;
                 case Lang.ENG:
-                    l1 = "home";
-                    l2 = "name";
+
+                    #region AdminPage
+
+                    LangPages.AdminPage.DgCategory = "Category";
+                    LangPages.AdminPage.DgName = "Name";
+                    LangPages.AdminPage.DgRating = "Rating";
+                    LangPages.AdminPage.DgStatiatic = "Statistic";
+                    LangPages.AdminPage.DgSurvey = "Survey";
+                    LangPages.AdminPage.DgTotal = "Total in %";
+                    LangPages.AdminPage.DgSurName = "Surname";
+                    LangPages.AdminPage.KcExit = "Exit";
+                    LangPages.AdminPage.KcSurveys = "Surveys";
+                    LangPages.AdminPage.KcWorkers = "Workers";
+                    #endregion
+
                     break;
                 default:
                     break;
             }
         }
+    }
 }
