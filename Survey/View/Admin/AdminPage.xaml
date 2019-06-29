@@ -58,23 +58,44 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Row="2" Grid.Column=" 0"                       
-                      Margin="3">
+            <DataGrid x:Name="StatEmployeesDataGrid"
+                      Grid.Row="2" 
+                      Grid.Column=" 0"                       
+                      SelectionUnit="FullRow"
+                      SelectionMode="Single"
+                      Background="{x:Null}" 
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="DarkGray"
+                      RowBackground="LightGray"
+                      AlternatingRowBackground="White"
+                      IsReadOnly="True"
+                      Margin="3"
+                      SelectionChanged="StatEmployeesDataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
                     <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}"  Width="*"/>
-                    <DataGridTextColumn Header="Рейтингв %" Binding="{Binding Path=RatingEmployee}" Width="*"/>
+                    <DataGridTextColumn Header="Рейтинг в %" Binding="{Binding Path=RatingEmployee, StringFormat=p2}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
-            <DataGrid Grid.Row="2" Grid.Column="2"
+            <DataGrid x:Name="StatSurveysDataGrid"
+                      Grid.Row="2" 
+                      Grid.Column="2"
+                      SelectionUnit="FullRow"
+                      SelectionMode="Single"
+                      Background="{x:Null}" 
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="DarkGray"
+                      RowBackground="LightGray"
+                      AlternatingRowBackground="White"
+                      IsReadOnly="True"
                       Margin="3">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Тест" Binding="{Binding Path=Survey}" Width="*"/>
+                    <DataGridTextColumn Header="Опрос" Binding="{Binding Path=Survey}" Width="*"/>
                     <DataGridTextColumn Header="Категория" Binding="{Binding Path=Catalog}" Width="100"/>
-                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey}" Width="*"/>
+                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey, StringFormat=p2}" Width="*"/>
                 </DataGrid.Columns>
                 
             </DataGrid> 

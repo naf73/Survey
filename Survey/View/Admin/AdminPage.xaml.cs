@@ -24,9 +24,12 @@ namespace Survey.View.Admin
     {
         List<Model.User> users = new List<Model.User>();
 
+        StatisticsController statisticsController = new StatisticsController();
+
         public AdminPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            StatEmployeesDataGrid.ItemsSource = statisticsController.GetStatEmployees();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -44,39 +47,18 @@ namespace Survey.View.Admin
             Navigated.GoToSurveysPage();
         }
 
-        private void ClearUser_Click(object sender, RoutedEventArgs e)
+        private void UpdateStatSurveyTable()
         {
-            
+            StatEmployee employee = (StatEmployee)StatEmployeesDataGrid.SelectedItem;
+            if (employee != null)
+            {
+                StatSurveysDataGrid.ItemsSource = statisticsController.GetStatSurveys(employee.Id);
+            }
         }
 
-        private void SaveUser_Click(object sender, RoutedEventArgs e)
+        private void StatEmployeesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-
-        private void AddUser_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EditUser_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void RemoveUser_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
+            UpdateStatSurveyTable();
         }
     }
 }
