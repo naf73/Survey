@@ -54,5 +54,10 @@ namespace Survey.Logic
         {   
             _frame.Navigate(new UserPage(user));
         }
+
+        public static void GoToCategoriesPage()
+        {
+            _frame.Navigate(new CategoriesPage());
+        }
     }
 }

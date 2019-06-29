@@ -44,7 +44,7 @@ namespace Survey.View.Admin
 
         private void Surveys_Click(object sender, RoutedEventArgs e)
         {
-            Navigated.GoToSurveysPage();
+            Navigated.GoToCategoriesPage();
         }
 
         private void UpdateStatSurveyTable()

@@ -21,9 +21,12 @@ namespace Survey.View.Admin
     /// </summary>
     public partial class CategoriesPage : Page
     {
+        CategoryController categoryController = new CategoryController();
+
         public CategoriesPage()
         {
             InitializeComponent();
+            UpdateCategoriesTable();
         }
 
         private void NewCatalog_Click(object sender, RoutedEventArgs e)
@@ -44,12 +47,25 @@ namespace Survey.View.Admin
         private void LookTests_Click(object sender, RoutedEventArgs e)
         {
             Navigated.GoToSurveysPage();
-
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Navigated.GoToAdminPage();
         }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        #region Methods
+
+        private void UpdateCategoriesTable()
+        {
+            CategoriesDataGrid.ItemsSource = categoryController.Get();
+        }
+
+        #endregion
     }
 }

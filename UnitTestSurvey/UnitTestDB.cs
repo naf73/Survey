@@ -23,7 +23,8 @@ namespace UnitTestSurvey
             if (userController.Get().Count == 0)
             {
                 userController.AddAdmin();                
-                categoryController.Add("ТБ");
+                categoryController.Add("Техника безопасности");
+                categoryController.Add("Техника пожарной безопасности");
 
                 Category category = categoryController.Get()[0];
 

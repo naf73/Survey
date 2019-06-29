@@ -163,6 +163,7 @@ namespace Survey.Logic
 
         public string GetTheBestSurveyOfUser(int userId)
         {
+            if (userId == 0) throw new ArgumentException();
             try
             {
                 using (var db = new SurveyContext(_app.Conn))
@@ -170,15 +171,20 @@ namespace Survey.Logic
                     List<UserSurvey> surveys = db.UserSurveys.Include(w => w.Survey)
                                                              .Where(s => s.UserId == userId &&
                                                                          s.IsPass == true)
-                                                             .ToList()
-                                                             .OrderByDescending(x => x.Result)
                                                              .ToList();
-                    return (!(surveys is null)) ? string.Format("{0} {1} %", surveys[0].Survey.Name, surveys[0].Result) : string.Empty;                    
+                    if (surveys != null && surveys.Count > 0)
+                    {
+                        surveys.OrderByDescending(x => x.Result).ToList();
+                        return string.Format("{0} {1} %", surveys[0].Survey.Name, surveys[0].Result);
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

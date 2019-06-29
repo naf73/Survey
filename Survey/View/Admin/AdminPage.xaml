@@ -43,8 +43,7 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="Users_Click">Сотрудники
-                </Button>
+                Click="Users_Click">Сотрудники</Button>
                 <Button  x:Name="Surveys"    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
@@ -108,6 +107,7 @@
                 HorizontalAlignment="Left"
                 HorizontalContentAlignment="Center"
                 Margin="3"
+                IsCancel="True"
                 Click="Exit_Click">Выход
         </Button>
         
