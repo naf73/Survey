@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Survey.Model;
 using Survey.Logic;
+using Survey.Helper;
 
 namespace Survey.View.User
 {
@@ -72,28 +73,31 @@ namespace Survey.View.User
                 return;
             }
 
-            if (CheckFinishSurvey())
+            if (CheckAnswerCount() && CheckIsRightUserAnswer())
             {
-                if (CheckAnswerCount() && CheckIsRightUserAnswer())
-                {
-                    SoundRightAnswer();
-                    right_answer++;
-                }
-                number++;
+                SoundRightAnswer();
+                right_answer++;
+            }
+
+            number++;
+
+            if (CheckFinishedSurvey())
+            {
                 ShowQuestion(number);
             }
             else
             {
-                EndingSurvey();
-                Navigated.GoToUserPage(_user);
+                EndingSurvey();                
             }
         }
 
         private void EndingSurvey()
         {
             double result = MarkSurvey();
+            aTimer.Stop();
             surveyController.SetMark(_survey.Id, _user.Id, result);
             ShowResult(result);
+            Navigated.GoToUserPage(_user);
         }
 
         private double MarkSurvey()
@@ -112,9 +116,9 @@ namespace Survey.View.User
             MessageBox.Show(string.Format("Тест завершен\nВаш результат: {0} %", result));
         }
 
-        private bool CheckFinishSurvey()
+        private bool CheckFinishedSurvey()
         {
-            return number == _survey.Question.Count - 1;
+            return !(number == _survey.Question.Count);
         }
 
         private bool CheckIsRightUserAnswer()
@@ -156,8 +160,10 @@ namespace Survey.View.User
 
         private void ShowQuestion(int number)
         {
-            Question.Content = _survey.Question.ToList()[number].Text;
-            //Foto
+            string text = _survey.Question.ToList()[number].Text;
+            byte[] picture = _survey.Question.ToList()[number].Foto;
+            if (!(text is null)) Question.Content = text;
+            if (!(picture is null)) Foto.Source = ConvertPicture.ByteArrayToImage(picture);
             ShowAnswer(_survey.Question.ToList()[number].Answer.ToList());
         }
 
@@ -179,8 +185,7 @@ namespace Survey.View.User
         {
             Times = string.Format("{0:00}:{1:00}:{2:00}", hour, min, sec);
             if (hour == 0 && min == 0 && sec == 0)
-            {
-                aTimer.Stop();
+            {                
                 EndingSurvey();
             }
             else

@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\App.cs" />
+    <Compile Include="Helper\ConvertPicture.cs" />
     <Compile Include="Logic\AnswerController.cs" />
     <Compile Include="Logic\Navigated.cs" />
     <Compile Include="Logic\CategoryController.cs" />

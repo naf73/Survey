@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Survey.Helper;
 using Survey.Logic;
 using Survey.Model;
 
@@ -19,15 +22,14 @@ namespace UnitTestSurvey
         {
             if (userController.Get().Count == 0)
             {
-                userController.AddAdmin();
-
+                userController.AddAdmin();                
                 categoryController.Add("ТБ");
 
                 Category category = categoryController.Get()[0];
 
                 for (int k = 0; k < 3; k++)
                 {
-                    List<Question> questions = new List<Question>();
+                    List<Question> questions = new List<Question>();                    
 
                     for (int i = 0; i < 10; i++)
                     {
@@ -57,7 +59,8 @@ namespace UnitTestSurvey
                         {
                             Text = string.Format("{0} {1} ", i, RandomString(34)),
                             Answer = answers,
-                            IsDeleted = false
+                            IsDeleted = false,
+                            Foto = ConvertPicture.BitmapImageToByteArray(new BitmapImage(new Uri(@"C:\Users\Alex\source\repos\Survey\Survey\Pictures\Hamster.jpg", UriKind.Relative)))
                         });
                     }
 
@@ -65,7 +68,7 @@ namespace UnitTestSurvey
                     {
                         Name = string.Format("{0} {1}", k, RandomString(25)),
                         CategoryId = category.Id,
-                        Time = RandomNum(120, 30),
+                        Time = 1,
                         Question = questions
                     });
                 }
