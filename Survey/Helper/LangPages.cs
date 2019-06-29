@@ -27,21 +27,21 @@ namespace Survey.Helper
             public static string KcNewCat { get; set; }
             public static string KcChangeCat { get; set; }
             public static string KcDelCat { get; set; }
-            public static string KcLookTests { get; set; }
+            public static string KcLookSurveys { get; set; }
             public static string KcExit { get; set; }
         }
         public static class SurveyPage
         {
             public static string TblQuestions { get; set; }
-            public static string LbTP { get; set; }
-            public static string LbTO { get; set; }
-            public static string LbTVP { get; set; }
+            //public static string LbTP { get; set; }
+            //public static string LbTO { get; set; }
+            //public static string LbTVP { get; set; }
             public static string TblQuestion { get; set; }
-            public static string TbxTTP { get; set; }
+            //public static string TbxTTP { get; set; }
             public static string TblReports { get; set; }
-            public static string LbO1 { get; set; }
-            public static string LbO2 { get; set; }
-            public static string LbO3 { get; set; }
+            //public static string LbO1 { get; set; }
+            //public static string LbO2 { get; set; }
+            //public static string LbO3 { get; set; }
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
@@ -71,7 +71,7 @@ namespace Survey.Helper
             public static string KcClear { get; set; }
             public static string CbxRoles { get; set; }
             public static string TbxName { get; set; }
-            public static string TbxSurnAme { get; set; }
+            public static string TbxSurName { get; set; }
             public static string TbxLogin { get; set; }
         }
         public static class QuestionPage
