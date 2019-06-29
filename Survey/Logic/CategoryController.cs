@@ -10,11 +10,23 @@ namespace Survey.Logic
 {
     public class CategoryController
     {
+        private Helper.App _app = null;
+
+        public CategoryController()
+        {
+            _app = new Helper.App();
+        }
+
+        public CategoryController(Helper.App app)
+        {
+            _app = app;
+        }
+
         public List<Category> Get()
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     return db.Categories.Where(c => c.IsDeleted == false).ToList();
                 }
@@ -30,7 +42,7 @@ namespace Survey.Logic
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     db.Categories.Add(new Category()
                     {
@@ -51,7 +63,7 @@ namespace Survey.Logic
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     var category = db.Categories.FirstOrDefault(c => c.Id == id);
                     if (!(category is null))
@@ -73,7 +85,7 @@ namespace Survey.Logic
             if (id == 0) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     var category = db.Categories.FirstOrDefault(c => c.Id == id);
                     if(!(category is null))

@@ -26,8 +26,7 @@
                    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="LookTests_Click">Посмотреть тесты
+                Margin="3">Посмотреть тесты
             </Button>
             
         </StackPanel>
@@ -36,13 +35,11 @@
                 Grid.Column="0"    
                 HorizontalAlignment="Left"
                 HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="Exit_Click">Выход>
+                Margin="3">Выход>
             
         </Button>
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
-            <Button x:Name="NewCatalog" 
-                   
+            <Button x:Name="NewCatalog"                    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"

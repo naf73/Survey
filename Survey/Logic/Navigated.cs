@@ -1,4 +1,5 @@
-﻿using Survey.View;
+﻿using Survey.Model;
+using Survey.View;
 using Survey.View.Admin;
 using Survey.View.User;
 using System;
@@ -39,9 +40,9 @@ namespace Survey.Logic
             _frame.Navigate(new SurveyPage());
         }
 
-        public static void GoToQuestionPage()
+        public static void GoToQuestionPage(Model.Survey survey, Model.User user)
         {
-            _frame.Navigate(new QuestionPage());
+            _frame.Navigate(new QuestionPage(survey, user));
         }
 
         public static void GoToUsersPage()
@@ -49,9 +50,9 @@ namespace Survey.Logic
             _frame.Navigate(new UsersPage());
         }
 
-        public static void GoToUserPage()
-        {
-            _frame.Navigate(new UserPage());
+        public static void GoToUserPage(User user)
+        {   
+            _frame.Navigate(new UserPage(user));
         }
     }
 }

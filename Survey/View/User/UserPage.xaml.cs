@@ -21,14 +21,48 @@ namespace Survey.View.User
     /// </summary>
     public partial class UserPage : Page
     {
-        public UserPage()
+        private Model.User _user;
+        private List<Model.Survey> _surveys;
+
+        private SurveyController surveyController = new SurveyController();
+
+        public UserPage(Model.User user)
         {
             InitializeComponent();
+            _user = user;
+            UserName.Text = string.Format("{0} {1}", _user.Surname, _user.Name);
+            _surveys = surveyController.GetByUserId(_user.Id);
+            UpdateSurveysTable();
+            if (_surveys.Count > 0)
+            {
+                GoToTest.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                GoToTest.Visibility = Visibility.Collapsed;
+            }
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        private void ComeBack_Click(object sender, RoutedEventArgs e)
         {
             Navigated.GoToAuthPage();
         }
+
+        private void GoToTest_Click(object sender, RoutedEventArgs e)
+        {
+            Model.Survey survey = _surveys[0];
+            if (SurveysGrid.SelectedIndex != -1) survey = (Model.Survey)SurveysGrid.SelectedItem;
+            Navigated.GoToQuestionPage(survey, _user);
+        }
+
+        #region Methods
+
+        private void UpdateSurveysTable()
+        {
+            _surveys = surveyController.GetByUserId(_user.Id);
+            SurveysGrid.ItemsSource = _surveys;
+        }
+
+        #endregion
     }
 }

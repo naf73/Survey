@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\App.cs" />
     <Compile Include="Logic\AnswerController.cs" />
     <Compile Include="Logic\Navigated.cs" />
     <Compile Include="Logic\CategoryController.cs" />
@@ -80,6 +81,8 @@
     <Compile Include="Model\Category.cs">
       <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Partial\CategoryPartial.cs" />
+    <Compile Include="Model\Partial\SurveyContextPartial.cs" />
     <Compile Include="Model\Survey1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -230,6 +233,9 @@
     </Content>
     <Content Include="Resources\Hamster.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pole_letter_correct.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
