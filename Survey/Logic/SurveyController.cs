@@ -160,5 +160,27 @@ namespace Survey.Logic
                 throw;
             }
         }
+
+        public string GetTheBestSurveyOfUser(int userId)
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    List<UserSurvey> surveys = db.UserSurveys.Include(w => w.Survey)
+                                                             .Where(s => s.UserId == userId &&
+                                                                         s.IsPass == true)
+                                                             .ToList()
+                                                             .OrderByDescending(x => x.Result)
+                                                             .ToList();
+                    return (!(surveys is null)) ? string.Format("{0} {1} %", surveys[0].Survey.Name, surveys[0].Result) : string.Empty;                    
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

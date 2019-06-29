@@ -41,6 +41,8 @@ namespace Survey.View.User
             {
                 GoToTest.Visibility = Visibility.Collapsed;
             }
+            string bestSurvey = surveyController.GetTheBestSurveyOfUser(_user.Id);
+            if (!string.IsNullOrEmpty(bestSurvey)) LabelBestSurvey.Content = bestSurvey;
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
