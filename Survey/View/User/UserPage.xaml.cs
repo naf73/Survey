@@ -52,7 +52,7 @@ namespace Survey.View.User
         {
             Model.Survey survey = _surveys[0];
             if (SurveysGrid.SelectedIndex != -1) survey = (Model.Survey)SurveysGrid.SelectedItem;
-            Navigated.GoToQuestionPage(survey);
+            Navigated.GoToQuestionPage(survey, _user);
         }
 
         #region Methods

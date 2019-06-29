@@ -42,6 +42,24 @@ namespace Survey.Logic
             }
         }
 
+        public User GetById(int id)
+        {
+            if (id == 0) throw new ArgumentException();
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Users.FirstOrDefault(u => u.IsDeleted == false &&
+                                                        u.IsAdmin == false &&
+                                                        u.Id == id);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void Add(User user)
         {
             try

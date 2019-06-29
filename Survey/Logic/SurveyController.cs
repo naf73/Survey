@@ -50,6 +50,8 @@ namespace Survey.Logic
                     userSurveys.ForEach(d =>
                     {
                         var survey = db.Surveys.Include(c => c.Category)
+                                               .Include(q => q.Question)
+                                               .Include(qa => qa.Question.Select(a => a.Answer))
                                                .FirstOrDefault(s => s.Id == d.SurveyId);
                         if (!(survey is null)) surveys.Add(survey);
                     });
@@ -91,7 +93,7 @@ namespace Survey.Logic
                 {
                     var survey = db.Surveys.FirstOrDefault(s => s.Id == id &&
                                                                 s.IsDeleted == false);
-                    if(!(survey is null))
+                    if (!(survey is null))
                     {
                         survey.IsDeleted = true;
                         db.Entry(survey).State = EntityState.Modified;
@@ -127,6 +129,29 @@ namespace Survey.Logic
                             });
                             db.SaveChanges();
                         }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void SetMark(int surveyId, int userId, double result)
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    UserSurvey userSurvey = db.UserSurveys.FirstOrDefault(m => m.UserId == userId &&
+                                                                              m.SurveyId == surveyId);
+                    if(!(userSurvey is null))
+                    {
+                        userSurvey.IsPass = true;
+                        userSurvey.Result = result;
+                        db.Entry(userSurvey).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
             }
