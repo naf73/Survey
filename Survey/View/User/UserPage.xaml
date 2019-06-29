@@ -25,7 +25,7 @@
                 <Button x:Name="ComeBack" 
                         Grid.Column="0" 
                         Margin="3"
-                        Content="Назад" 
+                        Content="Выход" 
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         IsCancel="True"
