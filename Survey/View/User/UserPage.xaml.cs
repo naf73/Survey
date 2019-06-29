@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survey.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace Survey.View.User
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigated.GoToAuthPage();
         }
     }
 }

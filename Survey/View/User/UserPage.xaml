@@ -31,7 +31,7 @@
                         Margin="3" 
                         Height="auto" 
                         Click="Back_Click" 
-                        Content="Назад" >
+                        Content="Назад" RenderTransformOrigin="0.5,0.51" >
 
                 </Button>
             </Grid>

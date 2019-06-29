@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survey.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,12 +43,13 @@ namespace Survey.View.Admin
 
         private void LookTests_Click(object sender, RoutedEventArgs e)
         {
+            Navigated.GoToSurveysPage();
 
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigated.GoToAdminPage();
         }
     }
 }

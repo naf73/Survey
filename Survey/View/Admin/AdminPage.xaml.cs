@@ -73,5 +73,10 @@ namespace Survey.View.Admin
         {
 
         }
+
+        private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
