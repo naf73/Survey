@@ -9,6 +9,64 @@
       Title="CategoriesPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="Users" 
+                   
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Margin="3">Посмотреть тесты
+            </Button>
+            
+        </StackPanel>
+        <Button x:Name="Exit" 
+                Grid.Row="1"
+                Grid.Column="0"    
+                HorizontalAlignment="Left"
+                HorizontalContentAlignment="Center"
+                Margin="3">Выход>
+            
+        </Button>
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+            <Button x:Name="NewCatalog"                    
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Margin="3">Новая категория
+            </Button>
+            <Button x:Name="ChangeCatalog" 
+                   
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Margin="3">Изменить категорию
+            </Button>
+            <Button x:Name="DelCatalog" 
+                   
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Margin="3">Удалить категорию
+            </Button>
+        </StackPanel>
+        <DataGrid Grid.Row="3" 
+                      HorizontalAlignment="Center" 
+                      Height="350" 
+                      Margin="3" 
+                      VerticalAlignment="Top" 
+                      Width="500">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Категории тестов"  Binding="{Binding Path=CatalogsTests}" Width="*"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
