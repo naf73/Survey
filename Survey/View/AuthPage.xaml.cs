@@ -22,9 +22,6 @@ namespace Survey.View
     /// </summary>
     public partial class AuthPage : Page
     {
-
-       
-
         private class Item
         {
             public Item(int value, string text) { Value = value; Text = text; }
@@ -32,6 +29,7 @@ namespace Survey.View
             public string Text { get; set; }
             public override string ToString() { return Text; }
         }
+
         private UserController userController = new UserController();
 
         public AuthPage()
@@ -42,9 +40,11 @@ namespace Survey.View
 
             string I = "Русский";
             string II = "Engish";
-            
-            comboBox1.Items.Add(new Item(1, I));
-            comboBox1.Items.Add(new Item(2, II));
+
+            SwtichLang.Items.Add(new Item(1, I));
+            SwtichLang.Items.Add(new Item(2, II));
+
+            SwtichLang.SelectedIndex = 0;
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -70,10 +70,9 @@ namespace Survey.View
 
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Item item = comboBox1.Items[comboBox1.SelectedIndex] as Item;
-            // MessageBox.Show(item.Value.ToString());
+            Item item = SwtichLang.Items[SwtichLang.SelectedIndex] as Item;
 
-            if (comboBox1.SelectedIndex == 0)
+            if (SwtichLang.SelectedIndex == 0)
             {
                 LANG.ChangeLang(Lang.RUS);
             }
@@ -84,7 +83,6 @@ namespace Survey.View
 
             TLog.Text = LangPages.AuthPage.TblLogin;
             TPas.Text = LangPages.AuthPage.TblPassword;
-            //TLang.Text = LangPages.AuthPage.TblLanguage;
             TSing.Text = LangPages.AuthPage.TblSingIn;
             Enter.Content = LangPages.AuthPage.KcEntre;
 

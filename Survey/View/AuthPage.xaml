@@ -65,7 +65,7 @@
                     Margin="3"
                     Click="Enter_Click"/>
         </Grid>
-        <ComboBox x:Name="comboBox1"
+        <ComboBox x:Name="SwtichLang"
                   HorizontalAlignment="Left" 
                   Margin="705,31,0,0" 
                   VerticalAlignment="Top" Width="85" 
