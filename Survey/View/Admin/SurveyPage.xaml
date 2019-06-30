@@ -32,7 +32,7 @@
                     IsCancel="True"
                     Click="ComeBack_Click">Назад</Button>
 
-            <TextBlock Grid.Column="1" 
+            <TextBlock x:Name="ListQuestSurvey" Grid.Column="1" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">Список вопросов опроса</TextBlock>
 
@@ -102,7 +102,7 @@
                           IsReadOnly="True"
                           Margin="3">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Вопрос"  Binding="{Binding Path=Text}" Width="*"/>
+                        <DataGridTextColumn x:Name="DgQuestion" Header="Вопрос"  Binding="{Binding Path=Text}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -204,7 +204,7 @@
                           IsReadOnly="True"
                           Margin="3">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Ответ"  Binding="{Binding Path=Text}" Width="*"/>
+                        <DataGridTextColumn x:Name="DgAnswer" Header="Ответ"  Binding="{Binding Path=Text}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Survey.Helper;
 
 namespace Survey.View.Admin
 {
@@ -73,6 +74,33 @@ namespace Survey.View.Admin
         #region Localization
         private void Local()
         {
+            ComeBack.Content = LangPages.SurveyPage.KcBack;
+            ListQuestSurvey.Text = LangPages.SurveyPage.TblListQuestSurvey;
+            LabelCategoryName.Content = LangPages.SurveyPage.LNameSurvey;
+            ManageSurvey.Content = LangPages.SurveyPage.KcCreate;
+            QuestionAdd.Content = LangPages.SurveyPage.KcAdd;
+            QuestionEdit.Content = LangPages.SurveyPage.KcChange;
+            QuestionRemove.Content = LangPages.SurveyPage.KcDel;
+            DgQuestion.Header = LangPages.SurveyPage.DgQuestion;
+            LabelQuestion.Content = LangPages.SurveyPage.DgAnswer;
+            LabelQuestionText.Content = LangPages.SurveyPage.LText;
+            LabelPicture.Content = LangPages.SurveyPage.LPictures;
+            QuestionPictureAdd.Content = LangPages.SurveyPage.KcAddPictures;
+            QuestionPictureRemove.Content = LangPages.SurveyPage.KcPicturesRemove;
+            LabelAnswers.Content = LangPages.SurveyPage.LAnswers;
+            AnswerAdd.Content = LangPages.SurveyPage.KcAdd;
+            AnswerEdit.Content = LangPages.SurveyPage.KcChange;
+            AnswerRemove.Content = LangPages.SurveyPage.KcDel;
+            ClearQuestionFields.Content = LangPages.SurveyPage.KcClearFields;
+            LabelAnswer.Content = LangPages.SurveyPage.LAnswer;
+            LabelAnswerText.Content = LangPages.SurveyPage.LText;
+            LabelAnswerPicture.Content = LangPages.SurveyPage.LPictures;
+            AnswerPictureAdd.Content = LangPages.SurveyPage.KcAddPictures;
+            AnswerPictureRemove.Content = LangPages.SurveyPage.KcPicturesRemove;
+            ClearAnswerFields.Content = LangPages.SurveyPage.KcClearFields;
+            DgAnswer.Header = LangPages.SurveyPage.DgAnswer;
+
+
 
         }
         #endregion

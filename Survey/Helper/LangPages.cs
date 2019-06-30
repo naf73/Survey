@@ -35,20 +35,23 @@ namespace Survey.Helper
         }
         public static class SurveyPage
         {
-            public static string TblQuestions { get; set; }
-            //public static string LbTP { get; set; }
-            //public static string LbTO { get; set; }
-            //public static string LbTVP { get; set; }
-            public static string TblQuestion { get; set; }
-            //public static string TbxTTP { get; set; }
-            public static string TblReports { get; set; }
-            //public static string LbO1 { get; set; }
-            //public static string LbO2 { get; set; }
-            //public static string LbO3 { get; set; }
+            public static string KcCreate { get; set; }     
+            public static string DgQuestion { get; set; }
+            
+            public static string TblListQuestSurvey { get; set; }                      
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
             public static string KcDel { get; set; }
+            public static string LNameSurvey { get; set; }
+            public static string LText { get; set; }
+            public static string LPictures { get; set; }
+            public static string KcAddPictures { get; set; }
+            public static string KcPicturesRemove { get; set; }
+            public static string LAnswers { get; set; }
+            public static string KcClearFields { get; set; }
+            public static string LAnswer { get; set; }
+            public static string DgAnswer { get; set; }
         }
         public static class SurveysPage
         {
