@@ -26,12 +26,14 @@ namespace Survey.View.Admin
         private Model.Survey _survey;
 
         private SurveyController surveyController = new SurveyController();
+        QuestionController questionController = new QuestionController();
 
         public SurveyPage(Model.Survey survey)
         {
             InitializeComponent();
             _survey = survey;
             UpdateFields();
+            UpdateQuestionTable();
             Local();
         }
 
@@ -42,6 +44,9 @@ namespace Survey.View.Admin
 
         private void ManageSurvey_Click(object sender, RoutedEventArgs e)
         {
+
+            throw new NotImplementedException();
+
             if((bool)ManageSurvey.Tag)
             {
 
@@ -51,6 +56,84 @@ namespace Survey.View.Admin
 
             }
         }
+
+        #region Question
+
+        private void QuestionAdd_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void QuestionEdit_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void QuestionRemove_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void QuestionPictureAdd_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void QuestionPictureRemove_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ClearQuestionFields_Click(object sender, RoutedEventArgs e)
+        {
+            MethodClearQuestionFields();
+        }
+
+        private void QuestionsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateQuestionFields((Question)QuestionsDataGrid.SelectedItem);
+        }
+
+        #endregion
+
+        #region Answer        
+
+        private void AnswerAdd_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AnswerEdit_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AnswerRemove_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AnswerPictureAdd_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AnswerPictureRemove_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ClearAnswerFields_Click(object sender, RoutedEventArgs e)
+        {
+            MethodClearAnswerFields();
+        }      
+
+        private void AnswersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateAnswerFields((Answer)AnswersDataGrid.SelectedItem);
+        }
+
+        #endregion
 
         #region Methods
 
@@ -69,9 +152,74 @@ namespace Survey.View.Admin
             }
         }
 
+        private void UpdateQuestionTable()
+        {
+            if(!(_survey is null))
+            {
+                QuestionsDataGrid.ItemsSource = questionController.Get(_survey.Id);
+            }
+            else
+            {
+                QuestionsDataGrid.ItemsSource = null;
+            }
+        }
+
+        private void UpdateQuestionFields(Question question)
+        {
+            if(!(question is null))
+            {
+                QuestionText.Text = question.Text;
+                QuestionPicture.Source = ConvertPicture.ByteArrayToImage(question.Foto);
+                UpdateAnswerTable(question);
+            }
+            else
+            {
+                MethodClearQuestionFields();
+            }
+        }
+
+        private void MethodClearQuestionFields()
+        {
+            QuestionText.Clear();
+            QuestionPicture.Source = null;
+            AnswersDataGrid.ItemsSource = null;
+        }
+
+        private void UpdateAnswerTable(Question question)
+        {
+            if (!(question is null))
+            {
+                AnswersDataGrid.ItemsSource = question.Answer;
+            }
+            else
+            {
+                MethodClearAnswerFields();
+            }
+        }
+
+        private void UpdateAnswerFields(Answer answer)
+        {
+            if (!(answer is null))
+            {
+                AnswerText.Text = answer.Text;
+                AnswerPicture.Source = ConvertPicture.ByteArrayToImage(answer.Foto);
+            }
+            else
+            {
+                MethodClearAnswerFields();
+            }
+        }
+
+        private void MethodClearAnswerFields()
+        {
+            AnswerText.Clear();
+            AnswerPicture.Source = null;
+        }
+
         #endregion
 
         #region Localization
+
         private void Local()
         {
             ComeBack.Content = LangPages.SurveyPage.KcBack;
@@ -103,6 +251,8 @@ namespace Survey.View.Admin
 
 
         }
+
         #endregion
+
     }
 }
