@@ -12,50 +12,77 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="ComeBack"
+                    Grid.Column="0"   
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Center"
+                    Margin="3" 
+                    IsCancel="True"
+                    Click="Exit_Click">Назад</Button>
+
+            <TextBlock x:Name="LabelPage"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Grid.Column="1">Категории опросов</TextBlock>
+            
+        </Grid>
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-        </Grid>
-        <StackPanel Grid.Row="1" 
-                    Grid.Column="2" 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Right">
-            <Button x:Name="LookTests"                    
-                HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Margin="3">Посмотреть тесты</Button>
+            <StackPanel Grid.Column="0"
+                    Orientation="Horizontal">
+                
+                <Button x:Name="Add"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="3"
+                        Click="Add_Click">Добавить</Button>
+
+                <Button x:Name="Edit" 
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="3"
+                        Click="Edit_Click">Изменить</Button>
+
+                <Button x:Name="Remove"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="3"
+                        Click="Remove_Click">Удалить</Button>
             
-        </StackPanel>
-        <Button x:Name="Exit" 
-                Grid.Row="1"
-                Grid.Column="0"    
-                HorizontalAlignment="Left"
-                HorizontalContentAlignment="Center"
-                Margin="3">Выход</Button>
-        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
-            <Button x:Name="NewCatalog"                    
-                HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="NewCatalog_Click">Новая категория</Button>
-            <Button x:Name="ChangeCatalog" 
-                   
-                HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="ChangeCatalog_Click">Изменить категорию</Button>
-            <Button x:Name="DelCatalog" 
-                   
-                HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Margin="3"
-                Click="DelCatalog_Click">Удалить категорию</Button>
-        </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button x:Name="Export"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="3">Экспорт</Button>
+
+                <Button x:Name="Import"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="3">Импорт</Button>
+                
+            </StackPanel>
+        </Grid>
+
         <DataGrid x:Name="CategoriesDataGrid"
                   Grid.Row="3" 
                   SelectionUnit="FullRow"
@@ -67,7 +94,8 @@
                   AlternatingRowBackground="White"
                   IsReadOnly="True"
                   Margin="3"
-                  SelectionChanged="DataGrid_SelectionChanged">
+                  SelectionChanged="DataGrid_SelectionChanged"
+                  MouseDoubleClick="CategoriesDataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Категории тестов"  Binding="{Binding Path=Name}" Width="*"/>
             </DataGrid.Columns>

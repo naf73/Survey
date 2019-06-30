@@ -1,4 +1,5 @@
 ﻿using Survey.Logic;
+using Survey.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,29 +22,51 @@ namespace Survey.View.Admin
     /// </summary>
     public partial class SurveyPage : Page
     {
-        public SurveyPage()
+        private Model.Survey _survey;
+
+        private SurveyController surveyController = new SurveyController();
+
+        public SurveyPage(Model.Survey survey)
         {
             InitializeComponent();
+            _survey = survey;
+            UpdateFields();
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
         {
-            Navigated.GoToSurveysPage();
+            Navigated.GoToSurveysPage(_survey.CategoryId);
         }
 
-        private void Change_Click(object sender, RoutedEventArgs e)
+        private void ManageSurvey_Click(object sender, RoutedEventArgs e)
         {
+            if((bool)ManageSurvey.Tag)
+            {
 
+            }
+            else
+            {
+
+            }
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        #region Methods
+
+        private void UpdateFields()
         {
-
+            if (_survey.Id != 0)
+            {
+                SurveyName.Text = _survey.Name;
+                ManageSurvey.Content = "Изменить";
+                ManageSurvey.Tag = false;
+            }
+            else
+            {
+                ManageSurvey.Content = "Создать";
+                ManageSurvey.Tag = true;
+            }
         }
 
-        private void Del_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

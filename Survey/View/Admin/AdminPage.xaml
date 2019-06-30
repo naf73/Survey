@@ -93,8 +93,8 @@
                       Margin="3">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Опрос" Binding="{Binding Path=Survey}" Width="*"/>
-                    <DataGridTextColumn Header="Категория" Binding="{Binding Path=Catalog}" Width="100"/>
-                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey, StringFormat=p2}" Width="*"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Path=Catalog}" Width="auto"/>
+                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey, StringFormat=p2}" Width="auto"/>
                 </DataGrid.Columns>
                 
             </DataGrid> 

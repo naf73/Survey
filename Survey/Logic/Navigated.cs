@@ -30,14 +30,14 @@ namespace Survey.Logic
             _frame.Navigate(new AdminPage());
         }
 
-        public static void GoToSurveysPage()
+        public static void GoToSurveysPage(int categoryId)
         {
-            _frame.Navigate(new SurveysPage());
+            _frame.Navigate(new SurveysPage(categoryId));
         }
 
-        public static void GoToSurveyPage()
+        public static void GoToSurveyPage(Model.Survey survey)
         {
-            _frame.Navigate(new SurveyPage());
+            _frame.Navigate(new SurveyPage(survey));
         }
 
         public static void GoToQuestionPage(Model.Survey survey, Model.User user)

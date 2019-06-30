@@ -64,6 +64,22 @@ namespace Survey.Logic
             }
         }
 
+        public List<Model.Survey> GetByCategoryId(int categoryId)
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Surveys.Where(g => g.IsDeleted == false &&
+                                                 g.CategoryId == categoryId).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void Add(Model.Survey survey)
         {
             try

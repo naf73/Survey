@@ -37,17 +37,30 @@ namespace Survey.Logic
             }
         }
 
-        public void Add(string name)
+        public Category GetById(int id)
         {
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException();
             try
             {
                 using (var db = new SurveyContext(_app.Conn))
                 {
-                    db.Categories.Add(new Category()
-                    {
-                        Name = name
-                    });
+                    return db.Categories.FirstOrDefault(c => c.IsDeleted == false &&
+                                                             c.Id == id);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Add(Category category)
+        {
+            if (string.IsNullOrWhiteSpace(category.Name)) throw new ArgumentException();
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    db.Categories.Add(category);
                     db.SaveChanges();
                 }
             }
