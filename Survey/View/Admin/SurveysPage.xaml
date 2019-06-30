@@ -30,7 +30,7 @@
                     IsCancel="True"
                     Click="ComeBack_Click">Назад</Button>
 
-            <TextBlock Grid.Column="1" 
+            <TextBlock x:Name="ListSurveys" Grid.Column="1" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">Список опросов</TextBlock>
         </Grid>
@@ -109,8 +109,8 @@
                   IsReadOnly="True"
                   Margin="3">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="*"/>
-                <DataGridTextColumn Header="Время в мин" Binding="{Binding Path=Time}" Width="auto"/>
+                <DataGridTextColumn x:Name="Title" Header="Название" Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn x:Name="Time" Header="Время в мин" Binding="{Binding Path=Time}" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

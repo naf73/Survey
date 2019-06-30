@@ -217,7 +217,7 @@ namespace Survey.View.User
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        #region Локализация
+        #region Localization
         private void Local()
         {
             NextQuestion.Content = LangPages.QuestionPage.KcNext;

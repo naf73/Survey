@@ -24,11 +24,14 @@ namespace Survey.Helper
         public static class CategoriesPage
         {
             public static string DgCatSurveys { get; set; }            
-            public static string KcNewCat { get; set; }
-            public static string KcChangeCat { get; set; }
-            public static string KcDelCat { get; set; }
-            public static string KcLookSurveys { get; set; }
-            public static string KcExit { get; set; }
+            public static string KcNew { get; set; }
+            public static string KcChange { get; set; }
+            public static string KcDel { get; set; }
+            public static string KcExport { get; set; }
+            public static string KcImport { get; set; }
+            public static string KcBack { get; set; }
+            public static string KcAdd { get; set; }
+            public static string DgCatTests { get; set; }
         }
         public static class SurveyPage
         {
@@ -49,14 +52,17 @@ namespace Survey.Helper
         }
         public static class SurveysPage
         {
-            public static string TblListSurveys { get; set; }
-            public static string DgNumber { get; set; }
+            public static string TblListSurveys { get; set; }          
             public static string DgTitle { get; set; }
             public static string DgTime { get; set; }          
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
             public static string KcDel { get; set; }
+            public static string LCatName { get; set; }
+            public static string KcCreate { get; set; }
+            public static string KcExport { get; set; }
+            public static string KcImport { get; set; }
         }
         public static class UsersPage
         {
@@ -83,13 +89,13 @@ namespace Survey.Helper
             public static string DgCategory { get; set; }
             public static string DgTitle { get; set; }
             public static string DgTime { get; set; }
-            public static string KcExit { get; set; }
+            public static string KcBack { get; set; }
             public static string KcGoSurvey { get; set; }
             public static string KcBestResult { get; set; }
-            public static string KcAbsent { get; set; }        
+            public static string KcAbsent { get; set; }  
+        
           
         }
-
         public static class AuthPage
         {
             public static string TblLogin { get; set; }
