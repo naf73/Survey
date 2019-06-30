@@ -124,7 +124,7 @@ namespace Survey.View.Admin
             Edit.Content = LangPages.CategoriesPage.KcChange;
             Remove.Content = LangPages.CategoriesPage.KcDel;
             Export.Content = LangPages.CategoriesPage.KcExport;
-            Import.Content = LangPages.CategoriesPage.KcExport;
+            Import.Content = LangPages.CategoriesPage.KcImport;
             CatTests.Header = LangPages.CategoriesPage.DgCatTests;
 
         }
