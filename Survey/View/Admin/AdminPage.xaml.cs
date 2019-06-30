@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Model;
+using Survey.Helper;
 
 namespace Survey.View.Admin
 {
@@ -30,6 +31,7 @@ namespace Survey.View.Admin
         {
             InitializeComponent();
             StatEmployeesDataGrid.ItemsSource = statisticsController.GetStatEmployees();
+            Local();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -60,5 +62,25 @@ namespace Survey.View.Admin
         {
             UpdateStatSurveyTable();
         }
+
+
+            
+
+            #region Локализация
+        
+        private void Local()
+        {
+            Users.Content = LangPages.AdminPage.KcWorkers;
+            Surveys.Content = LangPages.AdminPage.KcSurveys;
+            DName.Header = LangPages.AdminPage.DgName;
+            DSurName.Header = LangPages.AdminPage.DgSurvey;
+            DRating.Header = LangPages.AdminPage.DgRating;
+            DSur.Header = LangPages.AdminPage.DgSurvey;
+            DCat.Header = LangPages.AdminPage.DgCategory;
+            DTotal.Header = LangPages.AdminPage.DgTotal;
+            Exit.Content = LangPages.AdminPage.KcExit;
+            TbStat.Text = LangPages.AdminPage.DgStatiatic;
+        }
+            #endregion
     }
 }

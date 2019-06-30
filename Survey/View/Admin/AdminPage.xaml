@@ -71,9 +71,9 @@
                       Margin="3"
                       SelectionChanged="StatEmployeesDataGrid_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
-                    <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}"  Width="*"/>
-                    <DataGridTextColumn Header="Рейтинг в %" Binding="{Binding Path=RatingEmployee, StringFormat=p2}" Width="*"/>
+                    <DataGridTextColumn x:Name="DSurName" Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
+                    <DataGridTextColumn x:Name="DName" Header="Имя" Binding="{Binding Path=Name}"  Width="*"/>
+                    <DataGridTextColumn x:Name="DRating" Header="Рейтинг в %" Binding="{Binding Path=RatingEmployee, StringFormat=p2}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -91,10 +91,10 @@
                       AlternatingRowBackground="White"
                       IsReadOnly="True"
                       Margin="3">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Опрос" Binding="{Binding Path=Survey}" Width="*"/>
-                    <DataGridTextColumn Header="Категория" Binding="{Binding Path=Catalog}" Width="auto"/>
-                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey, StringFormat=p2}" Width="auto"/>
+                <DataGrid.Columns> 
+                    <DataGridTextColumn x:Name="DSur" Header="Опрос" Binding="{Binding Path=Survey}" Width="*"/>
+                    <DataGridTextColumn x:Name="DCat" Header="Категория" Binding="{Binding Path=Catalog}" Width="auto"/>
+                    <DataGridTextColumn x:Name="DTotal" Header="Итого в %" Binding="{Binding Path=RatingSurvey, StringFormat=p2}" Width="auto"/>
                 </DataGrid.Columns>
                 
             </DataGrid> 
@@ -115,7 +115,7 @@
 
         <Grid Grid.Row="1" Grid.Column="1">
 
-            <TextBlock HorizontalAlignment="Center">Статистика</TextBlock>
+            <TextBlock x:Name="TbStat" HorizontalAlignment="Center">Статистика</TextBlock>
             
 
         </Grid>

@@ -24,7 +24,7 @@ namespace Survey.Helper
 
                     LangPages.AdminPage.DgCategory = "Категория";
                     LangPages.AdminPage.DgName = "Имя";
-                    LangPages.AdminPage.DgRating = "Рейтинг";
+                    LangPages.AdminPage.DgRating = "Рейтинг в %";
                     LangPages.AdminPage.DgStatiatic = "Статистика";
                     LangPages.AdminPage.DgSurvey = "Опрос";
                     LangPages.AdminPage.DgTotal = "Итого в %";

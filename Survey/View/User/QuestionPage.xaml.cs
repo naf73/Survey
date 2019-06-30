@@ -64,12 +64,8 @@ namespace Survey.View.User
             number = 0;
             right_answer = 0;
             ShowQuestion(number);
+            Local();
 
-            #region Локализация
-
-            NextQuestion.Content = LangPages.QuestionPage.KcNext;
-
-            #endregion
         }
 
         private void NextQuestion_Click(object sender, RoutedEventArgs e)
@@ -219,6 +215,13 @@ namespace Survey.View.User
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }        
+        }
+
+        #region Локализация
+        private void Local()
+        {
+            NextQuestion.Content = LangPages.QuestionPage.KcNext;
+        }
+            #endregion
     }
 }

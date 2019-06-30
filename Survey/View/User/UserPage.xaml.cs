@@ -30,6 +30,7 @@ namespace Survey.View.User
         public UserPage(Model.User user)
         {
             InitializeComponent();
+            Local();
             _user = user;
             UserName.Text = string.Format("{0} {1}", _user.Surname, _user.Name);
             _surveys = surveyController.GetByUserId(_user.Id);
@@ -45,17 +46,6 @@ namespace Survey.View.User
             string bestSurvey = surveyController.GetTheBestSurveyOfUser(_user.Id);
             if (!string.IsNullOrEmpty(bestSurvey)) LabelBestSurvey.Content = bestSurvey;
 
-        #region Локализация       
-       
-            ComeBack.Content = LangPages.UserPage.KcExit;
-            GoToTest.Content = LangPages.UserPage.KcGoSurvey;
-            LabelMotivation.Content = LangPages.UserPage.KcBestResult;
-            LabelBestSurvey.Content = LangPages.UserPage.KcAbsent;
-            DgCat.Header = LangPages.UserPage.DgCategory;
-            DgTitle.Header = LangPages.UserPage.DgTitle;
-            DgTime.Header = LangPages.UserPage.DgTime;
-
-        #endregion
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
@@ -78,6 +68,18 @@ namespace Survey.View.User
             SurveysGrid.ItemsSource = _surveys;
         }
 
+        #endregion
+        #region Локализация       
+        private void Local()
+        {
+            ComeBack.Content = LangPages.UserPage.KcExit;
+            GoToTest.Content = LangPages.UserPage.KcGoSurvey;
+            LabelMotivation.Content = LangPages.UserPage.KcBestResult;
+            LabelBestSurvey.Content = LangPages.UserPage.KcAbsent;
+            DgCat.Header = LangPages.UserPage.DgCategory;
+            DgTitle.Header = LangPages.UserPage.DgTitle;
+            DgTime.Header = LangPages.UserPage.DgTime;
+        }
         #endregion
 
     }
