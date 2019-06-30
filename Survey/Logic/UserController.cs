@@ -10,6 +10,18 @@ namespace Survey.Logic
 {
     public class UserController
     {
+        private Helper.App _app = null;
+
+        public UserController()
+        {
+            _app = new Helper.App();
+        }
+
+        public UserController(Helper.App app)
+        {
+            _app = app;
+        }
+
         /// <summary>
         /// Выводит всех пользователей, кроме администратора и удаленных
         /// </summary>
@@ -18,10 +30,28 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     return db.Users.Where(u => u.IsDeleted == false &&
                                                u.IsAdmin == false).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public User GetById(int id)
+        {
+            if (id == 0) throw new ArgumentException();
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Users.FirstOrDefault(u => u.IsDeleted == false &&
+                                                        u.IsAdmin == false &&
+                                                        u.Id == id);
                 }
             }
             catch (Exception)
@@ -34,7 +64,7 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -52,7 +82,7 @@ namespace Survey.Logic
             if (user.Id == 0) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     db.Entry(user).State = EntityState.Modified;
                     db.SaveChanges();
@@ -69,7 +99,7 @@ namespace Survey.Logic
             if (id == 0) throw new ArgumentException();
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     var user = db.Users.FirstOrDefault(u => u.Id == id &&
                                                             u.IsDeleted == false);
@@ -85,13 +115,30 @@ namespace Survey.Logic
             {
                 throw;
             }
-        }        
+        }  
+        
+        public User GetUserByPass(string login, string password)
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Users.FirstOrDefault(u => u.IsDeleted == false &&
+                                                        u.Login == login &&
+                                                        u.Password == password);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public void AddAdmin()
         {
             try
             {
-                if(ExistAdmin())
+                if(!ExistAdmin())
                 {
                     Add(new User()
                     {
@@ -108,8 +155,8 @@ namespace Survey.Logic
                     {
                         Login = "user",
                         Password = "user",
-                        Name = string.Empty,
-                        Surname = string.Empty,
+                        Name = "Иван",
+                        Surname = "Иванов",
                         IsAdmin = false
                     });
                 }
@@ -124,7 +171,7 @@ namespace Survey.Logic
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     var user = db.Users.FirstOrDefault(u => u.IsAdmin == true);
                     if (user is null)

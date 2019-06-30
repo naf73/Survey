@@ -10,34 +10,67 @@
 
     <Grid Margin="3">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name="ComeBack" 
+                        Grid.Column="0" 
+                        Margin="3"
+                        Content="Выход" 
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        IsCancel="True"
+                        Click="ComeBack_Click"/>
 
-            <TextBlock Grid.Row="0" 
-                       Grid.Column="0" 
-                       Margin="3" 
-                       TextWrapping="Wrap" 
-                       HorizontalAlignment="Center"
-                       Text="Иванов Иван Иваныч"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="0" 
-                   Content="Список опросов" 
-                   HorizontalAlignment="Center"
-                   Margin="3" 
-                   VerticalAlignment="Center" />
-            
-            <ListBox Grid.Row="2" 
-                     Grid.Column="0" 
-                     HorizontalAlignment="Center" 
-                     Width="550"
-                     Height="350" Margin="3"/>
-            
+                <TextBlock x:Name="UserName" 
+                           Grid.Column="1" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <Button x:Name="GoToTest"
+                        Grid.Column="2"
+                        Margin="3"
+                        Content="Пройти опрос"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Click="GoToTest_Click"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Label x:Name="LabelMotivation">Лучший результат: </Label>
+                <Label x:Name="LabelBestSurvey"> отсутствует</Label>
+            </StackPanel>
+
+            <DataGrid x:Name="SurveysGrid" 
+                  Grid.Row="2"
+                  SelectionUnit="FullRow"
+                  SelectionMode="Single"
+                  Background="{x:Null}" 
+                  AutoGenerateColumns="False" 
+                  HorizontalGridLinesBrush="DarkGray" 
+                  RowBackground="LightGray" 
+                  AlternatingRowBackground="White" 
+                  IsReadOnly="True"
+                  Margin="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="DgCat" Header="Категория" Binding="{Binding Path=Category}" Width="Auto"/>
+                    <DataGridTextColumn x:Name="DgTitle" Header="Название" Binding="{Binding Path=Name}"  Width="*"/>
+                    <DataGridTextColumn x:Name="DgTime" Header="Время" Binding="{Binding Path=Time}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
         </Grid>
     </Grid>
 </Page>

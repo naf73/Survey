@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/27/2019 14:56:17
+-- Date Created: 06/28/2019 09:28:08
 -- Generated from EDMX file: C:\Users\Alex\source\repos\Survey\Survey\Model\Survey.edmx
 -- --------------------------------------------------
 
@@ -63,8 +63,8 @@ GO
 -- Creating table 'Questions'
 CREATE TABLE [dbo].[Questions] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Text] nvarchar(max)  NOT NULL,
-    [Foto] varbinary(max)  NOT NULL,
+    [Text] nvarchar(max)  NULL,
+    [Foto] varbinary(max)  NULL,
     [SurveyId] int  NOT NULL,
     [IsDeleted] bit  NOT NULL
 );
@@ -73,8 +73,8 @@ GO
 -- Creating table 'Answers'
 CREATE TABLE [dbo].[Answers] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Text] nvarchar(max)  NOT NULL,
-    [Foto] varbinary(max)  NOT NULL,
+    [Text] nvarchar(max)  NULL,
+    [Foto] varbinary(max)  NULL,
     [QuestionId] int  NOT NULL,
     [IsTrue] bit  NOT NULL,
     [IsDeleted] bit  NOT NULL
@@ -85,7 +85,7 @@ GO
 CREATE TABLE [dbo].[Surveys] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Time] datetime  NOT NULL,
+    [Time] int  NOT NULL,
     [CategoryId] int  NOT NULL,
     [IsDeleted] bit  NOT NULL
 );
@@ -180,21 +180,6 @@ ON [dbo].[Answers]
     ([QuestionId]);
 GO
 
--- Creating foreign key on [CategoryId] in table 'Surveys'
-ALTER TABLE [dbo].[Surveys]
-ADD CONSTRAINT [FK_Category_Survey]
-    FOREIGN KEY ([CategoryId])
-    REFERENCES [dbo].[Categories]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Category_Survey'
-CREATE INDEX [IX_FK_Category_Survey]
-ON [dbo].[Surveys]
-    ([CategoryId]);
-GO
-
 -- Creating foreign key on [SurveyId] in table 'Questions'
 ALTER TABLE [dbo].[Questions]
 ADD CONSTRAINT [FK_Survey_Question]
@@ -238,6 +223,21 @@ GO
 CREATE INDEX [IX_FK_Survey_UserSurvey]
 ON [dbo].[UserSurveys]
     ([SurveyId]);
+GO
+
+-- Creating foreign key on [CategoryId] in table 'Surveys'
+ALTER TABLE [dbo].[Surveys]
+ADD CONSTRAINT [FK_Category_Survey]
+    FOREIGN KEY ([CategoryId])
+    REFERENCES [dbo].[Categories]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Category_Survey'
+CREATE INDEX [IX_FK_Category_Survey]
+ON [dbo].[Surveys]
+    ([CategoryId]);
 GO
 
 -- --------------------------------------------------

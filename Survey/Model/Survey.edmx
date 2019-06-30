@@ -16,10 +16,6 @@
       <End Role="Question" EntitySet="Questions" />
       <End Role="Answer" EntitySet="Answers" />
     </AssociationSet>
-    <AssociationSet Name="FK_Category_Survey" Association="Model.Store.FK_Category_Survey">
-      <End Role="CategorySurvey" EntitySet="Categories" />
-      <End Role="Survey" EntitySet="Surveys" />
-    </AssociationSet>
     <AssociationSet Name="FK_Survey_Question" Association="Model.Store.FK_Survey_Question">
       <End Role="Survey" EntitySet="Surveys" />
       <End Role="Question" EntitySet="Questions" />
@@ -32,14 +28,18 @@
       <End Role="Survey" EntitySet="Surveys" />
       <End Role="UserSurvey" EntitySet="UserSurveys" />
     </AssociationSet>
+    <AssociationSet Name="FK_Category_Survey" Association="Model.Store.FK_Category_Survey">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Survey" EntitySet="Surveys" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Questions">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="true" />
     <Property Name="SurveyId" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
@@ -48,8 +48,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="true" />
     <Property Name="QuestionId" Type="int" Nullable="false" />
     <Property Name="IsTrue" Type="bit" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
@@ -60,7 +60,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Time" Type="int" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
@@ -106,18 +106,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Category_Survey">
-    <End Role="CategorySurvey" Type="Model.Store.Categories" Multiplicity="1" />
-    <End Role="Survey" Type="Model.Store.Surveys" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CategorySurvey">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Survey">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Survey_Question">
     <End Role="Survey" Type="Model.Store.Surveys" Multiplicity="1" />
     <End Role="Question" Type="Model.Store.Questions" Multiplicity="*" />
@@ -154,6 +142,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Category_Survey">
+    <End Role="Category" Type="Model.Store.Categories" Multiplicity="1" />
+    <End Role="Survey" Type="Model.Store.Surveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -167,10 +167,6 @@
           </AssociationSet>
           <EntitySet Name="Surveys" EntityType="Model.Survey" />
           <EntitySet Name="Categories" EntityType="Model.Category" />
-          <AssociationSet Name="FK_Category_Survey" Association="Model.FK_Category_Survey">
-            <End Role="CategorySurvey" EntitySet="Categories" />
-            <End Role="Survey" EntitySet="Surveys" />
-          </AssociationSet>
           <AssociationSet Name="FK_Survey_Question" Association="Model.FK_Survey_Question">
             <End Role="Survey" EntitySet="Surveys" />
             <End Role="Question" EntitySet="Questions" />
@@ -185,14 +181,18 @@
             <End Role="Survey" EntitySet="Surveys" />
             <End Role="UserSurvey" EntitySet="UserSurveys" />
           </AssociationSet>
+          <AssociationSet Name="FK_Category_Survey" Association="Model.FK_Category_Survey">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Survey" EntitySet="Surveys" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="Foto" Type="Binary" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="true" />
+          <Property Name="Foto" Type="Binary" Nullable="true" />
           <NavigationProperty Name="Answer" Relationship="Model.FK_Question_Answer" FromRole="Question" ToRole="Answer" />
           <Property Name="SurveyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Survey" Relationship="Model.FK_Survey_Question" FromRole="Question" ToRole="Survey" />
@@ -203,8 +203,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="Foto" Type="Binary" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="true" />
+          <Property Name="Foto" Type="Binary" Nullable="true" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Question_Answer" FromRole="Answer" ToRole="Question" />
           <Property Name="IsTrue" Type="Boolean" Nullable="false" />
@@ -228,12 +228,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="Time" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CategorySurvey" Relationship="Model.FK_Category_Survey" FromRole="Survey" ToRole="CategorySurvey" />
           <NavigationProperty Name="Question" Relationship="Model.FK_Survey_Question" FromRole="Survey" ToRole="Question" />
           <NavigationProperty Name="UserSurvey" Relationship="Model.FK_Survey_UserSurvey" FromRole="Survey" ToRole="UserSurvey" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="Category" Relationship="Model.FK_Category_Survey" FromRole="Survey" ToRole="Category" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -241,21 +241,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Survey" Relationship="Model.FK_Category_Survey" FromRole="CategorySurvey" ToRole="Survey" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="Survey" Relationship="Model.FK_Category_Survey" FromRole="Category" ToRole="Survey" />
         </EntityType>
-        <Association Name="FK_Category_Survey">
-          <End Type="Model.Category" Role="CategorySurvey" Multiplicity="1" />
-          <End Type="Model.Survey" Role="Survey" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CategorySurvey">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Survey">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Survey_Question">
           <End Type="Model.Survey" Role="Survey" Multiplicity="1" />
           <End Type="Model.Question" Role="Question" Multiplicity="*" />
@@ -314,6 +302,18 @@
             </Principal>
             <Dependent Role="UserSurvey">
               <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Survey">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.Survey" Role="Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

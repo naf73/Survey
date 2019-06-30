@@ -43,42 +43,58 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="Users_Click">Сотрудники
-                </Button>
+                Click="Users_Click">Сотрудники</Button>
                 <Button  x:Name="Surveys"    
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Margin="3"
-                Click="Surveys_Click" Content="Опросы"/>
+                Click="Surveys_Click"  Content="Опросы"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Row="2" Grid.Column=" 0" 
-                      HorizontalAlignment="Center" 
-                      Height="350" 
-                      Margin="3" 
-                      VerticalAlignment="Top" 
-                      Width="300">
+            <DataGrid x:Name="StatEmployeesDataGrid"
+                      Grid.Row="2" 
+                      Grid.Column=" 0"                       
+                      SelectionUnit="FullRow"
+                      SelectionMode="Single"
+                      Background="{x:Null}" 
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="DarkGray"
+                      RowBackground="LightGray"
+                      AlternatingRowBackground="White"
+                      IsReadOnly="True"
+                      Margin="3"
+                      SelectionChanged="StatEmployeesDataGrid_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
-                    <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}"  Width="*"/>
-                    <DataGridTextColumn Header="Рейтинг" Binding="{Binding Path=RatingEmployee}" Width="*"/>
+                    <DataGridTextColumn x:Name="DSurName" Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
+                    <DataGridTextColumn x:Name="DName" Header="Имя" Binding="{Binding Path=Name}"  Width="*"/>
+                    <DataGridTextColumn x:Name="DRating" Header="Рейтинг в %" Binding="{Binding Path=RatingEmployee, StringFormat=p2}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <DataGrid Grid.Row="2" Grid.Column="1" 
-                      HorizontalAlignment="Center" 
-                      Height="350" 
-                      Margin="3" 
-                      VerticalAlignment="Top" 
-                      Width="300">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Тест" Binding="{Binding Path=Survey}" Width="*"/>
-                    <DataGridTextColumn Header="Итого в %" Binding="{Binding Path=RatingSurvey}" Width="*"/>
+            <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+
+            <DataGrid x:Name="StatSurveysDataGrid"
+                      Grid.Row="2" 
+                      Grid.Column="2"
+                      SelectionUnit="FullRow"
+                      SelectionMode="Single"
+                      Background="{x:Null}" 
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="DarkGray"
+                      RowBackground="LightGray"
+                      AlternatingRowBackground="White"
+                      IsReadOnly="True"
+                      Margin="3">
+                <DataGrid.Columns> 
+                    <DataGridTextColumn x:Name="DSur" Header="Опрос" Binding="{Binding Path=Survey}" Width="*"/>
+                    <DataGridTextColumn x:Name="DCat" Header="Категория" Binding="{Binding Path=Catalog}" Width="auto"/>
+                    <DataGridTextColumn x:Name="DTotal" Header="Итого в %" Binding="{Binding Path=RatingSurvey, StringFormat=p2}" Width="auto"/>
                 </DataGrid.Columns>
                 
             </DataGrid> 
@@ -91,6 +107,7 @@
                 HorizontalAlignment="Left"
                 HorizontalContentAlignment="Center"
                 Margin="3"
+                IsCancel="True"
                 Click="Exit_Click">Выход
         </Button>
         
@@ -98,7 +115,7 @@
 
         <Grid Grid.Row="1" Grid.Column="1">
 
-            <TextBlock HorizontalAlignment="Center">Статистика</TextBlock>
+            <TextBlock x:Name="TbStat" HorizontalAlignment="Center">Статистика</TextBlock>
             
 
         </Grid>
