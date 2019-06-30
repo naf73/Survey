@@ -89,5 +89,15 @@ namespace Survey.Helper
             public static string KcAbsent { get; set; }        
           
         }
+
+        public static class AuthPage
+        {
+            public static string TblLogin { get; set; }
+            public static string TblPassword { get; set; }
+            public static string TblSingIn { get; set; }
+            public static string TblLanguage { get; set; }
+            public static string KcEntre { get; set; }          
+
+        }
     }
 }

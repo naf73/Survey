@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Survey.Helper;
 
 namespace Survey.View.User
 {
@@ -43,6 +44,18 @@ namespace Survey.View.User
             }
             string bestSurvey = surveyController.GetTheBestSurveyOfUser(_user.Id);
             if (!string.IsNullOrEmpty(bestSurvey)) LabelBestSurvey.Content = bestSurvey;
+
+        #region Локализация       
+       
+            ComeBack.Content = LangPages.UserPage.KcExit;
+            GoToTest.Content = LangPages.UserPage.KcGoSurvey;
+            LabelMotivation.Content = LangPages.UserPage.KcBestResult;
+            LabelBestSurvey.Content = LangPages.UserPage.KcAbsent;
+            DgCat.Header = LangPages.UserPage.DgCategory;
+            DgTitle.Header = LangPages.UserPage.DgTitle;
+            DgTime.Header = LangPages.UserPage.DgTime;
+
+        #endregion
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
@@ -66,5 +79,6 @@ namespace Survey.View.User
         }
 
         #endregion
+
     }
 }

@@ -21,12 +21,13 @@ using Survey.Model;
 using Survey.Logic;
 using Survey.Helper;
 
+
 namespace Survey.View.User
 {
     /// <summary>
     /// Interaction logic for QuestionPage.xaml
     /// </summary>
-    public partial class QuestionPage : Page , INotifyPropertyChanged
+    public partial class QuestionPage : Page, INotifyPropertyChanged
     {
         private Model.Survey _survey;
         private Timer aTimer;
@@ -63,6 +64,12 @@ namespace Survey.View.User
             number = 0;
             right_answer = 0;
             ShowQuestion(number);
+
+            #region Локализация
+
+            NextQuestion.Content = LangPages.QuestionPage.KcNext;
+
+            #endregion
         }
 
         private void NextQuestion_Click(object sender, RoutedEventArgs e)
@@ -87,7 +94,7 @@ namespace Survey.View.User
             }
             else
             {
-                EndingSurvey();                
+                EndingSurvey();
             }
         }
 
@@ -112,7 +119,7 @@ namespace Survey.View.User
         }
 
         private void ShowResult(double result)
-        {            
+        {
             MessageBox.Show(string.Format("Тест завершен\nВаш результат: {0} %", result));
         }
 
@@ -170,7 +177,7 @@ namespace Survey.View.User
         private void ShowAnswer(List<Answer> answers)
         {
             Answers.Children.Clear();
-            foreach(var answer in answers)
+            foreach (var answer in answers)
             {
                 Answers.Children.Add(new CheckBox()
                 {
@@ -185,15 +192,15 @@ namespace Survey.View.User
         {
             Times = string.Format("{0:00}:{1:00}:{2:00}", hour, min, sec);
             if (hour == 0 && min == 0 && sec == 0)
-            {                
+            {
                 EndingSurvey();
             }
             else
-            {                
+            {
                 if (sec == 0) { sec = 60; min--; }
                 if (min == 0 && hour > 0) { min = 59; hour--; }
                 sec--;
-            }            
+            }
         }
 
         public string Times
@@ -212,6 +219,6 @@ namespace Survey.View.User
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
+        }        
     }
 }

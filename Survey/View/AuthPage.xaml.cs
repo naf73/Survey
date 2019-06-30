@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Survey.Helper;
 
 namespace Survey.View
 {
@@ -21,6 +22,16 @@ namespace Survey.View
     /// </summary>
     public partial class AuthPage : Page
     {
+
+       
+
+        private class Item
+        {
+            public Item(int value, string text) { Value = value; Text = text; }
+            public int Value { get; set; }
+            public string Text { get; set; }
+            public override string ToString() { return Text; }
+        }
         private UserController userController = new UserController();
 
         public AuthPage()
@@ -28,6 +39,12 @@ namespace Survey.View
             InitializeComponent();
             userController.AddAdmin();
             Login.Focus();
+
+            string I = "Русский";
+            string II = "Engish";
+            
+            comboBox1.Items.Add(new Item(1, I));
+            comboBox1.Items.Add(new Item(2, II));
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -49,5 +66,31 @@ namespace Survey.View
                 MessageBox.Show("Не правильный логин / пароль");
             }
         }
+        #region Локализация
+
+        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Item item = comboBox1.Items[comboBox1.SelectedIndex] as Item;
+            // MessageBox.Show(item.Value.ToString());
+
+            if (comboBox1.SelectedIndex == 0)
+            {
+                LANG.ChangeLang(Lang.RUS);
+            }
+            else
+            {
+                LANG.ChangeLang(Lang.ENG);
+            }
+
+            TLog.Text = LangPages.AuthPage.TblLogin;
+            TPas.Text = LangPages.AuthPage.TblPassword;
+            //TLang.Text = LangPages.AuthPage.TblLanguage;
+            TSing.Text = LangPages.AuthPage.TblSingIn;
+            Enter.Content = LangPages.AuthPage.KcEntre;
+
+        }     
+              
+
+        #endregion
     }
 }

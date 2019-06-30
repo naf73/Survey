@@ -108,6 +108,16 @@ namespace Survey.Helper
 
                     #endregion
 
+                    #region AuthPege
+
+                    LangPages.AuthPage.KcEntre = "Войти";
+                    LangPages.AuthPage.TblSingIn = "Вход в систему";
+                    LangPages.AuthPage.TblLogin = "Логин";
+                    LangPages.AuthPage.TblPassword = "Пароль";
+                    LangPages.AuthPage.TblLanguage = "Язык";
+
+                    #endregion
+
                     break;
                 case Lang.ENG:
 
@@ -192,7 +202,17 @@ namespace Survey.Helper
                     LangPages.UserPage.KcAbsent = "Absent";
                     LangPages.UserPage.KcBestResult = "Best result";
                     LangPages.UserPage.KcExit = "Exit";
-                    LangPages.UserPage.KcGoSurvey = "Go survey";
+                    LangPages.UserPage.KcGoSurvey = "Go to survey";
+
+                    #endregion
+
+                    #region AuthPege
+
+                    LangPages.AuthPage.KcEntre = "Enter";
+                    LangPages.AuthPage.TblSingIn = "Sing in";
+                    LangPages.AuthPage.TblLogin = "Login";
+                    LangPages.AuthPage.TblPassword = "Password";
+                    LangPages.AuthPage.TblLanguage = "Language";
 
                     #endregion
 
