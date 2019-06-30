@@ -79,6 +79,16 @@ namespace Survey.View.Admin
             }
         }
 
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void CategoriesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             SelectCategory();
