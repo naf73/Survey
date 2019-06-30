@@ -22,6 +22,7 @@ namespace Survey.View.Admin
     /// </summary>
     public partial class SurveysPage : Page
     {
+        private Model.Survey _survey;
         private Category _category;
 
         private CategoryController categoryController = new CategoryController();
@@ -94,17 +95,62 @@ namespace Survey.View.Admin
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (!(_survey is null)) Navigated.GoToSurveyPage(_survey);
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
+            if (!(_survey is null))
+            {
+                if (MessageBox.Show("Удалить опрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    surveyController.Remove(_survey.Id);
+                    UpdateFields();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходиом указать опрос для удаления");
+            }
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
             throw new NotImplementedException();
+        }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SurveysDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectSurvey();
+        }
+
+        private void SurveysDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SelectSurvey();
+            if (!(_survey is null)) Navigated.GoToSurveyPage(_survey);
         }
 
         #endregion
 
         #region Methods
+
+        private void SelectSurvey()
+        {
+            Model.Survey survey = (Model.Survey)SurveysDataGrid.SelectedItem;
+            if(!(survey is null))
+            {
+                _survey = survey;
+            }
+            else
+            {
+                _survey = null;
+            }
+        }
 
         private void UpdateFields()
         {
@@ -139,6 +185,7 @@ namespace Survey.View.Admin
             Title.Header = LangPages.SurveysPage.DgTitle;
             Time.Header = LangPages.SurveysPage.DgTime;
         }
-        #endregion
+
+        #endregion        
     }
 }

@@ -113,6 +113,7 @@ namespace Survey.Logic
                     {
                         survey.IsDeleted = true;
                         db.Entry(survey).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
             }
