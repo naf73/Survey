@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Helper;
+using Survey.Properties;
 
 namespace Survey.View
 {
@@ -44,7 +45,7 @@ namespace Survey.View
             SwtichLang.Items.Add(new Item(1, I));
             SwtichLang.Items.Add(new Item(2, II));
 
-            SwtichLang.SelectedIndex = 0;
+            SwtichLang.SelectedIndex = Settings.Default.LangIndex;
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -81,13 +82,15 @@ namespace Survey.View
                 LANG.ChangeLang(Lang.ENG);
             }
 
+            Settings.Default.LangIndex = SwtichLang.SelectedIndex;
+            Settings.Default.Save();
+
             TLog.Text = LangPages.AuthPage.TblLogin;
             TPas.Text = LangPages.AuthPage.TblPassword;
             TSing.Text = LangPages.AuthPage.TblSingIn;
             Enter.Content = LangPages.AuthPage.KcEntre;
 
-        }     
-              
+        }                   
 
         #endregion
     }
