@@ -69,10 +69,10 @@ namespace Survey.View.User
         }
 
         #endregion
-        #region Локализация       
+        #region Localization       
         private void Local()
         {
-            ComeBack.Content = LangPages.UserPage.KcExit;
+            ComeBack.Content = LangPages.UserPage.KcBack;
             GoToTest.Content = LangPages.UserPage.KcGoSurvey;
             LabelMotivation.Content = LangPages.UserPage.KcBestResult;
             LabelBestSurvey.Content = LangPages.UserPage.KcAbsent;

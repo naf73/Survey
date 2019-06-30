@@ -64,10 +64,10 @@ namespace Survey.View.Admin
         }
 
 
-            
 
-            #region Локализация
-        
+
+        #region Localization
+
         private void Local()
         {
             Users.Content = LangPages.AdminPage.KcWorkers;

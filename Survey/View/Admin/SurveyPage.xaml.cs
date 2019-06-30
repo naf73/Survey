@@ -31,6 +31,7 @@ namespace Survey.View.Admin
             InitializeComponent();
             _survey = survey;
             UpdateFields();
+            Local();
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
@@ -67,6 +68,13 @@ namespace Survey.View.Admin
             }
         }
 
+        #endregion
+
+        #region Localization
+        private void Local()
+        {
+
+        }
         #endregion
     }
 }

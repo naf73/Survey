@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Survey.Helper;
 
 namespace Survey.View.Admin
 {
@@ -30,6 +31,7 @@ namespace Survey.View.Admin
         {
             InitializeComponent();
             UpdateCategoriesTable();
+            Local();
         }
 
         #region Events        
@@ -108,6 +110,23 @@ namespace Survey.View.Admin
             {
                 _category = null;
             }
+        }
+
+        #endregion
+
+        #region Localization
+
+        private void Local()
+        {
+            ComeBack.Content = LangPages.CategoriesPage.KcBack;
+            LabelPage.Text = LangPages.CategoriesPage.DgCatSurveys;
+            Add.Content = LangPages.CategoriesPage.KcAdd;
+            Edit.Content = LangPages.CategoriesPage.KcChange;
+            Remove.Content = LangPages.CategoriesPage.KcDel;
+            Export.Content = LangPages.CategoriesPage.KcExport;
+            Import.Content = LangPages.CategoriesPage.KcExport;
+            CatTests.Header = LangPages.CategoriesPage.DgCatTests;
+
         }
 
         #endregion

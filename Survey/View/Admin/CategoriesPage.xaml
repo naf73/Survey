@@ -97,7 +97,7 @@
                   SelectionChanged="DataGrid_SelectionChanged"
                   MouseDoubleClick="CategoriesDataGrid_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Категории тестов"  Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn x:Name="CatTests" Header="Категории тестов"  Binding="{Binding Path=Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
