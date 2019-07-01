@@ -78,8 +78,6 @@ namespace Survey.View.Admin
             DgSurName.Header = LangPages.UsersPage.DgSurName;
         }
 
-
-
         #endregion
     }
 }
