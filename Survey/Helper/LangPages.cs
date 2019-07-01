@@ -70,15 +70,15 @@ namespace Survey.Helper
         public static class UsersPage
         {
             public static string TblWorkers { get; set; }
-            public static string DgNumber { get; set; }
-            public static string DgTitle { get; set; }
-            public static string DgTime { get; set; }
+            public static string DgLogin { get; set; }
+            public static string DgSurName { get; set; }
+            public static string DgName { get; set; }
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
             public static string KcDel { get; set; }
             public static string KcClear { get; set; }
-            public static string CbxRoles { get; set; }
+            public static string CbxRole { get; set; }
             public static string TbxName { get; set; }
             public static string TbxSurName { get; set; }
             public static string TbxLogin { get; set; }
