@@ -44,12 +44,18 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
 
-            <Label x:Name="LabelCategoryName"
+            <Label x:Name="LabelSurveyName"
                    VerticalAlignment="Center">Наименование опроса:</Label>
 
             <TextBox x:Name="SurveyName"
                      VerticalAlignment="Center"
                      Width="200"/>
+
+            <Label x:Name="LabelSurveyTime">Время на тест, мин:</Label>
+
+            <TextBox x:Name="SurveyTime"
+                     VerticalAlignment="Center"
+                     Width="50"/>
 
             <Button x:Name="ManageSurvey"
                     Margin="3"
@@ -59,7 +65,8 @@
 
         <!-- Панель вопросы -->
 
-        <Grid Grid.Row="2">
+        <Grid x:Name="GridSurvey"
+              Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
@@ -264,7 +271,13 @@
 
                 </Grid>
 
-                <StackPanel Grid.Row="2" Orientation="Vertical">
+                <CheckBox x:Name="IsTrueAnswer"
+                          Grid.Row="2"
+                          Content="Правильный ответ"
+                          IsChecked="False"
+                          Margin="3"/>
+
+                <StackPanel Grid.Row="3" Orientation="Vertical">
                     
                     <StackPanel HorizontalAlignment="Center" 
                                 Orientation="Horizontal">
@@ -288,7 +301,8 @@
 
                     <Image x:Name="AnswerPicture"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center"
+                           MaxHeight="250"/>
 
                 </StackPanel>
 
