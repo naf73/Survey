@@ -102,6 +102,10 @@ namespace Survey.Logic
                 {
                     db.Users.Add(user);
                     db.SaveChanges();
+
+                    // === Добавляем опросы для нового пользователя
+
+                    JoinSurveysToUser(user.Id);
                 }
             }
             catch (Exception)
@@ -216,6 +220,34 @@ namespace Survey.Logic
                     {
                         return true;
                     }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void JoinSurveysToUser(int userId)
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    List<Model.Survey> surveys = db.Surveys.Where(s => s.IsDeleted == false).ToList();
+                    
+                    foreach(var survey in surveys)
+                    {
+                        db.UserSurveys.Add(new UserSurvey()
+                        {
+                            UserId = userId,
+                            SurveyId = survey.Id,
+                            IsPass = false,
+                            Result = 0
+                        });
+                    }
+
+                    db.SaveChanges();
                 }
             }
             catch (Exception)
