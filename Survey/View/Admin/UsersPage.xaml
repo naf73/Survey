@@ -26,8 +26,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -51,83 +49,11 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
-            <TextBlock x:Name="Log" Grid.Row="0" 
-                               Grid.Column="1"
-                               Style="{StaticResource LabelTextBlock}">Логин</TextBlock>
-            <TextBox x:Name="Login"
-                             Grid.Row="0"
-                             Grid.Column="2"
-                             Style="{StaticResource InputTextBox}"/>
-
-            <TextBlock x:Name="SurName" Grid.Row="1" 
-                               Grid.Column="1"
-                               Style="{StaticResource LabelTextBlock}">Фамилия</TextBlock>
-            <TextBox x:Name="Surname"
-                             Grid.Row="1"
-                             Grid.Column="2"
-                             Style="{StaticResource InputTextBox}"/>
-
-            <TextBlock x:Name="FName" Grid.Row="2"
-                               Grid.Column="1"
-                               Style="{StaticResource LabelTextBlock}">Имя</TextBlock>
-            <TextBox x:Name="Name"
-                             Grid.Row="2"
-                             Grid.Column="2"
-                             Style="{StaticResource InputTextBox}"/>
-
-            <TextBlock x:Name="Role" Grid.Row="3"
-                               Grid.Column="1"
-                               Style="{StaticResource LabelTextBlock}">Роль</TextBlock>
-            <ComboBox x:Name="Roles"
-                              Grid.Row="3"
-                              Grid.Column="2"
-                              Margin="3"/>
-
-            <Button x:Name="ClearUser"
-                            Grid.Row="4"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            Margin="3"
-                            Click="ClearUser_Click">Очистить поля</Button>
-
-           
-
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="AddUser" 
-                    Grid.Column="0" 
-                    Style="{StaticResource ActionButton}" 
-                    Click="AddUser_Click">Добавить</Button>
-            <Button x:Name="EditUser" 
-                    Grid.Column="1" 
-                    Style="{StaticResource ActionButton}" 
-                    Click="EditUser_Click">Изменить</Button>
-            <Button x:Name="RemoveUser" 
-                    Grid.Column="2" 
-                    Style="{StaticResource ActionButton}" 
-                    Click="RemoveUser_Click">Удалить</Button>
-        </Grid>
-
-        <DataGrid x:Name="MenusDataGrid" 
-                  Grid.Row="3"
+            <DataGrid x:Name="MenusDataGrid" 
+                  Grid.Column="0"
                   SelectionUnit="FullRow"
                   SelectionMode="Single"
                   Background="{x:Null}" 
@@ -137,11 +63,95 @@
                   AlternatingRowBackground="White" 
                   IsReadOnly="True"
                   Margin="3">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="DgLog" Header="Логин" Binding="{Binding Path=Login}" Width="*"/>
-                <DataGridTextColumn x:Name="DgSurName" Header="Фамилия" Binding="{Binding Path=Surname}"  Width="*"/>
-                <DataGridTextColumn x:Name="DgName" Header="Имя" Binding="{Binding Path=Name}" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="DgLog" Header="Логин" Binding="{Binding Path=Login}" Width="*"/>
+                    <DataGridTextColumn x:Name="DgSurName" Header="Фамилия" Binding="{Binding Path=Surname}"  Width="*"/>
+                    <DataGridTextColumn x:Name="DgName" Header="Имя" Binding="{Binding Path=Name}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="AddUser" 
+                    Grid.Column="0" 
+                    Style="{StaticResource ActionButton}" 
+                    Click="AddUser_Click">Добавить</Button>
+                    <Button x:Name="EditUser" 
+                    Grid.Column="1" 
+                    Style="{StaticResource ActionButton}" 
+                    Click="EditUser_Click">Изменить</Button>
+                    <Button x:Name="RemoveUser" 
+                    Grid.Column="2" 
+                    Style="{StaticResource ActionButton}" 
+                    Click="RemoveUser_Click">Удалить</Button>
+                </Grid>
+
+                <TextBlock x:Name="Log" Grid.Row="1" 
+                               Grid.Column="0"
+                               Style="{StaticResource LabelTextBlock}">Логин</TextBlock>
+                <TextBox x:Name="Login"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Style="{StaticResource InputTextBox}"/>
+
+                <TextBlock x:Name="SurName" Grid.Row="2" 
+                               Grid.Column="0"
+                               Style="{StaticResource LabelTextBlock}">Фамилия</TextBlock>
+                <TextBox x:Name="Surname"
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             Style="{StaticResource InputTextBox}"/>
+
+                <TextBlock x:Name="FName" Grid.Row="3"
+                               Grid.Column="0"
+                               Style="{StaticResource LabelTextBlock}">Имя</TextBlock>
+                <TextBox x:Name="Name"
+                             Grid.Row="3"
+                             Grid.Column="1"
+                             Style="{StaticResource InputTextBox}"/>
+
+                <TextBlock x:Name="Role" Grid.Row="4"
+                               Grid.Column="0"
+                               Style="{StaticResource LabelTextBlock}">Роль</TextBlock>
+                <CheckBox x:Name="IsAdmin"
+                              Grid.Row="4"
+                              Grid.Column="1"
+                              Margin="3"
+                      Content="Администратор системы"/>
+
+                <Button x:Name="ClearUser"
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="3"
+                            Click="ClearUser_Click">Очистить поля</Button>
+            </Grid>
+        </Grid>
+
+        
+
+        
+
+        
     </Grid>
 </Page>
