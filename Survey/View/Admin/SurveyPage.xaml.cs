@@ -24,7 +24,7 @@ namespace Survey.View.Admin
     public partial class SurveyPage : Page
     {
         private Model.Survey _survey;
-        private List<Answer> _answers;
+        private List<Answer> _answers = new List<Answer>();
 
         private SurveyController surveyController = new SurveyController();
         QuestionController questionController = new QuestionController();
@@ -101,23 +101,53 @@ namespace Survey.View.Admin
 
         private void AnswerAdd_Click(object sender, RoutedEventArgs e)
         {
-            Answer answer = new Answer()
+            if (CheckFillingAnswerFields())
             {
-                Text = AnswerText.Text,
-                Foto = ConvertPicture.BitmapImageToByteArray((BitmapImage)AnswerPicture.Source),
-                IsDeleted = false,
-                IsTrue = IsTrueAnswer.IsChecked == true ? true : false
-            };
+                _answers.Add(new Answer()
+                {
+                    Text = AnswerText.Text,
+                    Foto = !(AnswerPicture.Source is null) ? ConvertPicture.BitmapImageToByteArray((BitmapImage)AnswerPicture.Source) : null,
+                    IsDeleted = false,
+                    IsTrue = IsTrueAnswer.IsChecked == true ? true : false
+                });                
+            }
+            else
+            {
+                MessageBox.Show("Не все поля заполнены");
+            }
+            MethodClearAnswerFields();
+            UpdateAnswerTable();
         }
 
         private void AnswerEdit_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Answer current_answer = (Answer)AnswersDataGrid.SelectedItem;
+            if(!(current_answer is null))
+            {
+                current_answer.Text = AnswerText.Text;
+                current_answer.Foto = !(AnswerPicture.Source is null) ? ConvertPicture.BitmapImageToByteArray((BitmapImage)AnswerPicture.Source) : null;
+                current_answer.IsTrue = IsTrueAnswer.IsChecked == true ? true : false;
+            }
+            else
+            {
+                MessageBox.Show("Необходимо указать ответ для редактирования");
+            }
+            MethodClearAnswerFields();
+            UpdateAnswerTable();
         }
 
         private void AnswerRemove_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Answer current_answer = (Answer)AnswersDataGrid.SelectedItem;
+            if(!(current_answer is null))
+            {
+                _answers.Remove(current_answer);
+                UpdateAnswerTable();
+            }
+            else
+            {
+                MessageBox.Show("Необходимо указать ответ для удаления");
+            }
         }
 
         private void AnswerPictureAdd_Click(object sender, RoutedEventArgs e)
@@ -222,6 +252,7 @@ namespace Survey.View.Admin
         {
             if (!(_answers is null))
             {
+                AnswersDataGrid.ItemsSource = null;
                 AnswersDataGrid.ItemsSource = _answers;
             }
             else
@@ -271,7 +302,7 @@ namespace Survey.View.Admin
             QuestionEdit.Content = LangPages.SurveyPage.KcChange;
             QuestionRemove.Content = LangPages.SurveyPage.KcDel;
             DgQuestion.Header = LangPages.SurveyPage.DgQuestion;
-            LabelQuestion.Content = LangPages.SurveyPage.DgAnswer;
+            LabelQuestion.Content = LangPages.SurveyPage.DgQuestion;
             LabelQuestionText.Content = LangPages.SurveyPage.LText;
             LabelPicture.Content = LangPages.SurveyPage.LPictures;
             QuestionPictureAdd.Content = LangPages.SurveyPage.KcAddPictures;
