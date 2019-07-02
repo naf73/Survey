@@ -137,6 +137,17 @@ namespace Survey.View.Admin
 
         #region Methods
 
+        private string GetPathPicture()
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Filter = "Bitmap (*.bmp)|*.bmp|JPEG (*.jpg)|*.jpg|JPEG (*.jpeg)|*jpeg|PNG (*.png)|*.png|All files (*.*)|*.*";
+            dialog.FilterIndex = 2;
+
+            Nullable<bool> result = dialog.ShowDialog();
+
+            return result == true ? dialog.FileName : string.Empty;
+        }
+
         private void UpdateFields()
         {
             if (_survey.Id != 0)
