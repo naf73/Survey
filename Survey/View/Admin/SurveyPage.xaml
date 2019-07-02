@@ -264,7 +264,13 @@
 
                 </Grid>
 
-                <StackPanel Grid.Row="2" Orientation="Vertical">
+                <CheckBox x:Name="IsTrueAnswer"
+                          Grid.Row="2"
+                          Content="Правильный ответ"
+                          IsChecked="False"
+                          Margin="3"/>
+
+                <StackPanel Grid.Row="3" Orientation="Vertical">
                     
                     <StackPanel HorizontalAlignment="Center" 
                                 Orientation="Horizontal">

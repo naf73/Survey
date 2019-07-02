@@ -101,13 +101,12 @@ namespace Survey.View.Admin
 
         private void AnswerAdd_Click(object sender, RoutedEventArgs e)
         {
-
-            // Stop here!!!
             Answer answer = new Answer()
             {
                 Text = AnswerText.Text,
                 Foto = ConvertPicture.BitmapImageToByteArray((BitmapImage)AnswerPicture.Source),
-                IsDeleted = false
+                IsDeleted = false,
+                IsTrue = IsTrueAnswer.IsChecked == true ? true : false
             };
         }
 
@@ -216,6 +215,7 @@ namespace Survey.View.Admin
             QuestionText.Clear();
             QuestionPicture.Source = null;
             AnswersDataGrid.ItemsSource = null;
+            MethodClearAnswerFields();
         }
 
         private void UpdateAnswerTable()
@@ -236,6 +236,7 @@ namespace Survey.View.Admin
             {
                 AnswerText.Text = answer.Text;
                 AnswerPicture.Source = ConvertPicture.ByteArrayToImage(answer.Foto);
+                IsTrueAnswer.IsChecked = answer.IsTrue;
             }
             else
             {
@@ -247,6 +248,7 @@ namespace Survey.View.Admin
         {
             AnswerText.Clear();
             AnswerPicture.Source = null;
+            IsTrueAnswer.IsChecked = false;
         }
 
         #endregion
