@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Helper;
+using Microsoft.Win32;
 
 namespace Survey.View.Admin
 {
@@ -81,8 +82,18 @@ namespace Survey.View.Admin
 
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
-        }
+			//throw new NotImplementedException();
+
+			SaveFileDialog saveFileDialog = new SaveFileDialog
+			{
+				Filter = "Json files(*.json)|*.json|All files(*.*)|*.*"
+			};
+
+			saveFileDialog.ShowDialog();
+
+
+			
+		}
 
         private void Import_Click(object sender, RoutedEventArgs e)
         {
