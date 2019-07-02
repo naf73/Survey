@@ -38,6 +38,23 @@ namespace Survey.Logic
             }
         }
 
+        public Model.Survey GetById(int surveyId)
+        {
+            if (surveyId == 0) throw new ArgumentException();
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Surveys.FirstOrDefault(s => s.IsDeleted == false &&
+                                                          s.Id == surveyId);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public List<Model.Survey> GetByUserId(int userId)
         {
             try
@@ -87,6 +104,28 @@ namespace Survey.Logic
                 using (var db = new SurveyContext(_app.Conn))
                 {
                     db.Surveys.Add(survey);
+                    db.SaveChanges();
+
+                    // === Добавляем пользователей в опрос
+
+                    JoinUsersToSurvey(survey.Id);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Edit(Model.Survey survey)
+        {
+            if (survey == null) throw new ArgumentNullException();
+            if (survey.Id == 0) throw new ArgumentException();
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    db.Entry(survey).State = EntityState.Modified;
                     db.SaveChanges();
 
                     // === Добавляем пользователей в опрос

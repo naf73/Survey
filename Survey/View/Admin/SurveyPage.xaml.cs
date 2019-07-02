@@ -45,16 +45,29 @@ namespace Survey.View.Admin
 
         private void ManageSurvey_Click(object sender, RoutedEventArgs e)
         {
-
-            throw new NotImplementedException();
-
-            if((bool)ManageSurvey.Tag)
+            if (!int.TryParse(SurveyTime.Text, out int time))
             {
-
+                MessageBox.Show("Ошибка ввода времени");
+                return;
+            }
+            if(string.IsNullOrEmpty(SurveyName.Text))
+            {
+                MessageBox.Show("Ошибка ввода названия опроса");
+                return;
+            }
+            if ((bool)ManageSurvey.Tag)
+            {
+                _survey.Name = SurveyName.Text;
+                _survey.Time = time;
+                surveyController.Add(_survey);
+                ManageSurvey.Tag = false;
+                GridSurvey.Visibility = Visibility.Visible;
             }
             else
             {
-
+                _survey.Name = SurveyName.Text;
+                _survey.Time = time;
+                surveyController.Edit(_survey);
             }
         }
 
@@ -62,17 +75,88 @@ namespace Survey.View.Admin
 
         private void QuestionAdd_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (CheckFillingQuestionFields())
+            {
+                if(CheckAnswersCount())
+                {
+                    if (CheckExistRightAnswer()) 
+                    {
+                        questionController.Add(new Question()
+                        {
+                            SurveyId = _survey.Id,
+                            Text = !string.IsNullOrEmpty(QuestionText.Text) ? QuestionText.Text : string.Empty,
+                            Foto = QuestionPicture.Source != null ? ConvertPicture.BitmapImageToByteArray((BitmapImage)QuestionPicture.Source) : null
+                        }, _answers);
+                        _answers.Clear();
+                        UpdateQuestionTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Отсутствуют правильный ответ");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Необходимо добавить вопросу ответы");
+                }                
+            }
+            else
+            {
+                MessageBox.Show("Не все поля у вопроса заполнены");
+            }
         }
 
         private void QuestionEdit_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Question question = (Question)QuestionsDataGrid.SelectedItem;
+            if (!(question is null))
+            {
+                if (CheckFillingQuestionFields())
+                {
+                    if (CheckAnswersCount())
+                    {
+                        if (CheckExistRightAnswer())
+                        {
+                            question.SurveyId = _survey.Id;
+                            question.Text = !string.IsNullOrEmpty(QuestionText.Text) ? QuestionText.Text : string.Empty;
+                            question.Foto = QuestionPicture.Source != null ? ConvertPicture.BitmapImageToByteArray((BitmapImage)QuestionPicture.Source) : null;
+                            questionController.Edit(question, _answers);
+                            _answers.Clear();
+                            UpdateQuestionTable();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Отсутствуют правильный ответ");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Необходимо добавить вопросу ответы");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не все поля у вопроса заполнены");
+                }
+            }
         }
 
         private void QuestionRemove_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Question question = (Question)QuestionsDataGrid.SelectedItem;
+
+            if(!(question is null))
+            {
+                if (MessageBox.Show("Удалить опрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    questionController.Remove(question.Id);
+                    UpdateQuestionTable();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Удаления вопроса необходимо его указать");
+            }
         }
 
         private void QuestionPictureAdd_Click(object sender, RoutedEventArgs e)
@@ -113,7 +197,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Не все поля заполнены");
+                MessageBox.Show("Не все поля у ответа заполнены");
             }
             MethodClearAnswerFields();
             UpdateAnswerTable();
@@ -180,7 +264,7 @@ namespace Survey.View.Admin
             dialog.Filter = "Bitmap (*.bmp)|*.bmp|JPEG (*.jpg)|*.jpg|JPEG (*.jpeg)|*jpeg|PNG (*.png)|*.png|All files (*.*)|*.*";
             dialog.FilterIndex = 2;
 
-            Nullable<bool> result = dialog.ShowDialog();
+            bool? result = dialog.ShowDialog();
 
             return result == true ? dialog.FileName : string.Empty;
         }
@@ -203,13 +287,16 @@ namespace Survey.View.Admin
             if (_survey.Id != 0)
             {
                 SurveyName.Text = _survey.Name;
+                SurveyTime.Text = _survey.Time.ToString();
                 ManageSurvey.Content = "Изменить";
                 ManageSurvey.Tag = false;
+                GridSurvey.Visibility = Visibility.Visible;
             }
             else
             {
                 ManageSurvey.Content = "Создать";
                 ManageSurvey.Tag = true;
+                GridSurvey.Visibility = Visibility.Hidden;
             }
         }
 
@@ -240,12 +327,19 @@ namespace Survey.View.Admin
             }
         }
 
+        private bool CheckFillingQuestionFields()
+        {
+            if (_answers.Count == 0) return false;
+            return !string.IsNullOrEmpty(QuestionText.Text) ||
+                    QuestionPicture.Source != null;
+        }
+
         private void MethodClearQuestionFields()
         {
             QuestionText.Clear();
             QuestionPicture.Source = null;
-            AnswersDataGrid.ItemsSource = null;
-            MethodClearAnswerFields();
+            _answers.Clear();
+            UpdateAnswerTable();
         }
 
         private void UpdateAnswerTable()
@@ -281,6 +375,16 @@ namespace Survey.View.Admin
                     AnswerPicture.Source != null;
         }
 
+        private bool CheckAnswersCount()
+        {
+            return _answers.Count > 0 ? true : false;
+        }
+
+        private bool CheckExistRightAnswer()
+        {
+            return _answers.Count(a => a.IsTrue == true) > 0 ? true : false;
+        }
+
         private void MethodClearAnswerFields()
         {
             AnswerText.Clear();
@@ -296,7 +400,7 @@ namespace Survey.View.Admin
         {
             ComeBack.Content = LangPages.SurveyPage.KcBack;
             ListQuestSurvey.Text = LangPages.SurveyPage.TblListQuestSurvey;
-            LabelCategoryName.Content = LangPages.SurveyPage.LNameSurvey;
+            LabelSurveyName.Content = LangPages.SurveyPage.LNameSurvey;
             ManageSurvey.Content = LangPages.SurveyPage.KcCreate;
             QuestionAdd.Content = LangPages.SurveyPage.KcAdd;
             QuestionEdit.Content = LangPages.SurveyPage.KcChange;
@@ -319,9 +423,6 @@ namespace Survey.View.Admin
             AnswerPictureRemove.Content = LangPages.SurveyPage.KcPicturesRemove;
             ClearAnswerFields.Content = LangPages.SurveyPage.KcClearFields;
             DgAnswer.Header = LangPages.SurveyPage.DgAnswer;
-
-
-
         }
 
         #endregion
