@@ -76,7 +76,7 @@ namespace Survey.View.Admin
 
         private void QuestionPictureAdd_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            GetPicture(QuestionPicture);
         }
 
         private void QuestionPictureRemove_Click(object sender, RoutedEventArgs e)
