@@ -3,12 +3,6 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Text;
 
-/*
-
-Насяйника, не ругаися! Знаю, что комменты избыточны.
-Я с С++ переехилъ в С#. Многое пока не просто:)
- 
-*/
 
 namespace Survey.Logic.JsonPorter
 {
