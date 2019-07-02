@@ -42,6 +42,40 @@ namespace Survey.Logic
             }
         }
 
+        /// <summary>
+        /// Выводит всех активных пользователей системе, в том числе администратора
+        /// </summary>
+        /// <returns></returns>
+        public List<User> GetAll()
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Users.Where(u => u.IsDeleted == false).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int GetAdminCount()
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    return db.Users.Count(u => u.IsAdmin == true);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public User GetById(int id)
         {
             if (id == 0) throw new ArgumentException();
