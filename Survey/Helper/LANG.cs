@@ -90,10 +90,10 @@ namespace Survey.Helper
 
                     #region UsersPage
 
-                    LangPages.UsersPage.CbxRoles = "Роль";
-                    LangPages.UsersPage.DgNumber = "Номер";
-                    LangPages.UsersPage.DgTime = "Время";
-                    LangPages.UsersPage.DgTitle = "Название";
+                    LangPages.UsersPage.CbxRole = "Роль";
+                    LangPages.UsersPage.DgLogin = "Логин";
+                    LangPages.UsersPage.DgSurName = "Фамилия";
+                    LangPages.UsersPage.DgName = "Имя";
                     LangPages.UsersPage.KcAdd = "Добавить";
                     LangPages.UsersPage.KcBack = "Назад";
                     LangPages.UsersPage.KcChange = "Изменить";
@@ -146,7 +146,7 @@ namespace Survey.Helper
                     LangPages.AdminPage.DgStatiatic = "Statistic";
                     LangPages.AdminPage.DgSurvey = "Survey";
                     LangPages.AdminPage.DgTotal = "Total in %";
-                    LangPages.AdminPage.DgSurName = "Surname";
+                    LangPages.AdminPage.DgSurName = "Sur Name";
                     LangPages.AdminPage.KcExit = "Exit";
                     LangPages.AdminPage.KcSurveys = "Surveys";
                     LangPages.AdminPage.KcWorkers = "Workers";
@@ -204,10 +204,10 @@ namespace Survey.Helper
 
                     #region UsersPage
 
-                    LangPages.UsersPage.CbxRoles = "Role";
-                    LangPages.UsersPage.DgNumber = "Number";
-                    LangPages.UsersPage.DgTime = "Time";
-                    LangPages.UsersPage.DgTitle = "Title";
+                    LangPages.UsersPage.CbxRole = "Role";
+                    LangPages.UsersPage.DgLogin = "Login";
+                    LangPages.UsersPage.DgSurName = "Sur Name";
+                    LangPages.UsersPage.DgName = "Name";
                     LangPages.UsersPage.KcAdd = "Add";
                     LangPages.UsersPage.KcBack = "ComeBack";
                     LangPages.UsersPage.KcChange = "Change";
@@ -216,7 +216,7 @@ namespace Survey.Helper
                     LangPages.UsersPage.TblWorkers = "Workers";
                     LangPages.UsersPage.TbxLogin = "Login";
                     LangPages.UsersPage.TbxName = "Name";
-                    LangPages.UsersPage.TbxSurName = "Surname";
+                    LangPages.UsersPage.TbxSurName = "Sur Name";
 
 
                     #endregion
