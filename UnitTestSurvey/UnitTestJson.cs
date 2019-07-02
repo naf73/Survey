@@ -30,8 +30,10 @@ namespace UnitTestSurvey
 			ModelExportImport model =
 				JsonImporter.Import("json\\name1.json");
 
-			//Забыл зачем это написал
-			if (model.stuffs[0].id == model.stuffs[0].result);
+			if (model != null)
+			{
+				if (model.stuffs[0].id == model.stuffs[0].result) ;
+			}
 		}
 
 		[TestMethod]
