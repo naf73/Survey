@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Helper;
 using Microsoft.Win32;
+using Survey.Logic.JsonPorter;
 
 namespace Survey.View.Admin
 {
@@ -89,10 +90,19 @@ namespace Survey.View.Admin
 				Filter = "Json files(*.json)|*.json|All files(*.*)|*.*"
 			};
 
-			saveFileDialog.ShowDialog();
+			if (true == saveFileDialog.ShowDialog())
+			{
+				string fileName = saveFileDialog.SafeFileName;
 
 
-			
+				ModelExportImport mei = new ModelExportImport();
+
+
+
+
+				JsonExporter.Export(mei, fileName);
+			}
+					
 		}
 
         private void Import_Click(object sender, RoutedEventArgs e)
