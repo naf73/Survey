@@ -288,7 +288,8 @@
 
                     <Image x:Name="AnswerPicture"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center"
+                           MaxHeight="250"/>
 
                 </StackPanel>
 

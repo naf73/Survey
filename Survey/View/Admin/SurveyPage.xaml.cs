@@ -24,6 +24,7 @@ namespace Survey.View.Admin
     public partial class SurveyPage : Page
     {
         private Model.Survey _survey;
+        private List<Answer> _answers;
 
         private SurveyController surveyController = new SurveyController();
         QuestionController questionController = new QuestionController();
@@ -100,7 +101,14 @@ namespace Survey.View.Admin
 
         private void AnswerAdd_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
+            // Stop here!!!
+            Answer answer = new Answer()
+            {
+                Text = AnswerText.Text,
+                Foto = ConvertPicture.BitmapImageToByteArray((BitmapImage)AnswerPicture.Source),
+                IsDeleted = false
+            };
         }
 
         private void AnswerEdit_Click(object sender, RoutedEventArgs e)
@@ -194,7 +202,8 @@ namespace Survey.View.Admin
             {
                 QuestionText.Text = question.Text;
                 QuestionPicture.Source = ConvertPicture.ByteArrayToImage(question.Foto);
-                UpdateAnswerTable(question);
+                _answers = question.Answer.ToList();
+                UpdateAnswerTable();
             }
             else
             {
@@ -209,11 +218,11 @@ namespace Survey.View.Admin
             AnswersDataGrid.ItemsSource = null;
         }
 
-        private void UpdateAnswerTable(Question question)
+        private void UpdateAnswerTable()
         {
-            if (!(question is null))
+            if (!(_answers is null))
             {
-                AnswersDataGrid.ItemsSource = question.Answer;
+                AnswersDataGrid.ItemsSource = _answers;
             }
             else
             {
