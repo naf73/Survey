@@ -244,6 +244,12 @@ namespace Survey.View.Admin
             }
         }
 
+        private bool CheckFillingAnswerFields()
+        {
+            return !string.IsNullOrEmpty(AnswerText.Text) ||
+                    AnswerPicture.Source != null;
+        }
+
         private void MethodClearAnswerFields()
         {
             AnswerText.Clear();
