@@ -147,7 +147,7 @@ namespace Survey.View.Admin
 
             if(!(question is null))
             {
-                if (MessageBox.Show("Удалить опрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Удалить вопрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     questionController.Remove(question.Id);
                     UpdateQuestionTable();
@@ -225,8 +225,11 @@ namespace Survey.View.Admin
             Answer current_answer = (Answer)AnswersDataGrid.SelectedItem;
             if(!(current_answer is null))
             {
-                _answers.Remove(current_answer);
-                UpdateAnswerTable();
+                if (MessageBox.Show("Удалить ответ?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    _answers.Remove(current_answer);
+                    UpdateAnswerTable();
+                }
             }
             else
             {

@@ -23,41 +23,164 @@ namespace Survey.View.Admin
     /// </summary>
     public partial class UsersPage : Page
     {
+
+        private UserController userController = new UserController();
+
+        #region Constructors
+
         public UsersPage()
         {
             InitializeComponent();
             Local();
+            UpdateUsersTable();
         }
 
-        private void SaveUser_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
         private void ClearUser_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ClearFields();
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if(CheckFillFields())
+            {
+                Model.User user = new Model.User()
+                {
+                    Login = Login.Text,
+                    Password = Password.Text,
+                    Surname = Surname.Text,
+                    Name = Name.Text,
+                    IsAdmin = IsAdmin.IsChecked == true ? true : false,
+                    IsDeleted = false
+                };
+                userController.Add(user);
+                UpdateUsersTable();
+            }
+            else
+            {
+                MessageBox.Show("Не все поля заполнены");
+            }
         }
 
         private void EditUser_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Model.User user = (Model.User)UsersDataGrid.SelectedItem;
+            if (!(user is null))
+            {
+                if (CheckFillFields())
+                {
+                    user.Login = Login.Text;
+                    user.Password = Password.Text;
+                    user.Surname = Surname.Text;
+                    user.Name = Name.Text;
+                    user.IsAdmin = IsAdmin.IsChecked == true ? true : false;
+
+                    userController.Edit(user);
+                    UpdateUsersTable();
+                }
+                else
+                {
+                    MessageBox.Show("Не все поля заполнены");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбрать в таблице строку");
+            }
         }
 
         private void RemoveUser_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Model.User user = (Model.User)UsersDataGrid.SelectedItem;
+            if (!(user is null))
+            {
+                if (CheckLastAdmin(user))
+                {
+                    if (MessageBox.Show("Удалить пользователя?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        userController.Remove(user.Id);
+                        UpdateUsersTable();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("В системе должен быть минимум 1 администратор");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбрать в таблице строку");
+            }
+        }
+
+        private void GeneratePassword_Click(object sender, RoutedEventArgs e)
+        {
+            Password.Text = Guid.NewGuid().ToString();
         }
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
         {
             Navigated.GoToAdminPage();
         }
+
+        private void UsersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Model.User user = (Model.User)UsersDataGrid.SelectedItem;
+            if(!(user is null))
+            {
+                FillingFields(user);
+            }
+            else
+            {
+                ClearFields();
+            }
+        }
+
+        #region Methods
+
+        private bool CheckLastAdmin(Model.User user)
+        {
+            if (user.IsAdmin)
+                if (userController.GetAdminCount() == 1) return false;
+            return true;
+        }
+
+        private bool CheckFillFields()
+        {
+            if (string.IsNullOrEmpty(Login.Text)) return false;
+            if (string.IsNullOrEmpty(Password.Text)) return false;
+            if (string.IsNullOrEmpty(Surname.Text)) return false;
+            if (string.IsNullOrEmpty(Name.Text)) return false;
+
+            return true;
+        }
+
+        private void ClearFields()
+        {
+            Login.Text = string.Empty;
+            Password.Text = string.Empty;
+            Surname.Text = string.Empty;
+            Name.Text = string.Empty;
+            IsAdmin.IsChecked = false;
+        }
+
+        private void FillingFields(Model.User user)
+        {
+            Login.Text = user.Login;
+            Password.Text = user.Password;
+            Surname.Text = user.Surname;
+            Name.Text = user.Name;
+            IsAdmin.IsChecked = user.IsAdmin;
+        }
+
+        private void UpdateUsersTable()
+        {
+            UsersDataGrid.ItemsSource = userController.GetAll();
+        }
+
+        #endregion
 
         #region Localization
 
@@ -68,7 +191,6 @@ namespace Survey.View.Admin
             Log.Text = LangPages.UsersPage.TbxLogin;
             SurName.Text = LangPages.UsersPage.TbxSurName;
             FName.Text = LangPages.UsersPage.TbxName;
-            Role.Text = LangPages.UsersPage.CbxRole;
             ClearUser.Content = LangPages.UsersPage.KcClear;
             AddUser.Content = LangPages.UsersPage.KcAdd;
             EditUser.Content = LangPages.UsersPage.KcChange;
@@ -79,5 +201,6 @@ namespace Survey.View.Admin
         }
 
         #endregion
+        
     }
 }
