@@ -32,7 +32,7 @@
                     IsCancel="True"
                     Click="ComeBack_Click">Назад</Button>
 
-            <TextBlock Grid.Column="1" 
+            <TextBlock x:Name="ListQuestSurvey" Grid.Column="1" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">Список вопросов опроса</TextBlock>
 
@@ -78,15 +78,18 @@
 
                     <Button x:Name="QuestionAdd"
                             HorizontalAlignment="Left"
-                            Margin="3">Добавить</Button>
+                            Margin="3"
+                            Click="QuestionAdd_Click">Добавить</Button>
 
                     <Button x:Name="QuestionEdit"
                             HorizontalAlignment="Left"
-                            Margin="3">Изменить</Button>
+                            Margin="3"
+                            Click="QuestionEdit_Click">Изменить</Button>
 
                     <Button x:Name="QuestionRemove"
                             HorizontalAlignment="Left"
-                            Margin="3">Удалить</Button>
+                            Margin="3"
+                            Click="QuestionRemove_Click">Удалить</Button>
 
                 </StackPanel>
 
@@ -100,14 +103,14 @@
                           RowBackground="LightGray"
                           AlternatingRowBackground="White"
                           IsReadOnly="True"
-                          Margin="3">
+                          Margin="3"
+                          SelectionChanged="QuestionsDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Вопрос"  Binding="{Binding Path=Text}" Width="*"/>
+                        <DataGridTextColumn x:Name="DgQuestion" Header="Вопрос"  Binding="{Binding Path=Text}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
             </Grid>
-
 
             <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
@@ -152,23 +155,26 @@
                                 HorizontalAlignment="Center">
 
                         <Label x:Name="LabelPicture"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="3">Картинка</Label>
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Margin="3">Картинка</Label>
 
                         <Button x:Name="QuestionPictureAdd"
-                            VerticalAlignment="Center"
-                            Margin="3">Добавить картинку</Button>
+                                VerticalAlignment="Center"
+                                Margin="3"
+                                Click="QuestionPictureAdd_Click">Добавить картинку</Button>
 
                         <Button x:Name="QuestionPictureRemove"
-                            VerticalAlignment="Center"
-                            Margin="3">Убрать картинку</Button>
+                                VerticalAlignment="Center"
+                                Margin="3"
+                                Click="QuestionPictureRemove_Click">Убрать картинку</Button>
 
                     </StackPanel>
 
                     <Image x:Name="QuestionPicture"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center"
+                           MaxHeight="250"/>
 
                     <Label x:Name="LabelAnswers"
                            VerticalAlignment="Center"
@@ -178,21 +184,24 @@
                     <StackPanel Orientation="Horizontal">
 
                         <Button x:Name="AnswerAdd"
-                            HorizontalAlignment="Left"
-                            Margin="3">Добавить</Button>
+                                HorizontalAlignment="Left"
+                                Margin="3"
+                                Click="AnswerAdd_Click">Добавить</Button>
 
                         <Button x:Name="AnswerEdit"
-                            HorizontalAlignment="Left"
-                            Margin="3">Изменить</Button>
+                                HorizontalAlignment="Left"
+                                Margin="3"
+                                Click="AnswerEdit_Click">Изменить</Button>
 
                         <Button x:Name="AnswerRemove"
-                            HorizontalAlignment="Left"
-                            Margin="3">Удалить</Button>
+                                HorizontalAlignment="Left"
+                                Margin="3"
+                                Click="AnswerRemove_Click">Удалить</Button>
 
                     </StackPanel>
                 </StackPanel>
                 
-                <DataGrid x:Name="AnswerDataGrid"
+                <DataGrid x:Name="AnswersDataGrid"
                           Grid.Row="3" 
                           SelectionUnit="FullRow"
                           SelectionMode="Single"
@@ -202,16 +211,18 @@
                           RowBackground="LightGray"
                           AlternatingRowBackground="White"
                           IsReadOnly="True"
-                          Margin="3">
+                          Margin="3"
+                          SelectionChanged="AnswersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Ответ"  Binding="{Binding Path=Text}" Width="*"/>
+                        <DataGridTextColumn x:Name="DgAnswer" Header="Ответ"  Binding="{Binding Path=Text}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
                 <Button x:Name="ClearQuestionFields"
                         Grid.Row="4"
                         Margin="3"
-                        VerticalAlignment="Center">Очистить все поля</Button>
+                        VerticalAlignment="Center"
+                        Click="ClearQuestionFields_Click">Очистить все поля</Button>
 
 
             </Grid>
@@ -259,17 +270,19 @@
                                 Orientation="Horizontal">
 
                         <Label x:Name="LabelAnswerPicture"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="3">Картинка</Label>
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right"
+                               Margin="3">Картинка</Label>
 
                         <Button x:Name="AnswerPictureAdd"
-                            VerticalAlignment="Center"
-                            Margin="3">Добавить картинку</Button>
+                                VerticalAlignment="Center"
+                                Margin="3"
+                                Click="AnswerPictureAdd_Click">Добавить картинку</Button>
 
                         <Button x:Name="AnswerPictureRemove"
-                            VerticalAlignment="Center"
-                            Margin="3">Убрать картинку</Button>
+                                VerticalAlignment="Center"
+                                Margin="3"
+                                Click="AnswerPictureRemove_Click">Убрать картинку</Button>
 
                     </StackPanel>
 
@@ -282,7 +295,8 @@
                 <Button x:Name="ClearAnswerFields"
                         Grid.Row="4"
                         Margin="3"
-                        VerticalAlignment="Center">Очистить все поля</Button>
+                        VerticalAlignment="Center"
+                        Click="ClearAnswerFields_Click">Очистить все поля</Button>
 
             </Grid>
 

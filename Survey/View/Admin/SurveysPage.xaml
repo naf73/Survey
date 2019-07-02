@@ -30,7 +30,7 @@
                     IsCancel="True"
                     Click="ComeBack_Click">Назад</Button>
 
-            <TextBlock Grid.Column="1" 
+            <TextBlock x:Name="ListSurveys" Grid.Column="1" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">Список опросов</TextBlock>
         </Grid>
@@ -86,12 +86,14 @@
                 <Button x:Name="Export"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="3">Экспорт</Button>
+                        Margin="3"
+                        Click="Export_Click">Экспорт</Button>
 
                 <Button x:Name="Import"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="3">Импорт</Button>
+                        Margin="3"
+                        Click="Import_Click">Импорт</Button>
 
             </StackPanel>
 
@@ -107,10 +109,12 @@
                   RowBackground="LightGray" 
                   AlternatingRowBackground="White" 
                   IsReadOnly="True"
-                  Margin="3">
+                  Margin="3"
+                  SelectionChanged="SurveysDataGrid_SelectionChanged"
+                  MouseDoubleClick="SurveysDataGrid_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="*"/>
-                <DataGridTextColumn Header="Время в мин" Binding="{Binding Path=Time}" Width="auto"/>
+                <DataGridTextColumn x:Name="Title" Header="Название" Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn x:Name="Time" Header="Время в мин" Binding="{Binding Path=Time}" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

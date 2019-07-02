@@ -73,12 +73,14 @@
                 <Button x:Name="Export"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="3">Экспорт</Button>
+                        Margin="3"
+                        Click="Export_Click">Экспорт</Button>
 
                 <Button x:Name="Import"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="3">Импорт</Button>
+                        Margin="3"
+                        Click="Import_Click">Импорт</Button>
                 
             </StackPanel>
         </Grid>
@@ -97,7 +99,7 @@
                   SelectionChanged="DataGrid_SelectionChanged"
                   MouseDoubleClick="CategoriesDataGrid_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Категории тестов"  Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn x:Name="CatTests" Header="Категории тестов"  Binding="{Binding Path=Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

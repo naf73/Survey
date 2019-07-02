@@ -24,52 +24,61 @@ namespace Survey.Helper
         public static class CategoriesPage
         {
             public static string DgCatSurveys { get; set; }            
-            public static string KcNewCat { get; set; }
-            public static string KcChangeCat { get; set; }
-            public static string KcDelCat { get; set; }
-            public static string KcLookSurveys { get; set; }
-            public static string KcExit { get; set; }
+            public static string KcNew { get; set; }
+            public static string KcChange { get; set; }
+            public static string KcDel { get; set; }
+            public static string KcExport { get; set; }
+            public static string KcImport { get; set; }
+            public static string KcBack { get; set; }
+            public static string KcAdd { get; set; }
+            public static string DgCatTests { get; set; }
         }
         public static class SurveyPage
         {
-            public static string TblQuestions { get; set; }
-            //public static string LbTP { get; set; }
-            //public static string LbTO { get; set; }
-            //public static string LbTVP { get; set; }
-            public static string TblQuestion { get; set; }
-            //public static string TbxTTP { get; set; }
-            public static string TblReports { get; set; }
-            //public static string LbO1 { get; set; }
-            //public static string LbO2 { get; set; }
-            //public static string LbO3 { get; set; }
+            public static string KcCreate { get; set; }     
+            public static string DgQuestion { get; set; }
+            
+            public static string TblListQuestSurvey { get; set; }                      
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
             public static string KcDel { get; set; }
+            public static string LNameSurvey { get; set; }
+            public static string LText { get; set; }
+            public static string LPictures { get; set; }
+            public static string KcAddPictures { get; set; }
+            public static string KcPicturesRemove { get; set; }
+            public static string LAnswers { get; set; }
+            public static string KcClearFields { get; set; }
+            public static string LAnswer { get; set; }
+            public static string DgAnswer { get; set; }
         }
         public static class SurveysPage
         {
-            public static string TblListSurveys { get; set; }
-            public static string DgNumber { get; set; }
+            public static string TblListSurveys { get; set; }          
             public static string DgTitle { get; set; }
             public static string DgTime { get; set; }          
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
             public static string KcDel { get; set; }
+            public static string LCatName { get; set; }
+            public static string KcCreate { get; set; }
+            public static string KcExport { get; set; }
+            public static string KcImport { get; set; }
         }
         public static class UsersPage
         {
             public static string TblWorkers { get; set; }
-            public static string DgNumber { get; set; }
-            public static string DgTitle { get; set; }
-            public static string DgTime { get; set; }
+            public static string DgLogin { get; set; }
+            public static string DgSurName { get; set; }
+            public static string DgName { get; set; }
             public static string KcBack { get; set; }
             public static string KcAdd { get; set; }
             public static string KcChange { get; set; }
             public static string KcDel { get; set; }
             public static string KcClear { get; set; }
-            public static string CbxRoles { get; set; }
+            public static string CbxRole { get; set; }
             public static string TbxName { get; set; }
             public static string TbxSurName { get; set; }
             public static string TbxLogin { get; set; }
@@ -83,13 +92,13 @@ namespace Survey.Helper
             public static string DgCategory { get; set; }
             public static string DgTitle { get; set; }
             public static string DgTime { get; set; }
-            public static string KcExit { get; set; }
+            public static string KcBack { get; set; }
             public static string KcGoSurvey { get; set; }
             public static string KcBestResult { get; set; }
-            public static string KcAbsent { get; set; }        
+            public static string KcAbsent { get; set; }  
+        
           
         }
-
         public static class AuthPage
         {
             public static string TblLogin { get; set; }

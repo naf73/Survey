@@ -38,11 +38,14 @@ namespace Survey.Helper
                     #region CategoriesPage
 
                     LangPages.CategoriesPage.DgCatSurveys = "Категории опросов";
-                    LangPages.CategoriesPage.KcChangeCat = "Изменить категорию";
-                    LangPages.CategoriesPage.KcDelCat = "Удалить категорию";
-                    LangPages.CategoriesPage.KcExit = "Выход";
-                    LangPages.CategoriesPage.KcLookSurveys = "Посмотреть Опросы";
-                    LangPages.CategoriesPage.KcNewCat = "Новая категория";
+                    LangPages.CategoriesPage.KcChange = "Изменить";
+                    LangPages.CategoriesPage.KcDel = "Удалить";
+                    LangPages.CategoriesPage.KcBack = "Выход";
+                    LangPages.CategoriesPage.KcExport = "Экспорт";
+                    LangPages.CategoriesPage.KcImport = "Импрот";
+                    LangPages.CategoriesPage.KcNew = "Новая категория";
+                    LangPages.CategoriesPage.KcAdd = "Добавить";
+                    LangPages.CategoriesPage.DgCatTests = "Категории тестов";
 
                     #endregion
 
@@ -52,31 +55,45 @@ namespace Survey.Helper
                     LangPages.SurveyPage.KcBack = "Назад";
                     LangPages.SurveyPage.KcChange = "Изменить";
                     LangPages.SurveyPage.KcDel = "Удалить";
-                    LangPages.SurveyPage.TblQuestion = "Вопрос";
-                    LangPages.SurveyPage.TblQuestions = "Вопросы";
-                    LangPages.SurveyPage.TblReports = "Ответы";
+                    LangPages.SurveyPage.DgQuestion = "Вопрос";
+                    LangPages.SurveyPage.TblListQuestSurvey = "Список вопросов опроса";
+                    LangPages.SurveyPage.LAnswer = "Ответ:";
+                    LangPages.SurveyPage.LNameSurvey = "Наименование опроса";
+                    LangPages.SurveyPage.KcCreate = "Создать";
+                    LangPages.SurveyPage.LText = "Текст";
+                    LangPages.SurveyPage.LPictures = "Картинка";
+                    LangPages.SurveyPage.KcAddPictures = "Добавить картинку";
+                    LangPages.SurveyPage.KcPicturesRemove = "Убрать картинку";
+                    LangPages.SurveyPage.LAnswers = "Ответы:";
+                    LangPages.SurveyPage.KcClearFields = "Очистить поля";
+                    LangPages.SurveyPage.LAnswer = "Ответ:";
+                    LangPages.SurveyPage.DgAnswer = "Ответ";
+
 
                     #endregion
 
                     #region SurveysPage
 
-                    LangPages.SurveysPage.DgNumber = "Номер";
-                    LangPages.SurveysPage.DgTime = "Время";
+                    LangPages.SurveysPage.DgTime = "Время, мин";
                     LangPages.SurveysPage.DgTitle = "Название";
                     LangPages.SurveysPage.KcAdd = "Добавить";
+                    LangPages.SurveysPage.KcCreate = "Создать";
                     LangPages.SurveysPage.KcBack = "Назад";
                     LangPages.SurveysPage.KcChange = "Изменить";
                     LangPages.SurveysPage.KcDel = "Удалить";
                     LangPages.SurveysPage.TblListSurveys = "Список опросов";
+                    LangPages.SurveysPage.LCatName = "Наименование категории";
+                    LangPages.SurveysPage.KcExport = "Экспорт";
+                    LangPages.SurveysPage.KcImport = "Импрот";
 
                     #endregion
 
                     #region UsersPage
 
-                    LangPages.UsersPage.CbxRoles = "Роль";
-                    LangPages.UsersPage.DgNumber = "Номер";
-                    LangPages.UsersPage.DgTime = "Время";
-                    LangPages.UsersPage.DgTitle = "Название";
+                    LangPages.UsersPage.CbxRole = "Роль";
+                    LangPages.UsersPage.DgLogin = "Логин";
+                    LangPages.UsersPage.DgSurName = "Фамилия";
+                    LangPages.UsersPage.DgName = "Имя";
                     LangPages.UsersPage.KcAdd = "Добавить";
                     LangPages.UsersPage.KcBack = "Назад";
                     LangPages.UsersPage.KcChange = "Изменить";
@@ -103,7 +120,7 @@ namespace Survey.Helper
                     LangPages.UserPage.DgTitle = "Название";
                     LangPages.UserPage.KcAbsent = "Отсутствует";
                     LangPages.UserPage.KcBestResult = "Лучший результат";
-                    LangPages.UserPage.KcExit = "Выход";
+                    LangPages.UserPage.KcBack = "Выход";
                     LangPages.UserPage.KcGoSurvey = "Пройти опрос";
 
                     #endregion
@@ -129,7 +146,7 @@ namespace Survey.Helper
                     LangPages.AdminPage.DgStatiatic = "Statistic";
                     LangPages.AdminPage.DgSurvey = "Survey";
                     LangPages.AdminPage.DgTotal = "Total in %";
-                    LangPages.AdminPage.DgSurName = "Surname";
+                    LangPages.AdminPage.DgSurName = "Sur Name";
                     LangPages.AdminPage.KcExit = "Exit";
                     LangPages.AdminPage.KcSurveys = "Surveys";
                     LangPages.AdminPage.KcWorkers = "Workers";
@@ -137,11 +154,14 @@ namespace Survey.Helper
 
                     #region CategoriesPage
                     LangPages.CategoriesPage.DgCatSurveys = "Surveys categories";
-                    LangPages.CategoriesPage.KcChangeCat = "Change category";
-                    LangPages.CategoriesPage.KcDelCat = "Delete category";
-                    LangPages.CategoriesPage.KcExit = "Exit";
-                    LangPages.CategoriesPage.KcLookSurveys = "Look Surveys";
-                    LangPages.CategoriesPage.KcNewCat = "New category";
+                    LangPages.CategoriesPage.KcChange = "Change";
+                    LangPages.CategoriesPage.KcDel = "Delete";
+                    LangPages.CategoriesPage.KcBack = "Exit";
+                    LangPages.CategoriesPage.KcExport = "Export";
+                    LangPages.CategoriesPage.KcImport = "Import";
+                    LangPages.CategoriesPage.KcNew = "New category";
+                    LangPages.CategoriesPage.KcAdd = "Add";
+                    LangPages.CategoriesPage.DgCatTests = "Test categories";
                     #endregion
 
                     #region SurveyPage
@@ -150,31 +170,44 @@ namespace Survey.Helper
                     LangPages.SurveyPage.KcBack = "ComeBack";
                     LangPages.SurveyPage.KcChange = "Change";
                     LangPages.SurveyPage.KcDel = "Delete";
-                    LangPages.SurveyPage.TblQuestion = "Question";
-                    LangPages.SurveyPage.TblQuestions = "Questions";
-                    LangPages.SurveyPage.TblReports = "Reports";
+                    LangPages.SurveyPage.DgQuestion = "Question";
+                    LangPages.SurveyPage.TblListQuestSurvey = "List of survey questions";                    
+                    LangPages.SurveyPage.LNameSurvey = "Survey Name";
+                    LangPages.SurveyPage.KcCreate = "Create";
+                    LangPages.SurveyPage.LText = "Text";
+                    LangPages.SurveyPage.LPictures = "Pictures";
+                    LangPages.SurveyPage.KcAddPictures = "Add picture";
+                    LangPages.SurveyPage.KcPicturesRemove = "Remove picture";
+                    LangPages.SurveyPage.LAnswers = "Answers:";
+                    LangPages.SurveyPage.KcClearFields = "Clear fields";
+                    LangPages.SurveyPage.LAnswer = "Answer:";
+                    LangPages.SurveyPage.DgAnswer = "Answer";
+
 
                     #endregion
 
                     #region SurveysPage
 
-                    LangPages.SurveysPage.DgNumber = "Number";
-                    LangPages.SurveysPage.DgTime = "Time";
+                    LangPages.SurveysPage.DgTime = "Time, min";
                     LangPages.SurveysPage.DgTitle = "Title";
                     LangPages.SurveysPage.KcAdd = "Add";
+                    LangPages.SurveysPage.KcCreate = "Create";
                     LangPages.SurveysPage.KcBack = "ComeBack";
                     LangPages.SurveysPage.KcChange = "Change";
                     LangPages.SurveysPage.KcDel = "Delete";
                     LangPages.SurveysPage.TblListSurveys = "List surveys";
+                    LangPages.SurveysPage.LCatName = "Category Name";
+                    LangPages.SurveysPage.KcExport = "Export";
+                    LangPages.SurveysPage.KcImport = "Import";
 
                     #endregion
 
                     #region UsersPage
 
-                    LangPages.UsersPage.CbxRoles = "Role";
-                    LangPages.UsersPage.DgNumber = "Number";
-                    LangPages.UsersPage.DgTime = "Time";
-                    LangPages.UsersPage.DgTitle = "Title";
+                    LangPages.UsersPage.CbxRole = "Role";
+                    LangPages.UsersPage.DgLogin = "Login";
+                    LangPages.UsersPage.DgSurName = "Sur Name";
+                    LangPages.UsersPage.DgName = "Name";
                     LangPages.UsersPage.KcAdd = "Add";
                     LangPages.UsersPage.KcBack = "ComeBack";
                     LangPages.UsersPage.KcChange = "Change";
@@ -183,7 +216,7 @@ namespace Survey.Helper
                     LangPages.UsersPage.TblWorkers = "Workers";
                     LangPages.UsersPage.TbxLogin = "Login";
                     LangPages.UsersPage.TbxName = "Name";
-                    LangPages.UsersPage.TbxSurName = "Surname";
+                    LangPages.UsersPage.TbxSurName = "Sur Name";
 
 
                     #endregion
@@ -201,7 +234,7 @@ namespace Survey.Helper
                     LangPages.UserPage.DgTitle = "Title";
                     LangPages.UserPage.KcAbsent = "Absent";
                     LangPages.UserPage.KcBestResult = "Best result";
-                    LangPages.UserPage.KcExit = "Exit";
+                    LangPages.UserPage.KcBack = "Exit";
                     LangPages.UserPage.KcGoSurvey = "Go to survey";
 
                     #endregion

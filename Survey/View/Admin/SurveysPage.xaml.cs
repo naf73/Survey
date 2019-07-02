@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Survey.Helper;
 namespace Survey.View.Admin
 {
     /// <summary>
@@ -22,6 +22,7 @@ namespace Survey.View.Admin
     /// </summary>
     public partial class SurveysPage : Page
     {
+        private Model.Survey _survey;
         private Category _category;
 
         private CategoryController categoryController = new CategoryController();
@@ -32,6 +33,7 @@ namespace Survey.View.Admin
             InitializeComponent();
             _category = categoryController.GetById(categoryId);
             UpdateFields();
+            Local();
         }
 
         #region Events
@@ -93,17 +95,62 @@ namespace Survey.View.Admin
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (!(_survey is null)) Navigated.GoToSurveyPage(_survey);
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
+            if (!(_survey is null))
+            {
+                if (MessageBox.Show("Удалить опрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    surveyController.Remove(_survey.Id);
+                    UpdateFields();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходиом указать опрос для удаления");
+            }
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
             throw new NotImplementedException();
+        }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SurveysDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectSurvey();
+        }
+
+        private void SurveysDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SelectSurvey();
+            if (!(_survey is null)) Navigated.GoToSurveyPage(_survey);
         }
 
         #endregion
 
         #region Methods
+
+        private void SelectSurvey()
+        {
+            Model.Survey survey = (Model.Survey)SurveysDataGrid.SelectedItem;
+            if(!(survey is null))
+            {
+                _survey = survey;
+            }
+            else
+            {
+                _survey = null;
+            }
+        }
 
         private void UpdateFields()
         {
@@ -122,6 +169,23 @@ namespace Survey.View.Admin
         }
 
         #endregion
-        
+
+        #region Localization
+        private void Local()
+        {
+            ComeBack.Content = LangPages.SurveysPage.KcBack;
+            ListSurveys.Text = LangPages.SurveysPage.TblListSurveys;
+            LabelCategoryName.Content = LangPages.SurveysPage.LCatName;
+            ManageCategory.Content = LangPages.SurveysPage.KcCreate;
+            Add.Content = LangPages.SurveysPage.KcAdd;
+            Edit.Content = LangPages.SurveysPage.KcChange;
+            Remove.Content = LangPages.SurveysPage.KcDel;
+            Export.Content = LangPages.SurveysPage.KcExport;
+            Import.Content = LangPages.SurveysPage.KcImport;
+            Title.Header = LangPages.SurveysPage.DgTitle;
+            Time.Header = LangPages.SurveysPage.DgTime;
+        }
+
+        #endregion        
     }
 }

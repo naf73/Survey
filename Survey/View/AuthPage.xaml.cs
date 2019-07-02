@@ -67,7 +67,7 @@ namespace Survey.View
                 MessageBox.Show("Не правильный логин / пароль");
             }
         }
-        #region Локализация
+        #region Localization
 
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
