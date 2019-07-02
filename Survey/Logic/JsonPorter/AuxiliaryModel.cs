@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using System.Collections.Generic;
 //using Survey.Logic.JsonPorter;
 
@@ -25,18 +25,43 @@ namespace Survey.Logic.JsonPorter
 		public string category { get; set; }
 		public List<auxSurvey> surveys { get; set; }
 
-		//public JsonExporter(){}
 		public static string CheckCorrectPath(string path)
 		{
-			if (!path.Contains(".json"))
-			{
-				path += ".json";
-			}
-			if (!path.Contains("json\\"))
+			
+			/*
+			Какие тут пиздатые методы есть!!!!!
+			EndWith и StartWith !!
+			Это даже не Contains, от которого я охреневал в первый раз!!
+			*/
+
+			if (!path.StartsWith("json\\"))
 			{
 				path = "json\\" + path;
 			}
+
+			//Вызываем до проверки на ".json", чтобы меньше было удалять с конца
+			CheckDirectory(path);
+
+			if (!path.EndsWith(".json"))
+			{
+				path += ".json";
+			}
 			return  path;
+		}
+
+		private static void CheckDirectory(string path)
+		{
+			/*
+			 Вот тут как раз спрашивал про изменение переменных в методах
+			 подумал, что если расковырять path, то он может поменяться 
+			 и в оригинале
+			*/
+			path = path.Substring(0, path.LastIndexOf("\\"));
+
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
 		}
 	}
 

@@ -16,29 +16,24 @@ namespace UnitTestSurvey
 		{
 			List<auxStuff> stuffs = new List<auxStuff>();
 			stuffs.Add(new auxStuff(777, 77.7f));
-			/*stuffs.Add(new auxStuff(1329, 16.5f));
-			stuffs.Add(new auxStuff(1332, 25.0f));
-			stuffs.Add(new auxStuff(1337, 94.4f));
-			stuffs.Add(new auxStuff(1345, 46.9f));*/
 
 			ModelExportImport model =
 				new ModelExportImport(stuffs);
 
 			JsonExporter.Export(model);
-
 		}
 
 		[TestMethod]
         public void ImportToJsonType1()
 		{
-			/*List<auxStuff> stuffs = new List<auxStuff>();
-			stuffs.Add(new auxStuff(777, 77.7f));*/
 
 			ModelExportImport model =
 				JsonImporter.Import("json\\name1.json");
 
-			if(model.stuffs[0].id == model.stuffs[0].result);
-
+			if (model != null)
+			{
+				if (model.stuffs[0].id == model.stuffs[0].result) ;
+			}
 		}
 
 		[TestMethod]
