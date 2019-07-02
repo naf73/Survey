@@ -148,6 +148,19 @@ namespace Survey.View.Admin
             return result == true ? dialog.FileName : string.Empty;
         }
 
+        private void GetPicture(Image image)
+        {
+            string path = GetPathPicture();
+            if (!string.IsNullOrEmpty(path))
+            {
+                image.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+            }
+            else
+            {
+                image.Source = null;
+            }
+        }
+
         private void UpdateFields()
         {
             if (_survey.Id != 0)
