@@ -81,7 +81,7 @@ namespace Survey.View.Admin
 
         private void QuestionPictureRemove_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            QuestionPicture.Source = null;
         }
 
         private void ClearQuestionFields_Click(object sender, RoutedEventArgs e)
@@ -115,12 +115,12 @@ namespace Survey.View.Admin
 
         private void AnswerPictureAdd_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            GetPicture(AnswerPicture);
         }
 
         private void AnswerPictureRemove_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AnswerPicture.Source = null;
         }
 
         private void ClearAnswerFields_Click(object sender, RoutedEventArgs e)
