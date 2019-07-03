@@ -135,6 +135,21 @@ namespace Survey.Helper
 
                     #endregion
 
+                    #region Message Box
+
+                    LangPages.MBox.DelCat = "Удалить категорию?";
+                    LangPages.MBox.SprcifyCat = "Необходимо указать категорию для удаления";
+                    LangPages.MBox.Del = "Удалить";
+                    LangPages.MBox.Creat = "Создать";
+                    LangPages.MBox.Change = "Изменить";
+                    LangPages.MBox.AddCatToSystem = "Категория добавлена в систему";
+                    LangPages.MBox.CatChange = "Категория изменена";
+                    LangPages.MBox.EmptyFieldNotAll = "Пусто поле не допускается";
+                    LangPages.MBox.MustCreateCat = "Необходимо создать категорию";
+                    LangPages.MBox.ChooseAnsw = "Выберите ответ";
+
+                    #endregion
+
                     break;
                 case Lang.ENG:
 
@@ -246,6 +261,21 @@ namespace Survey.Helper
                     LangPages.AuthPage.TblLogin = "Login";
                     LangPages.AuthPage.TblPassword = "Password";
                     LangPages.AuthPage.TblLanguage = "Language";
+
+                    #endregion
+
+                    #region Message Box
+
+                    LangPages.MBox.DelCat = "Delete category?";
+                    LangPages.MBox.SprcifyCat = "You must specify a category to delete";
+                    LangPages.MBox.Del = "Delete";
+                    LangPages.MBox.Creat = "Create";
+                    LangPages.MBox.Change = "Change";
+                    LangPages.MBox.AddCatToSystem = "Category added to system";
+                    LangPages.MBox.CatChange = "Category changed";
+                    LangPages.MBox.EmptyFieldNotAll = "Empty field is not allowed";
+                    LangPages.MBox.MustCreateCat = "You must create a category";
+                    LangPages.MBox.ChooseAnsw = "Choose answer";
 
                     #endregion
 

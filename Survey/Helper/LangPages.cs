@@ -108,5 +108,21 @@ namespace Survey.Helper
             public static string KcEntre { get; set; }          
 
         }
+        public static class MBox
+        {
+            public static string DelCat { get; set; }
+            public static string SprcifyCat { get; set; }
+            public static string Del { get; set; }
+            public static string Creat { get; set; }
+            public static string Change { get; set; }
+            public static string AddCatToSystem { get; set; }
+            public static string CatChange { get; set; }
+            public static string EmptyFieldNotAll { get; set; }
+            public static string MustCreateCat { get; set; }
+            public static string ChooseAnsw { get; set; }
+
+
+
+        }
     }
 }

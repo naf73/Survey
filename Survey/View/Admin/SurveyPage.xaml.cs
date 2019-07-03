@@ -59,12 +59,12 @@ namespace Survey.View.Admin
             if (_survey.Id != 0)
             {
                 SurveyName.Text = _survey.Name;
-                ManageSurvey.Content = "Изменить";
+                ManageSurvey.Content = LangPages.MBox.Del;
                 ManageSurvey.Tag = false;
             }
             else
             {
-                ManageSurvey.Content = "Создать";
+                ManageSurvey.Content = LangPages.MBox.Creat;
                 ManageSurvey.Tag = true;
             }
         }

@@ -54,9 +54,9 @@ namespace Survey.View.Admin
                         IsDeleted = false
                     };
                     categoryController.Add(_category);
-                    ManageCategory.Content = "Изменить";
+                    ManageCategory.Content = LangPages.MBox.Change;
                     ManageCategory.Tag = false;
-                    MessageBox.Show("Категория добавлена в систему");
+                    MessageBox.Show(LangPages.MBox.AddCatToSystem);
                 }
                 else
                 {
@@ -69,11 +69,11 @@ namespace Survey.View.Admin
                 if (!string.IsNullOrWhiteSpace(CategoryName.Text))
                 {
                     categoryController.Edit(_category.Id, CategoryName.Text);
-                    MessageBox.Show("Категория изменена");
+                    MessageBox.Show(LangPages.MBox.CatChange);
                 }
                 else
                 {
-                    MessageBox.Show("Пусто поле не допускается");
+                    MessageBox.Show(LangPages.MBox.EmptyFieldNotAll);
                     return;
                 }
             }
@@ -83,7 +83,7 @@ namespace Survey.View.Admin
         {
             if (_category is null)
             {
-                MessageBox.Show("Необходимо создать категорию");
+                MessageBox.Show(LangPages.MBox.MustCreateCat);
                 return;
             }
             Navigated.GoToSurveyPage(new Model.Survey()
@@ -112,12 +112,12 @@ namespace Survey.View.Admin
             {
                 CategoryName.Text = _category.Name;
                 SurveysDataGrid.ItemsSource = surveyController.GetByCategoryId(_category.Id);
-                ManageCategory.Content = "Изменить";
+                ManageCategory.Content = LangPages.MBox.Change;
                 ManageCategory.Tag = false;
             }
             else
             {
-                ManageCategory.Content = "Создать";
+                ManageCategory.Content = LangPages.MBox.Creat;
                 ManageCategory.Tag = true;
             }
         }
