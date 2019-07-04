@@ -1,4 +1,5 @@
-﻿using Survey.Model;
+﻿using Survey.Exceptions;
+using Survey.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -100,6 +101,8 @@ namespace Survey.Logic
             {
                 using (var db = new SurveyContext(_app.Conn))
                 {
+                    if (ExistsUserByLogin(user.Login)) throw new UserExistsException();
+
                     db.Users.Add(user);
                     db.SaveChanges();
 
@@ -248,6 +251,24 @@ namespace Survey.Logic
                     }
 
                     db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private bool ExistsUserByLogin(string login)
+        {
+            try
+            {
+                using (var db = new SurveyContext(_app.Conn))
+                {
+                    User user = db.Users.FirstOrDefault(u => u.IsDeleted == false &&
+                                                             u.Login == login);
+
+                    return !(user is null);
                 }
             }
             catch (Exception)

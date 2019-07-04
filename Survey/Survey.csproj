@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\UserExistsException.cs" />
     <Compile Include="Helper\App.cs" />
     <Compile Include="Helper\ConvertPicture.cs" />
     <Compile Include="Helper\LANG.cs" />
