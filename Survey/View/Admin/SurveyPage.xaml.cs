@@ -50,6 +50,10 @@ namespace Survey.View.Admin
                 MessageBox.Show("Ошибка ввода времени");
                 return;
             }
+            if (time <= 0) 
+            {
+                MessageBox.Show("Ошибка ввода времени");
+            }
             if(string.IsNullOrEmpty(SurveyName.Text))
             {
                 MessageBox.Show("Ошибка ввода названия опроса");
