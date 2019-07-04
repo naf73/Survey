@@ -301,7 +301,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                ManageSurvey.Content = "Создать";
+                ManageSurvey.Content = LangPages.SurveyPage.KcCreate;
                 ManageSurvey.Tag = true;
                 GridSurvey.Visibility = Visibility.Hidden;
             }
@@ -408,7 +408,16 @@ namespace Survey.View.Admin
             ComeBack.Content = LangPages.SurveyPage.KcBack;
             ListQuestSurvey.Text = LangPages.SurveyPage.TblListQuestSurvey;
             LabelSurveyName.Content = LangPages.SurveyPage.LNameSurvey;
-            ManageSurvey.Content = LangPages.SurveyPage.KcCreate;
+
+            if((bool)ManageSurvey.Tag)
+            {
+                ManageSurvey.Content = LangPages.SurveyPage.KcCreate;
+            }
+            else
+            {
+                ManageSurvey.Content = LangPages.SurveyPage.KcChange;
+            }
+
             QuestionAdd.Content = LangPages.SurveyPage.KcAdd;
             QuestionEdit.Content = LangPages.SurveyPage.KcChange;
             QuestionRemove.Content = LangPages.SurveyPage.KcDel;
