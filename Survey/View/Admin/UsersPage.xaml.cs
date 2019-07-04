@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Helper;
+using Survey.Exceptions;
 
 namespace Survey.View.Admin
 {
@@ -55,7 +56,15 @@ namespace Survey.View.Admin
                     IsAdmin = IsAdmin.IsChecked == true ? true : false,
                     IsDeleted = false
                 };
-                userController.Add(user);
+                try
+                {
+                    userController.Add(user);
+                }
+                catch (UserExistsException)
+                {
+                    MessageBox.Show("Пользователь с таким логин уже существует");
+                }
+                
                 UpdateUsersTable();
             }
             else
