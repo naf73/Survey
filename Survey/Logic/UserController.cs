@@ -101,7 +101,7 @@ namespace Survey.Logic
             {
                 using (var db = new SurveyContext(_app.Conn))
                 {
-                    if (ExistsUserByLogin(user.Login)) throw new UserExistsException();
+                    if (ExistsUserByLogin(user.Id, user.Login)) throw new UserExistsException();
 
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -125,6 +125,8 @@ namespace Survey.Logic
             {
                 using (var db = new SurveyContext(_app.Conn))
                 {
+                    if (ExistsUserByLogin(user.Id, user.Login)) throw new UserExistsException();
+
                     db.Entry(user).State = EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -259,7 +261,7 @@ namespace Survey.Logic
             }
         }
 
-        private bool ExistsUserByLogin(string login)
+        private bool ExistsUserByLogin(int id, string login)
         {
             try
             {
@@ -267,9 +269,10 @@ namespace Survey.Logic
                 {
                     User user = db.Users.FirstOrDefault(u => u.IsDeleted == false &&
                                                              u.Login == login);
-
+                    if (id != 0)
+                        if (!(user is null) && id == user.Id) return false;
                     return !(user is null);
-                }
+                }             
             }
             catch (Exception)
             {

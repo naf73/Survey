@@ -86,7 +86,14 @@ namespace Survey.View.Admin
                     user.Name = Name.Text;
                     user.IsAdmin = IsAdmin.IsChecked == true ? true : false;
 
-                    userController.Edit(user);
+                    try
+                    {
+                        userController.Edit(user);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Пользователь с таким логин уже существует");
+                    }
                     UpdateUsersTable();
                 }
                 else
