@@ -82,6 +82,7 @@ namespace Survey.Helper
             public static string TbxName { get; set; }
             public static string TbxSurName { get; set; }
             public static string TbxLogin { get; set; }
+            public static string btnGenerate { get; set; }
         }
         public static class QuestionPage
         {           

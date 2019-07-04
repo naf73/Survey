@@ -103,7 +103,7 @@ namespace Survey.Helper
                     LangPages.UsersPage.TbxLogin = "Логин";
                     LangPages.UsersPage.TbxName = "Имя";
                     LangPages.UsersPage.TbxSurName = "Фамилия";
-
+                    LangPages.UsersPage.btnGenerate = "Генерировать";
 
                     #endregion
 
@@ -146,10 +146,11 @@ namespace Survey.Helper
                     LangPages.AdminPage.DgStatiatic = "Statistic";
                     LangPages.AdminPage.DgSurvey = "Survey";
                     LangPages.AdminPage.DgTotal = "Total in %";
-                    LangPages.AdminPage.DgSurName = "Sur Name";
+                    LangPages.AdminPage.DgSurName = "Surname";
                     LangPages.AdminPage.KcExit = "Exit";
                     LangPages.AdminPage.KcSurveys = "Surveys";
-                    LangPages.AdminPage.KcWorkers = "Workers";
+                    LangPages.AdminPage.KcWorkers = "Employees";
+                    
                     #endregion
 
                     #region CategoriesPage
@@ -167,7 +168,7 @@ namespace Survey.Helper
                     #region SurveyPage
 
                     LangPages.SurveyPage.KcAdd = "Add";
-                    LangPages.SurveyPage.KcBack = "ComeBack";
+                    LangPages.SurveyPage.KcBack = "Back";
                     LangPages.SurveyPage.KcChange = "Change";
                     LangPages.SurveyPage.KcDel = "Delete";
                     LangPages.SurveyPage.DgQuestion = "Question";
@@ -192,7 +193,7 @@ namespace Survey.Helper
                     LangPages.SurveysPage.DgTitle = "Title";
                     LangPages.SurveysPage.KcAdd = "Add";
                     LangPages.SurveysPage.KcCreate = "Create";
-                    LangPages.SurveysPage.KcBack = "ComeBack";
+                    LangPages.SurveysPage.KcBack = "Back";
                     LangPages.SurveysPage.KcChange = "Change";
                     LangPages.SurveysPage.KcDel = "Delete";
                     LangPages.SurveysPage.TblListSurveys = "List surveys";
@@ -206,18 +207,18 @@ namespace Survey.Helper
 
                     LangPages.UsersPage.CbxRole = "Role";
                     LangPages.UsersPage.DgLogin = "Login";
-                    LangPages.UsersPage.DgSurName = "Sur Name";
+                    LangPages.UsersPage.DgSurName = "Surname";
                     LangPages.UsersPage.DgName = "Name";
                     LangPages.UsersPage.KcAdd = "Add";
-                    LangPages.UsersPage.KcBack = "ComeBack";
+                    LangPages.UsersPage.KcBack = "Back";
                     LangPages.UsersPage.KcChange = "Change";
-                    LangPages.UsersPage.KcClear = "Clear the field";
+                    LangPages.UsersPage.KcClear = "Clear fields";
                     LangPages.UsersPage.KcDel = "Delete";
                     LangPages.UsersPage.TblWorkers = "Workers";
                     LangPages.UsersPage.TbxLogin = "Login";
                     LangPages.UsersPage.TbxName = "Name";
-                    LangPages.UsersPage.TbxSurName = "Sur Name";
-
+                    LangPages.UsersPage.TbxSurName = "Surname";
+                    LangPages.UsersPage.btnGenerate = "Generate";
 
                     #endregion
 

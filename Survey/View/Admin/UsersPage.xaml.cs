@@ -214,6 +214,7 @@ namespace Survey.View.Admin
             DgLog.Header = LangPages.UsersPage.DgLogin;
             DgName.Header = LangPages.UsersPage.DgName;
             DgSurName.Header = LangPages.UsersPage.DgSurName;
+            GeneratePassword.Content = LangPages.UsersPage.btnGenerate;
         }
 
         #endregion
