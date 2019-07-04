@@ -83,31 +83,12 @@ namespace Survey.View.Admin
 
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-			//throw new NotImplementedException();
-
-			SaveFileDialog saveFileDialog = new SaveFileDialog
-			{
-				Filter = "Json files(*.json)|*.json|All files(*.*)|*.*"
-			};
-
-			if (true == saveFileDialog.ShowDialog())
-			{
-				string fileName = saveFileDialog.SafeFileName;
-
-
-				ModelExportImport mei = new ModelExportImport();
-
-
-
-
-				JsonExporter.Export(mei, fileName);
-			}
-					
+            MessageBox.Show("В следующей версии");	
 		}
 
         private void Import_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("В следующей версии");
         }
 
         private void CategoriesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)

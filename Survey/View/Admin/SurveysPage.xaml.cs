@@ -116,12 +116,12 @@ namespace Survey.View.Admin
 
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("В следующей версии");
         }
 
         private void Import_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("В следующей версии");
         }
 
         private void SurveysDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
