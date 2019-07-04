@@ -40,7 +40,7 @@ namespace Survey.Helper
                     LangPages.CategoriesPage.DgCatSurveys = "Категории опросов";
                     LangPages.CategoriesPage.KcChange = "Изменить";
                     LangPages.CategoriesPage.KcDel = "Удалить";
-                    LangPages.CategoriesPage.KcBack = "Выход";
+                    LangPages.CategoriesPage.KcBack = "Назад";
                     LangPages.CategoriesPage.KcExport = "Экспорт";
                     LangPages.CategoriesPage.KcImport = "Импрот";
                     LangPages.CategoriesPage.KcNew = "Новая категория";
@@ -110,6 +110,7 @@ namespace Survey.Helper
                     #region QuestionPage
 
                     LangPages.QuestionPage.KcNext = "Следующий";
+                    LangPages.QuestionPage.KcFinish = "Завершить";
 
                     #endregion
 
@@ -157,7 +158,7 @@ namespace Survey.Helper
                     LangPages.CategoriesPage.DgCatSurveys = "Surveys categories";
                     LangPages.CategoriesPage.KcChange = "Change";
                     LangPages.CategoriesPage.KcDel = "Delete";
-                    LangPages.CategoriesPage.KcBack = "Exit";
+                    LangPages.CategoriesPage.KcBack = "Back";
                     LangPages.CategoriesPage.KcExport = "Export";
                     LangPages.CategoriesPage.KcImport = "Import";
                     LangPages.CategoriesPage.KcNew = "New category";
@@ -225,6 +226,7 @@ namespace Survey.Helper
                     #region QuestionPage
 
                     LangPages.QuestionPage.KcNext = "Next";
+                    LangPages.QuestionPage.KcFinish = "Finish";
 
                     #endregion
 

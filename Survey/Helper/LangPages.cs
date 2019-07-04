@@ -87,6 +87,7 @@ namespace Survey.Helper
         public static class QuestionPage
         {           
             public static string KcNext { get; set; }
+            public static string KcFinish { get; set; }
         }
         public static class UserPage
         {         
