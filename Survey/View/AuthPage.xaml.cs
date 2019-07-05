@@ -64,7 +64,7 @@ namespace Survey.View
             }
             else
             {
-                MessageBox.Show("Не правильный логин / пароль");
+                MessageBox.Show(LangPages.MBox.ErrorLog);
             }
         }
         #region Localization

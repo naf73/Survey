@@ -110,5 +110,40 @@ namespace Survey.Helper
             public static string KcEntre { get; set; }          
 
         }
+        public static class MBox
+        {
+            public static string DelCat { get; set; }
+            public static string SprcifyCat { get; set; }
+            public static string Del { get; set; }
+            public static string Creat { get; set; }
+            public static string Change { get; set; }
+            public static string AddCatToSystem { get; set; }
+            public static string CatChange { get; set; }
+            public static string EmptyFieldNotAll { get; set; }
+            public static string MustCreateCat { get; set; }
+            public static string ChooseAnsw { get; set; }
+            public static string TimeEntryError { get; set; }
+            public static string ErrorEnteringPollName { get; set; }
+            public static string MissingCorrectAnswer { get; set; }
+            public static string NeedToAddQuestionAnswers { get; set; }
+            public static string NotAllFieldsInTheQuestionAreFilled { get; set; }
+            public static string DelQuestion { get; set; }
+            public static string DelQuestionSpecifyIt { get; set; }
+            public static string NotAllFieldsInTheAnswerAreFilled { get; set; }
+            public static string YouMustSpecifyTheAnswerToEdit { get; set; }
+            public static string DelAnswer { get; set; }
+            public static string YouMustSpecifyTheAnswerToRemove { get; set; }
+            public static string YouMustSpecifyCategoryName { get; set; }
+            public static string DelSurvey { get; set; }
+            public static string YouMustSpecifySurveyToDelete { get; set; }
+            public static string NotAllFieldsAreFilled { get; set; }
+            public static string YouMustSelectRowTable { get; set; }
+            public static string DelWorker { get; set; }
+            public static string SysMast1Admin { get; set; }
+            public static string ErrorLog { get; set; }
+            public static string TestCompleted { get; set; }
+
+
+        }
     }
 }

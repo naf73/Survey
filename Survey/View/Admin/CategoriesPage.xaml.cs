@@ -69,7 +69,7 @@ namespace Survey.View.Admin
         {
             if (!(_category is null))
             {
-                if (MessageBox.Show("Удалить категорию?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show(LangPages.MBox.DelCat , string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     categoryController.Remove(_category.Id);
                     UpdateCategoriesTable();
@@ -77,7 +77,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Необходимо указать категорию для удаления");
+                MessageBox.Show(LangPages.MBox.SprcifyCat);
             }
         }
 

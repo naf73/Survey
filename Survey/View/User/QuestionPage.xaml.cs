@@ -82,6 +82,11 @@ namespace Survey.View.User
                     MessageBox.Show("Выберите ответ");
                     return;
                 }
+            if (!CheckGetUserAnswer())
+            {
+                MessageBox.Show(LangPages.MBox.ChooseAnsw);
+                return;
+            }
 
                 if (CheckAnswerCount() && CheckIsRightUserAnswer())
                 {

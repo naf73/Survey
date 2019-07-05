@@ -47,7 +47,7 @@ namespace Survey.View.Admin
         {
             if (!int.TryParse(SurveyTime.Text, out int time))
             {
-                MessageBox.Show("Ошибка ввода времени");
+                MessageBox.Show(LangPages.MBox.TimeEntryError);
                 return;
             }
             if (time <= 0) 
@@ -56,7 +56,7 @@ namespace Survey.View.Admin
             }
             if(string.IsNullOrEmpty(SurveyName.Text))
             {
-                MessageBox.Show("Ошибка ввода названия опроса");
+                MessageBox.Show(LangPages.MBox.ErrorEnteringPollName);
                 return;
             }
             if ((bool)ManageSurvey.Tag)
@@ -96,17 +96,17 @@ namespace Survey.View.Admin
                     }
                     else
                     {
-                        MessageBox.Show("Отсутствуют правильный ответ");
+                        MessageBox.Show(LangPages.MBox.MissingCorrectAnswer);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Необходимо добавить вопросу ответы");
+                    MessageBox.Show(LangPages.MBox.NeedToAddQuestionAnswers);
                 }                
             }
             else
             {
-                MessageBox.Show("Не все поля у вопроса заполнены");
+                MessageBox.Show(LangPages.MBox.NotAllFieldsInTheQuestionAreFilled);
             }
         }
 
@@ -130,17 +130,17 @@ namespace Survey.View.Admin
                         }
                         else
                         {
-                            MessageBox.Show("Отсутствуют правильный ответ");
+                            MessageBox.Show(LangPages.MBox.MissingCorrectAnswer);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Необходимо добавить вопросу ответы");
+                        MessageBox.Show(LangPages.MBox.NeedToAddQuestionAnswers);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Не все поля у вопроса заполнены");
+                    MessageBox.Show(LangPages.MBox.NotAllFieldsInTheQuestionAreFilled);
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace Survey.View.Admin
 
             if(!(question is null))
             {
-                if (MessageBox.Show("Удалить вопрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show(LangPages.MBox.DelQuestion, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     questionController.Remove(question.Id);
                     UpdateQuestionTable();
@@ -159,7 +159,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Удаления вопроса необходимо его указать");
+                MessageBox.Show(LangPages.MBox.DelQuestionSpecifyIt);
             }
         }
 
@@ -201,7 +201,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Не все поля у ответа заполнены");
+                MessageBox.Show(LangPages.MBox.NotAllFieldsInTheAnswerAreFilled);
             }
             MethodClearAnswerFields();
             UpdateAnswerTable();
@@ -218,7 +218,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Необходимо указать ответ для редактирования");
+                MessageBox.Show(LangPages.MBox.YouMustSpecifyTheAnswerToEdit);
             }
             MethodClearAnswerFields();
             UpdateAnswerTable();
@@ -229,7 +229,7 @@ namespace Survey.View.Admin
             Answer current_answer = (Answer)AnswersDataGrid.SelectedItem;
             if(!(current_answer is null))
             {
-                if (MessageBox.Show("Удалить ответ?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show(LangPages.MBox.DelAnswer, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     _answers.Remove(current_answer);
                     UpdateAnswerTable();
@@ -237,7 +237,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Необходимо указать ответ для удаления");
+                MessageBox.Show(LangPages.MBox.YouMustSpecifyTheAnswerToRemove);
             }
         }
 

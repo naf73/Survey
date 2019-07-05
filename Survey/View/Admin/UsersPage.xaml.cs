@@ -69,7 +69,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Не все поля заполнены");
+                MessageBox.Show(LangPages.MBox.NotAllFieldsAreFilled);
             }
         }
 
@@ -98,12 +98,12 @@ namespace Survey.View.Admin
                 }
                 else
                 {
-                    MessageBox.Show("Не все поля заполнены");
+                    MessageBox.Show(LangPages.MBox.NotAllFieldsAreFilled);
                 }
             }
             else
             {
-                MessageBox.Show("Необходимо выбрать в таблице строку");
+                MessageBox.Show(LangPages.MBox.YouMustSelectRowTable);
             }
         }
 
@@ -114,7 +114,7 @@ namespace Survey.View.Admin
             {
                 if (CheckLastAdmin(user))
                 {
-                    if (MessageBox.Show("Удалить пользователя?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    if (MessageBox.Show(LangPages.MBox.DelWorker, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         userController.Remove(user.Id);
                         UpdateUsersTable();
@@ -122,12 +122,12 @@ namespace Survey.View.Admin
                 }
                 else
                 {
-                    MessageBox.Show("В системе должен быть минимум 1 администратор");
+                    MessageBox.Show(LangPages.MBox.SysMast1Admin);
                 }
             }
             else
             {
-                MessageBox.Show("Необходимо выбрать в таблице строку");
+                MessageBox.Show(LangPages.MBox.YouMustSelectRowTable);
             }
         }
 
