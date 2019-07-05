@@ -79,14 +79,9 @@ namespace Survey.View.User
             {
                 if (!CheckGetUserAnswer())
                 {
-                    MessageBox.Show("Выберите ответ");
+                    MessageBox.Show(LangPages.MBox.ChooseAnsw);
                     return;
                 }
-            if (!CheckGetUserAnswer())
-            {
-                MessageBox.Show(LangPages.MBox.ChooseAnsw);
-                return;
-            }
 
                 if (CheckAnswerCount() && CheckIsRightUserAnswer())
                 {
