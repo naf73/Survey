@@ -77,6 +77,7 @@
     <Compile Include="Exceptions\UserExistsException.cs" />
     <Compile Include="Helper\App.cs" />
     <Compile Include="Helper\ConvertPicture.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\LANG.cs" />
     <Compile Include="Helper\LangPages.cs" />
     <Compile Include="Logic\AnswerController.cs" />
