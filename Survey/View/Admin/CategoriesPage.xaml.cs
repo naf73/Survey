@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Helper;
+using Microsoft.Win32;
+using Survey.Logic.JsonPorter;
 
 namespace Survey.View.Admin
 {
@@ -77,6 +79,35 @@ namespace Survey.View.Admin
             {
                 MessageBox.Show(LangPages.MBox.SprcifyCat);
             }
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+			//throw new NotImplementedException();
+
+			SaveFileDialog saveFileDialog = new SaveFileDialog
+			{
+				Filter = "Json files(*.json)|*.json|All files(*.*)|*.*"
+			};
+
+			if (true == saveFileDialog.ShowDialog())
+			{
+				string fileName = saveFileDialog.SafeFileName;
+
+
+				ModelExportImport mei = new ModelExportImport();
+
+
+
+
+				JsonExporter.Export(mei, fileName);
+			}
+					
+		}
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void CategoriesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
