@@ -63,9 +63,6 @@ namespace Survey.View.Admin
             UpdateStatSurveyTable();
         }
 
-
-
-
         #region Localization
 
         private void Local()
@@ -81,6 +78,7 @@ namespace Survey.View.Admin
             Exit.Content = LangPages.AdminPage.KcExit;
             TbStat.Text = LangPages.AdminPage.DgStatiatic;
         }
-            #endregion
+
+        #endregion
     }
 }
