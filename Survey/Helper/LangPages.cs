@@ -120,7 +120,26 @@ namespace Survey.Helper
             public static string EmptyFieldNotAll { get; set; }
             public static string MustCreateCat { get; set; }
             public static string ChooseAnsw { get; set; }
-
+            public static string TimeEntryError { get; set; }
+            public static string ErrorEnteringPollName { get; set; }
+            public static string MissingCorrectAnswer { get; set; }
+            public static string NeedToAddQuestionAnswers { get; set; }
+            public static string NotAllFieldsInTheQuestionAreFilled { get; set; }
+            public static string DelQuestion { get; set; }
+            public static string DelQuestionSpecifyIt { get; set; }
+            public static string NotAllFieldsInTheAnswerAreFilled { get; set; }
+            public static string YouMustSpecifyTheAnswerToEdit { get; set; }
+            public static string DelAnswer { get; set; }
+            public static string YouMustSpecifyTheAnswerToRemove { get; set; }
+            public static string YouMustSpecifyCategoryName { get; set; }
+            public static string DelSurvey { get; set; }
+            public static string YouMustSpecifySurveyToDelete { get; set; }
+            public static string NotAllFieldsAreFilled { get; set; }
+            public static string YouMustSelectRowTable { get; set; }
+            public static string DelWorker { get; set; }
+            public static string SysMast1Admin { get; set; }
+            public static string ErrorLog { get; set; }
+            public static string TestCompleted { get; set; }
 
 
         }

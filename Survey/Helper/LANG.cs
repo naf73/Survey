@@ -147,6 +147,27 @@ namespace Survey.Helper
                     LangPages.MBox.EmptyFieldNotAll = "Пусто поле не допускается";
                     LangPages.MBox.MustCreateCat = "Необходимо создать категорию";
                     LangPages.MBox.ChooseAnsw = "Выберите ответ";
+                    LangPages.MBox.TimeEntryError = "Ошибка ввода времени";
+                    LangPages.MBox.ErrorEnteringPollName = "Ошибка ввода названия опроса";
+                    LangPages.MBox.MissingCorrectAnswer = "Отсутствуют правильный ответ";
+                    LangPages.MBox.NeedToAddQuestionAnswers = "Необходимо добавить вопросу ответы";
+                    LangPages.MBox.NotAllFieldsInTheQuestionAreFilled = "Не все поля у вопроса заполнены";
+                    LangPages.MBox.DelQuestion = "Удалить вопрос?";
+                    LangPages.MBox.DelQuestionSpecifyIt = "Удаления вопроса необходимо его указать";
+                    LangPages.MBox.NotAllFieldsInTheAnswerAreFilled = "Не все поля у ответа заполнены";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToEdit = "Необходимо указать ответ для редактирования";
+                    LangPages.MBox.DelAnswer = "Удалить ответ?";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToRemove = "Необходимо указать ответ для удаления";
+                    LangPages.MBox.YouMustSpecifyCategoryName = "Необходимо задать имя категории";
+                    LangPages.MBox.DelSurvey = "Удалить опрос?";
+                    LangPages.MBox.YouMustSpecifySurveyToDelete = "Необходиом указать опрос для удаления";
+                    LangPages.MBox.NotAllFieldsAreFilled = "Не все поля заполнены";
+                    LangPages.MBox.YouMustSelectRowTable = "Необходимо выбрать в таблице строку";
+                    LangPages.MBox.DelWorker = "Удалить пользователя?";
+                    LangPages.MBox.SysMast1Admin = "В системе должен быть минимум 1 администратор";
+                    LangPages.MBox.ErrorLog = "Не правильный логин / пароль";
+                    LangPages.MBox.TestCompleted = "Опрос завершен";
+
 
                     #endregion
 
@@ -276,6 +297,27 @@ namespace Survey.Helper
                     LangPages.MBox.EmptyFieldNotAll = "Empty field is not allowed";
                     LangPages.MBox.MustCreateCat = "You must create a category";
                     LangPages.MBox.ChooseAnsw = "Choose answer";
+                    LangPages.MBox.TimeEntryError = "Time entry error";
+                    LangPages.MBox.ErrorEnteringPollName = "Error entering survey name";
+                    LangPages.MBox.MissingCorrectAnswer = "Missing correct answer";
+                    LangPages.MBox.NeedToAddQuestionAnswers = "Need to add question answers";
+                    LangPages.MBox.NotAllFieldsInTheQuestionAreFilled = "Not all fields in the question are filled";
+                    LangPages.MBox.DelQuestion = "Delete question?";
+                    LangPages.MBox.DelQuestionSpecifyIt = "Deletion of a question is necessary to specify it";
+                    LangPages.MBox.NotAllFieldsInTheAnswerAreFilled = "Not all the fields in the answer are filled";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToEdit = "You must specify the answer to edit";
+                    LangPages.MBox.DelAnswer = "Delete answer?";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToRemove = "You must specify the answer to remove";
+                    LangPages.MBox.YouMustSpecifyCategoryName = "You must specify a category name";
+                    LangPages.MBox.DelSurvey = "Delete survey?";
+                    LangPages.MBox.YouMustSpecifySurveyToDelete = "You must specify a survey to delete";
+                    LangPages.MBox.NotAllFieldsAreFilled = "Not all fields are filled";
+                    LangPages.MBox.YouMustSelectRowTable = "You must select a row in the table";
+                    LangPages.MBox.DelWorker = "Delete user?";
+                    LangPages.MBox.SysMast1Admin = "The system must have at least 1 administrator";
+                    LangPages.MBox.ErrorLog = "Wrong login / password";
+                    LangPages.MBox.TestCompleted = "Survey completed";
+
 
                     #endregion
 

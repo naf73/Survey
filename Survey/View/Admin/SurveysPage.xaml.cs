@@ -61,7 +61,7 @@ namespace Survey.View.Admin
                 }
                 else
                 {
-                    MessageBox.Show("Необходимо задать имя категории");
+                    MessageBox.Show(LangPages.MBox.YouMustSpecifyCategoryName);
                     return;
                 }
             }
@@ -102,7 +102,7 @@ namespace Survey.View.Admin
         {
             if (!(_survey is null))
             {
-                if (MessageBox.Show("Удалить опрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show(LangPages.MBox.DelSurvey, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     surveyController.Remove(_survey.Id);
                     UpdateFields();
@@ -110,7 +110,7 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Необходиом указать опрос для удаления");
+                MessageBox.Show(LangPages.MBox.YouMustSpecifySurveyToDelete);
             }
         }
 
