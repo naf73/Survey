@@ -230,8 +230,14 @@ namespace Survey.Logic
                                                              .ToList();
                     if (surveys != null && surveys.Count > 0)
                     {
-                        surveys.OrderByDescending(x => x.Result).ToList();
-                        return string.Format("{0} {1} %", surveys[0].Survey.Name, surveys[0].Result);
+                        UserSurvey last_survey = new UserSurvey();
+
+                        foreach(var survey in surveys)
+                        {
+                            if (last_survey.Result <= survey.Result) last_survey = survey;
+                        }
+
+                        return string.Format("{0} {1} %", last_survey.Survey.Name, last_survey.Result);
                     }
                     else
                     {
