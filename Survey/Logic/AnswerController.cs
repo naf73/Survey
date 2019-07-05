@@ -10,11 +10,23 @@ namespace Survey.Logic
 {
     public class AnswerController
     {
+        private Helper.App _app = null;
+
+        public AnswerController()
+        {
+            _app = new Helper.App();
+        }
+
+        public AnswerController(Helper.App app)
+        {
+            _app = app;
+        }
+
         public List<Answer> Get(int questionId)
         {
             try
             {
-                using (var db = new SurveyContext())
+                using (var db = new SurveyContext(_app.Conn))
                 {
                     return db.Answers.Where(q => q.QuestionId == questionId &&
                                                  q.IsDeleted == false).ToList();
