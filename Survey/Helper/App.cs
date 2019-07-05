@@ -12,10 +12,17 @@ namespace Survey.Helper
     {
         public App()
         {
+#if DEBUG
             Source = "(localdb)\\MSSQLLocalDB";
             Catalog = "survey";
             User = string.Empty;
             Password = string.Empty;
+#else
+            Source = "survey.e-manufactory.ru";
+            Catalog = "u0620735_survey";
+            User = "u0620735_survey_user";
+            Password = "liQ9d*77";
+#endif
         }
 
         public string Conn
