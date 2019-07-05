@@ -295,7 +295,7 @@ namespace Survey.View.Admin
             {
                 SurveyName.Text = _survey.Name;
                 SurveyTime.Text = _survey.Time.ToString();
-                ManageSurvey.Content = "Изменить";
+                ManageSurvey.Content = LangPages.SurveyPage.KcChange;
                 ManageSurvey.Tag = false;
                 GridSurvey.Visibility = Visibility.Visible;
             }

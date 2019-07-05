@@ -158,12 +158,12 @@ namespace Survey.View.Admin
             {
                 CategoryName.Text = _category.Name;
                 SurveysDataGrid.ItemsSource = surveyController.GetByCategoryId(_category.Id);
-                ManageCategory.Content = "Изменить";
+                ManageCategory.Content = LangPages.SurveysPage.KcChange;
                 ManageCategory.Tag = false;
             }
             else
             {
-                ManageCategory.Content = "Создать";
+                ManageCategory.Content = LangPages.SurveysPage.KcCreate;
                 ManageCategory.Tag = true;
             }
         }
@@ -176,7 +176,16 @@ namespace Survey.View.Admin
             ComeBack.Content = LangPages.SurveysPage.KcBack;
             ListSurveys.Text = LangPages.SurveysPage.TblListSurveys;
             LabelCategoryName.Content = LangPages.SurveysPage.LCatName;
-            ManageCategory.Content = LangPages.SurveysPage.KcCreate;
+
+            if((bool)ManageCategory.Tag)
+            {
+                ManageCategory.Content = LangPages.SurveysPage.KcCreate;
+            }
+            else
+            {
+                ManageCategory.Content = LangPages.SurveysPage.KcChange;
+            }
+
             Add.Content = LangPages.SurveysPage.KcAdd;
             Edit.Content = LangPages.SurveysPage.KcChange;
             Remove.Content = LangPages.SurveysPage.KcDel;
