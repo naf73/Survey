@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -71,9 +74,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\UserExistsException.cs" />
+    <Compile Include="Helper\App.cs" />
+    <Compile Include="Helper\ConvertPicture.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="Helper\LANG.cs" />
+    <Compile Include="Helper\LangPages.cs" />
+    <Compile Include="Logic\AnswerController.cs" />
+    <Compile Include="Logic\JsonPorter\AuxiliaryModel.cs" />
+    <Compile Include="Logic\JsonPorter\JsonExporter.cs" />
+    <Compile Include="Logic\JsonPorter\JsonImporter.cs" />
     <Compile Include="Logic\Navigated.cs" />
+    <Compile Include="Logic\CategoryController.cs" />
+    <Compile Include="Logic\QuestionController.cs" />
+    <Compile Include="Logic\StatisticsController.cs" />
+    <Compile Include="Logic\SurveyController.cs" />
+    <Compile Include="Logic\UserController.cs" />
+    <Compile Include="Model\Category.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Partial\CategoryPartial.cs" />
+    <Compile Include="Model\Partial\SurveyContextPartial.cs" />
+    <Compile Include="Model\Survey1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\CategoriesPage.xaml.cs">
+      <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\SurveyPage.xaml.cs">
       <DependentUpon>SurveyPage.xaml</DependentUpon>
@@ -106,6 +137,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Admin\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\CategoriesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,17 +188,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Survey.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Survey1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Survey.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SurveyCategory.cs">
-      <DependentUpon>Survey.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\TypeRole.cs">
-      <DependentUpon>Survey.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>Survey.tt</DependentUpon>
@@ -222,9 +246,15 @@
     <Content Include="Resources\Hamster.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\pole_letter_correct.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

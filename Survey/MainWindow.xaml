@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Survey"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStartupLocation="CenterScreen">
+        Title="Survey 2000" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

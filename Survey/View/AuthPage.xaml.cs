@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Survey.Helper;
+using Survey.Properties;
 
 namespace Survey.View
 {
@@ -21,25 +23,75 @@ namespace Survey.View
     /// </summary>
     public partial class AuthPage : Page
     {
+        private class Item
+        {
+            public Item(int value, string text) { Value = value; Text = text; }
+            public int Value { get; set; }
+            public string Text { get; set; }
+            public override string ToString() { return Text; }
+        }
+
+        private UserController userController = new UserController();
+
         public AuthPage()
         {
             InitializeComponent();
+            userController.AddAdmin();
+            Login.Focus();
+
+            string I = "Русский";
+            string II = "Engish";
+
+            SwtichLang.Items.Add(new Item(1, I));
+            SwtichLang.Items.Add(new Item(2, II));
+
+            SwtichLang.SelectedIndex = Settings.Default.LangIndex;
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            switch(Login.Text)
+            var user = userController.GetUserByPass(Login.Text, Password.Password);
+            if (!(user is null))
             {
-                case "admin":
+                if (user.IsAdmin)
+                {
                     Navigated.GoToAdminPage();
-                    break;
-                case "user":
-                    Navigated.GoToUserPage();
-                    break;
-                default:
-                    MessageBox.Show("Не правильный логин/пароль");
-                    break;
+                }
+                else
+                {
+                    Navigated.GoToUserPage(user);
+                }
+            }
+            else
+            {
+                MessageBox.Show(LangPages.MBox.ErrorLog);
             }
         }
+        #region Localization
+
+        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Item item = SwtichLang.Items[SwtichLang.SelectedIndex] as Item;
+
+            if (SwtichLang.SelectedIndex == 0)
+            {
+                LANG.ChangeLang(Lang.RUS);
+            }
+            else
+            {
+                LANG.ChangeLang(Lang.ENG);
+            }
+
+            Settings.Default.LangIndex = SwtichLang.SelectedIndex;
+            Settings.Default.Save();
+
+            TLog.Text = LangPages.AuthPage.TblLogin;
+            TPas.Text = LangPages.AuthPage.TblPassword;
+            TSing.Text = LangPages.AuthPage.TblSingIn;
+            Enter.Content = LangPages.AuthPage.KcEntre;
+
+        }                   
+
+        #endregion
     }
 }

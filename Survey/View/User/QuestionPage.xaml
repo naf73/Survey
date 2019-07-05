@@ -7,35 +7,57 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuestionPage">
-
+    <Page.Resources>
+        <Style x:Key="LabelBlock" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Answer" TargetType="{x:Type CheckBox}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="2"
-                Grid.Row="2"
-                Content="Button" 
-                HorizontalAlignment="Right" 
-                Margin="3" 
-                VerticalAlignment="Top" 
-                Width="75"/>
-        <TextBlock Grid.Row="0"
-                   HorizontalAlignment="Center" 
-                   Margin="3" 
-                   TextWrapping="Wrap" 
-                   Text="TextBlock" 
-                   VerticalAlignment="Top" 
-                   
-                   Height="199" 
-                   Width="705"
-                   Grid.ColumnSpan="3"/>
+
+        <Label Grid.Row="0"
+               FontSize="36"
+               HorizontalAlignment="Center"
+               Content="{Binding Times, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <StackPanel Grid.Row="1" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+            <Image x:Name="Foto" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Stretch="None"/>
+            <Label x:Name="Question" Style="{StaticResource LabelBlock}"/>
+        </StackPanel>
+
+        <StackPanel x:Name="Answers"
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical"/>
+
+        <Button x:Name="NextQuestion"   
+                Grid.Row="3"
+                FontSize="24"
+                Margin="10"
+                HorizontalAlignment="Center"
+                Click="NextQuestion_Click">Следующий</Button>
 
     </Grid>
 </Page>

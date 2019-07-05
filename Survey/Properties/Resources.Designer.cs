@@ -69,5 +69,15 @@ namespace Survey.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] pole_letter_correct {
+            get {
+                object obj = ResourceManager.GetObject("pole_letter_correct", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
