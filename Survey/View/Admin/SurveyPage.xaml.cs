@@ -290,9 +290,9 @@ namespace Survey.View.Admin
             if (_survey.Id != 0)
             {
                 SurveyName.Text = _survey.Name;
-                ManageSurvey.Content = LangPages.MBox.Del;
                 SurveyTime.Text = _survey.Time.ToString();
                 ManageSurvey.Content = "Изменить";
+                ManageSurvey.Content = LangPages.MBox.Del;
                 ManageSurvey.Tag = false;
                 GridSurvey.Visibility = Visibility.Visible;
             }
