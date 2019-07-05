@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Survey.Helper;
+using Survey.Exceptions;
 
 namespace Survey.View.Admin
 {
@@ -55,12 +56,20 @@ namespace Survey.View.Admin
                     IsAdmin = IsAdmin.IsChecked == true ? true : false,
                     IsDeleted = false
                 };
-                userController.Add(user);
+                try
+                {
+                    userController.Add(user);
+                }
+                catch (UserExistsException)
+                {
+                    MessageBox.Show("Пользователь с таким логин уже существует");
+                }
+                
                 UpdateUsersTable();
             }
             else
             {
-                MessageBox.Show("Не все поля заполнены");
+                MessageBox.Show(LangPages.MBox.NotAllFieldsAreFilled);
             }
         }
 
@@ -77,17 +86,24 @@ namespace Survey.View.Admin
                     user.Name = Name.Text;
                     user.IsAdmin = IsAdmin.IsChecked == true ? true : false;
 
-                    userController.Edit(user);
+                    try
+                    {
+                        userController.Edit(user);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Пользователь с таким логин уже существует");
+                    }
                     UpdateUsersTable();
                 }
                 else
                 {
-                    MessageBox.Show("Не все поля заполнены");
+                    MessageBox.Show(LangPages.MBox.NotAllFieldsAreFilled);
                 }
             }
             else
             {
-                MessageBox.Show("Необходимо выбрать в таблице строку");
+                MessageBox.Show(LangPages.MBox.YouMustSelectRowTable);
             }
         }
 
@@ -98,7 +114,7 @@ namespace Survey.View.Admin
             {
                 if (CheckLastAdmin(user))
                 {
-                    if (MessageBox.Show("Удалить пользователя?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    if (MessageBox.Show(LangPages.MBox.DelWorker, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         userController.Remove(user.Id);
                         UpdateUsersTable();
@@ -106,12 +122,12 @@ namespace Survey.View.Admin
                 }
                 else
                 {
-                    MessageBox.Show("В системе должен быть минимум 1 администратор");
+                    MessageBox.Show(LangPages.MBox.SysMast1Admin);
                 }
             }
             else
             {
-                MessageBox.Show("Необходимо выбрать в таблице строку");
+                MessageBox.Show(LangPages.MBox.YouMustSelectRowTable);
             }
         }
 
@@ -198,6 +214,7 @@ namespace Survey.View.Admin
             DgLog.Header = LangPages.UsersPage.DgLogin;
             DgName.Header = LangPages.UsersPage.DgName;
             DgSurName.Header = LangPages.UsersPage.DgSurName;
+            GeneratePassword.Content = LangPages.UsersPage.btnGenerate;
         }
 
         #endregion

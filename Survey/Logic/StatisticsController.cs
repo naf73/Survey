@@ -34,16 +34,18 @@ namespace Survey.Logic
                                                .ToList();
                     users.ForEach(u =>
                     {
+                        double result = u.UserSurvey.Count(c => c.UserId == u.Id) > 0 ?
+                                        u.UserSurvey.Where(d => d.UserId == u.Id)
+                                                         .ToList()
+                                                         .Sum(item => item.Result) /
+                                             u.UserSurvey.Where(s => s.UserId == u.Id)
+                                                         .Count() / 100 : 0;
                         statEmployees.Add(new StatEmployee()
                         {
                             Id = u.Id,
                             Surname = u.Surname,
                             Name = u.Name,
-                            RatingEmployee = u.UserSurvey.Where(d => d.UserId == u.Id)
-                                                         .ToList()
-                                                         .Sum(item => item.Result) /
-                                             u.UserSurvey.Where(s => s.UserId == u.Id)
-                                                         .Count() / 100
+                            RatingEmployee = result
                         });
                     });
                     return statEmployees;

@@ -20,7 +20,7 @@ using System.Runtime.CompilerServices;
 using Survey.Model;
 using Survey.Logic;
 using Survey.Helper;
-
+using System.Windows.Threading;
 
 namespace Survey.View.User
 {
@@ -35,6 +35,7 @@ namespace Survey.View.User
         private int sec, min, hour;
         private string _time;
         private int number;
+        private bool isFinish = false;
 
         private int right_answer;
 
@@ -70,37 +71,52 @@ namespace Survey.View.User
 
         private void NextQuestion_Click(object sender, RoutedEventArgs e)
         {
-            if (!CheckGetUserAnswer())
-            {
-                MessageBox.Show("Выберите ответ");
-                return;
-            }
-
-            if (CheckAnswerCount() && CheckIsRightUserAnswer())
-            {
-                SoundRightAnswer();
-                right_answer++;
-            }
-
-            number++;
-
-            if (CheckFinishedSurvey())
-            {
-                ShowQuestion(number);
+            if (isFinish)
+            {                
+                Navigated.GoToUserPage(_user);
             }
             else
             {
-                EndingSurvey();
+                if (!CheckGetUserAnswer())
+                {
+                    MessageBox.Show(LangPages.MBox.ChooseAnsw);
+                    return;
+                }
+
+                if (CheckAnswerCount() && CheckIsRightUserAnswer())
+                {
+                    SoundRightAnswer();
+                    right_answer++;
+                }
+
+                number++;
+
+                if (CheckFinishedSurvey())
+                {
+                    ShowQuestion(number);
+                }
+                else
+                {
+                    EndingSurvey();
+                }
             }
         }
 
         private void EndingSurvey()
         {
-            double result = MarkSurvey();
             aTimer.Stop();
+            aTimer = null;
+            double result = MarkSurvey();            
             surveyController.SetMark(_survey.Id, _user.Id, result);
             ShowResult(result);
-            Navigated.GoToUserPage(_user);
+            isFinish = true;
+            NextQuestion.Dispatcher.Invoke(DispatcherPriority.Background, new Action(() =>
+            {
+                Foto.Source = null;
+                Question.Content = string.Empty;
+                Answers.Children.Clear();
+                NextQuestion.Content = LangPages.QuestionPage.KcFinish;
+            }));
         }
 
         private double MarkSurvey()
@@ -189,7 +205,7 @@ namespace Survey.View.User
             Times = string.Format("{0:00}:{1:00}:{2:00}", hour, min, sec);
             if (hour == 0 && min == 0 && sec == 0)
             {
-                EndingSurvey();
+                EndingSurvey();                
             }
             else
             {

@@ -69,7 +69,7 @@ namespace Survey.View.Admin
         {
             if (!(_category is null))
             {
-                if (MessageBox.Show("Удалить категорию?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show(LangPages.MBox.DelCat , string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     categoryController.Remove(_category.Id);
                     UpdateCategoriesTable();
@@ -77,37 +77,18 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Необходимо указать категорию для удаления");
+                MessageBox.Show(LangPages.MBox.SprcifyCat);
             }
         }
 
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-			//throw new NotImplementedException();
-
-			SaveFileDialog saveFileDialog = new SaveFileDialog
-			{
-				Filter = "Json files(*.json)|*.json|All files(*.*)|*.*"
-			};
-
-			if (true == saveFileDialog.ShowDialog())
-			{
-				string fileName = saveFileDialog.SafeFileName;
-
-
-				ModelExportImport mei = new ModelExportImport();
-
-
-
-
-				JsonExporter.Export(mei, fileName);
-			}
-					
+            MessageBox.Show("В следующей версии");	
 		}
 
         private void Import_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("В следующей версии");
         }
 
         private void CategoriesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)

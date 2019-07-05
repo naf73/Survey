@@ -39,6 +39,7 @@
             <Button x:Name="ComeBack"
                     HorizontalAlignment="Left"
                     Margin="3"
+                    IsCancel="True"
                     Click="ComeBack_Click">Назад</Button>
             
             <TextBlock x:Name="Workers" 

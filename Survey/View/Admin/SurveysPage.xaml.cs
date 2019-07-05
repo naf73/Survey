@@ -55,13 +55,13 @@ namespace Survey.View.Admin
                         IsDeleted = false
                     };
                     categoryController.Add(_category);
-                    ManageCategory.Content = "Изменить";
+                    ManageCategory.Content = LangPages.MBox.Change;
                     ManageCategory.Tag = false;
-                    MessageBox.Show("Категория добавлена в систему");
+                    MessageBox.Show(LangPages.MBox.AddCatToSystem);
                 }
                 else
                 {
-                    MessageBox.Show("Необходимо задать имя категории");
+                    MessageBox.Show(LangPages.MBox.YouMustSpecifyCategoryName);
                     return;
                 }
             }
@@ -70,11 +70,11 @@ namespace Survey.View.Admin
                 if (!string.IsNullOrWhiteSpace(CategoryName.Text))
                 {
                     categoryController.Edit(_category.Id, CategoryName.Text);
-                    MessageBox.Show("Категория изменена");
+                    MessageBox.Show(LangPages.MBox.CatChange);
                 }
                 else
                 {
-                    MessageBox.Show("Пусто поле не допускается");
+                    MessageBox.Show(LangPages.MBox.EmptyFieldNotAll);
                     return;
                 }
             }
@@ -84,7 +84,7 @@ namespace Survey.View.Admin
         {
             if (_category is null)
             {
-                MessageBox.Show("Необходимо создать категорию");
+                MessageBox.Show(LangPages.MBox.MustCreateCat);
                 return;
             }
             Navigated.GoToSurveyPage(new Model.Survey()
@@ -102,7 +102,7 @@ namespace Survey.View.Admin
         {
             if (!(_survey is null))
             {
-                if (MessageBox.Show("Удалить опрос?", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show(LangPages.MBox.DelSurvey, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     surveyController.Remove(_survey.Id);
                     UpdateFields();
@@ -110,18 +110,18 @@ namespace Survey.View.Admin
             }
             else
             {
-                MessageBox.Show("Необходиом указать опрос для удаления");
+                MessageBox.Show(LangPages.MBox.YouMustSpecifySurveyToDelete);
             }
         }
 
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("В следующей версии");
         }
 
         private void Import_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("В следующей версии");
         }
 
         private void SurveysDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -158,12 +158,12 @@ namespace Survey.View.Admin
             {
                 CategoryName.Text = _category.Name;
                 SurveysDataGrid.ItemsSource = surveyController.GetByCategoryId(_category.Id);
-                ManageCategory.Content = "Изменить";
+                ManageCategory.Content = LangPages.SurveysPage.KcChange;
                 ManageCategory.Tag = false;
             }
             else
             {
-                ManageCategory.Content = "Создать";
+                ManageCategory.Content = LangPages.SurveysPage.KcCreate;
                 ManageCategory.Tag = true;
             }
         }
@@ -176,7 +176,16 @@ namespace Survey.View.Admin
             ComeBack.Content = LangPages.SurveysPage.KcBack;
             ListSurveys.Text = LangPages.SurveysPage.TblListSurveys;
             LabelCategoryName.Content = LangPages.SurveysPage.LCatName;
-            ManageCategory.Content = LangPages.SurveysPage.KcCreate;
+
+            if((bool)ManageCategory.Tag)
+            {
+                ManageCategory.Content = LangPages.SurveysPage.KcCreate;
+            }
+            else
+            {
+                ManageCategory.Content = LangPages.SurveysPage.KcChange;
+            }
+
             Add.Content = LangPages.SurveysPage.KcAdd;
             Edit.Content = LangPages.SurveysPage.KcChange;
             Remove.Content = LangPages.SurveysPage.KcDel;

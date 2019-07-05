@@ -61,7 +61,7 @@ namespace UnitTestSurvey
                             Text = string.Format("{0} {1} ", i, RandomString(34)),
                             Answer = answers,
                             IsDeleted = false,
-                            Foto = ConvertPicture.BitmapImageToByteArray(new BitmapImage(new Uri(@"C:\Users\User\source\repos\naf73\Survey\Survey\Pictures\Hamster.jpg", UriKind.Relative)))
+                            Foto = ConvertPicture.BitmapImageToByteArray(new BitmapImage(new Uri(@"C:\Users\Alex\source\repos\Survey\Survey\Pictures\Hamster.jpg", UriKind.Relative)))
                         });
                     }
 

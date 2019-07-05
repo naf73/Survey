@@ -40,7 +40,7 @@ namespace Survey.Helper
                     LangPages.CategoriesPage.DgCatSurveys = "Категории опросов";
                     LangPages.CategoriesPage.KcChange = "Изменить";
                     LangPages.CategoriesPage.KcDel = "Удалить";
-                    LangPages.CategoriesPage.KcBack = "Выход";
+                    LangPages.CategoriesPage.KcBack = "Назад";
                     LangPages.CategoriesPage.KcExport = "Экспорт";
                     LangPages.CategoriesPage.KcImport = "Импрот";
                     LangPages.CategoriesPage.KcNew = "Новая категория";
@@ -103,13 +103,14 @@ namespace Survey.Helper
                     LangPages.UsersPage.TbxLogin = "Логин";
                     LangPages.UsersPage.TbxName = "Имя";
                     LangPages.UsersPage.TbxSurName = "Фамилия";
-
+                    LangPages.UsersPage.btnGenerate = "Генерировать";
 
                     #endregion
 
                     #region QuestionPage
 
                     LangPages.QuestionPage.KcNext = "Следующий";
+                    LangPages.QuestionPage.KcFinish = "Завершить";
 
                     #endregion
 
@@ -135,6 +136,42 @@ namespace Survey.Helper
 
                     #endregion
 
+                    #region Message Box
+
+                    LangPages.MBox.DelCat = "Удалить категорию?";
+                    LangPages.MBox.SprcifyCat = "Необходимо указать категорию для удаления";
+                    LangPages.MBox.Del = "Удалить";
+                    LangPages.MBox.Creat = "Создать";
+                    LangPages.MBox.Change = "Изменить";
+                    LangPages.MBox.AddCatToSystem = "Категория добавлена в систему";
+                    LangPages.MBox.CatChange = "Категория изменена";
+                    LangPages.MBox.EmptyFieldNotAll = "Пусто поле не допускается";
+                    LangPages.MBox.MustCreateCat = "Необходимо создать категорию";
+                    LangPages.MBox.ChooseAnsw = "Выберите ответ";
+                    LangPages.MBox.TimeEntryError = "Ошибка ввода времени";
+                    LangPages.MBox.ErrorEnteringPollName = "Ошибка ввода названия опроса";
+                    LangPages.MBox.MissingCorrectAnswer = "Отсутствуют правильный ответ";
+                    LangPages.MBox.NeedToAddQuestionAnswers = "Необходимо добавить вопросу ответы";
+                    LangPages.MBox.NotAllFieldsInTheQuestionAreFilled = "Не все поля у вопроса заполнены";
+                    LangPages.MBox.DelQuestion = "Удалить вопрос?";
+                    LangPages.MBox.DelQuestionSpecifyIt = "Удаления вопроса необходимо его указать";
+                    LangPages.MBox.NotAllFieldsInTheAnswerAreFilled = "Не все поля у ответа заполнены";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToEdit = "Необходимо указать ответ для редактирования";
+                    LangPages.MBox.DelAnswer = "Удалить ответ?";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToRemove = "Необходимо указать ответ для удаления";
+                    LangPages.MBox.YouMustSpecifyCategoryName = "Необходимо задать имя категории";
+                    LangPages.MBox.DelSurvey = "Удалить опрос?";
+                    LangPages.MBox.YouMustSpecifySurveyToDelete = "Необходиом указать опрос для удаления";
+                    LangPages.MBox.NotAllFieldsAreFilled = "Не все поля заполнены";
+                    LangPages.MBox.YouMustSelectRowTable = "Необходимо выбрать в таблице строку";
+                    LangPages.MBox.DelWorker = "Удалить пользователя?";
+                    LangPages.MBox.SysMast1Admin = "В системе должен быть минимум 1 администратор";
+                    LangPages.MBox.ErrorLog = "Не правильный логин / пароль";
+                    LangPages.MBox.TestCompleted = "Опрос завершен";
+
+
+                    #endregion
+
                     break;
                 case Lang.ENG:
 
@@ -146,17 +183,18 @@ namespace Survey.Helper
                     LangPages.AdminPage.DgStatiatic = "Statistic";
                     LangPages.AdminPage.DgSurvey = "Survey";
                     LangPages.AdminPage.DgTotal = "Total in %";
-                    LangPages.AdminPage.DgSurName = "Sur Name";
+                    LangPages.AdminPage.DgSurName = "Surname";
                     LangPages.AdminPage.KcExit = "Exit";
                     LangPages.AdminPage.KcSurveys = "Surveys";
-                    LangPages.AdminPage.KcWorkers = "Workers";
+                    LangPages.AdminPage.KcWorkers = "Employees";
+                    
                     #endregion
 
                     #region CategoriesPage
                     LangPages.CategoriesPage.DgCatSurveys = "Surveys categories";
                     LangPages.CategoriesPage.KcChange = "Change";
                     LangPages.CategoriesPage.KcDel = "Delete";
-                    LangPages.CategoriesPage.KcBack = "Exit";
+                    LangPages.CategoriesPage.KcBack = "Back";
                     LangPages.CategoriesPage.KcExport = "Export";
                     LangPages.CategoriesPage.KcImport = "Import";
                     LangPages.CategoriesPage.KcNew = "New category";
@@ -167,7 +205,7 @@ namespace Survey.Helper
                     #region SurveyPage
 
                     LangPages.SurveyPage.KcAdd = "Add";
-                    LangPages.SurveyPage.KcBack = "ComeBack";
+                    LangPages.SurveyPage.KcBack = "Back";
                     LangPages.SurveyPage.KcChange = "Change";
                     LangPages.SurveyPage.KcDel = "Delete";
                     LangPages.SurveyPage.DgQuestion = "Question";
@@ -192,7 +230,7 @@ namespace Survey.Helper
                     LangPages.SurveysPage.DgTitle = "Title";
                     LangPages.SurveysPage.KcAdd = "Add";
                     LangPages.SurveysPage.KcCreate = "Create";
-                    LangPages.SurveysPage.KcBack = "ComeBack";
+                    LangPages.SurveysPage.KcBack = "Back";
                     LangPages.SurveysPage.KcChange = "Change";
                     LangPages.SurveysPage.KcDel = "Delete";
                     LangPages.SurveysPage.TblListSurveys = "List surveys";
@@ -206,24 +244,25 @@ namespace Survey.Helper
 
                     LangPages.UsersPage.CbxRole = "Role";
                     LangPages.UsersPage.DgLogin = "Login";
-                    LangPages.UsersPage.DgSurName = "Sur Name";
+                    LangPages.UsersPage.DgSurName = "Surname";
                     LangPages.UsersPage.DgName = "Name";
                     LangPages.UsersPage.KcAdd = "Add";
-                    LangPages.UsersPage.KcBack = "ComeBack";
+                    LangPages.UsersPage.KcBack = "Back";
                     LangPages.UsersPage.KcChange = "Change";
-                    LangPages.UsersPage.KcClear = "Clear the field";
+                    LangPages.UsersPage.KcClear = "Clear fields";
                     LangPages.UsersPage.KcDel = "Delete";
                     LangPages.UsersPage.TblWorkers = "Workers";
                     LangPages.UsersPage.TbxLogin = "Login";
                     LangPages.UsersPage.TbxName = "Name";
-                    LangPages.UsersPage.TbxSurName = "Sur Name";
-
+                    LangPages.UsersPage.TbxSurName = "Surname";
+                    LangPages.UsersPage.btnGenerate = "Generate";
 
                     #endregion
 
                     #region QuestionPage
 
                     LangPages.QuestionPage.KcNext = "Next";
+                    LangPages.QuestionPage.KcFinish = "Finish";
 
                     #endregion
 
@@ -246,6 +285,42 @@ namespace Survey.Helper
                     LangPages.AuthPage.TblLogin = "Login";
                     LangPages.AuthPage.TblPassword = "Password";
                     LangPages.AuthPage.TblLanguage = "Language";
+
+                    #endregion
+
+                    #region Message Box
+
+                    LangPages.MBox.DelCat = "Delete category?";
+                    LangPages.MBox.SprcifyCat = "You must specify a category to delete";
+                    LangPages.MBox.Del = "Delete";
+                    LangPages.MBox.Creat = "Create";
+                    LangPages.MBox.Change = "Change";
+                    LangPages.MBox.AddCatToSystem = "Category added to system";
+                    LangPages.MBox.CatChange = "Category changed";
+                    LangPages.MBox.EmptyFieldNotAll = "Empty field is not allowed";
+                    LangPages.MBox.MustCreateCat = "You must create a category";
+                    LangPages.MBox.ChooseAnsw = "Choose answer";
+                    LangPages.MBox.TimeEntryError = "Time entry error";
+                    LangPages.MBox.ErrorEnteringPollName = "Error entering survey name";
+                    LangPages.MBox.MissingCorrectAnswer = "Missing correct answer";
+                    LangPages.MBox.NeedToAddQuestionAnswers = "Need to add question answers";
+                    LangPages.MBox.NotAllFieldsInTheQuestionAreFilled = "Not all fields in the question are filled";
+                    LangPages.MBox.DelQuestion = "Delete question?";
+                    LangPages.MBox.DelQuestionSpecifyIt = "Deletion of a question is necessary to specify it";
+                    LangPages.MBox.NotAllFieldsInTheAnswerAreFilled = "Not all the fields in the answer are filled";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToEdit = "You must specify the answer to edit";
+                    LangPages.MBox.DelAnswer = "Delete answer?";
+                    LangPages.MBox.YouMustSpecifyTheAnswerToRemove = "You must specify the answer to remove";
+                    LangPages.MBox.YouMustSpecifyCategoryName = "You must specify a category name";
+                    LangPages.MBox.DelSurvey = "Delete survey?";
+                    LangPages.MBox.YouMustSpecifySurveyToDelete = "You must specify a survey to delete";
+                    LangPages.MBox.NotAllFieldsAreFilled = "Not all fields are filled";
+                    LangPages.MBox.YouMustSelectRowTable = "You must select a row in the table";
+                    LangPages.MBox.DelWorker = "Delete user?";
+                    LangPages.MBox.SysMast1Admin = "The system must have at least 1 administrator";
+                    LangPages.MBox.ErrorLog = "Wrong login / password";
+                    LangPages.MBox.TestCompleted = "Survey completed";
+
 
                     #endregion
 
